@@ -1,0 +1,15 @@
+{
+    "name": "Quotrs.",
+    "authors": [
+        {
+            "name": "Kevin F. Poivre",
+            "email": "kfnpfeffer@gmail.com"
+        }
+    ],
+    "bin": [
+        "bin/heroku-hhvm-apache2",
+        "bin/heroku-hhvm-nginx",
+        "bin/heroku-php-apache2",
+        "bin/heroku-php-nginx"
+    ]
+}
