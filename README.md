@@ -1,2 +1,2 @@
 # quotrs
-Conqué
+Wassup.
