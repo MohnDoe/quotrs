@@ -16,3 +16,5 @@
     echo $id;
     echo "<br/>";
     echo DBNAME;
+    echo "<br/>";
+    echo $_SERVER["DOCUMENT_ROOT"];
