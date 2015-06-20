@@ -7,9 +7,12 @@
  */
 
     // require autoload / composer
+    require 'model/core.php';
     require 'vendor/autoload.php';
 
     // test HashID
     $hashids = new Hashids\Hashids('SuperSaltQuotrs.LOL', 7);
     $id = $hashids->encode(1);
     echo $id;
+    echo "<br/>";
+    echo DBNAME;
