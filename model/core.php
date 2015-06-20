@@ -42,6 +42,10 @@
     DEFINE('ROOT', "qtrs.s3-website-eu-west-1.amazonaws.com");
     DEFINE('SALT_HASHIDS', "12309UJQODJ09ZA8ESQDJLQSJDAZEU");
 
+    $_AWS_S3_CLIENT = Aws\S3\S3Client::factory(array(
+                                       'key' => AWS_ACCESS_KEY_ID,
+                                       'secret' => AWS_SECRET_ACCESS_KEY
+                                   ));
 
 
     /*
