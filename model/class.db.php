@@ -3,6 +3,7 @@
 	Cette classe contient toutes les informations necessaire au bon fonctionnement d'1958.
 	Les noms des tables de BDD, les points paccordés à chaque action
 	*/
+    require_once 'core.php';
 	Class DB{
 		
 		static $db;

@@ -1,9 +1,5 @@
 <?php
-	include_once 'class.db.php';
-	include_once 'class.quote.php';
-	include_once 'class.song.php';
-	include_once 'class.compile.php';
-	include_once 'class.user.php';
+	include_once 'core.php';
 	Class Like{
 		public $id;
 		public $date;

@@ -1,5 +1,5 @@
 <?php
-	include_once 'class.db.php';
+    require_once 'core.php';
 
 Class Artist{
 	public $id;

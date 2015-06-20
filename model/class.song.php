@@ -1,7 +1,5 @@
 <?php
-	include_once 'class.db.php';
-	include_once 'class.artist.php';
-	include_once 'class.album.php';
+	include_once 'core.php';
 	Class Song{
 		public $id;
 		public $title;

@@ -1,6 +1,5 @@
 <?php
-	include_once 'class.db.php';
-	include_once 'class.artist.php';
+    require_once 'core.php';
 	Class Album{
 
 		public $id;

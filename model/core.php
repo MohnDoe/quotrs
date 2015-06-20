@@ -4,6 +4,7 @@
 	Created : 4.6.14
 	Core
 */
+    require 'vendor/autoload.php';
 
 session_start();
 header('Content-Type: text/html; charset=UTF-8');
@@ -32,8 +33,22 @@ if($_SERVER["REMOTE_ADDR"] != "127.0.0.1"){
 	DEFINE('USER_DB', 'root');
 	DEFINE('PASS_DB','');
 }
-DEFINE('WEBROOT', ROOT.PROJECT_FOLDER);
-//DEFINE('FOLDER_IMGS', STATIC_URL.'/img');
-//DEFINE('FOLDER_COVER_ALBUMS', FOLDER_IMGS.'/albums');
 
+    DEFINE('WEBROOT', ROOT.PROJECT_FOLDER);
+    DEFINE('SALT_HASHIDS', "12309UJQODJ09ZA8ESQDJLQSJDAZEU");
+    //DEFINE('FOLDER_IMGS', STATIC_URL.'/img');
+    ////DEFINE('FOLDER_COVER_ALBUMS', FOLDER_IMGS.'/albums');
+
+
+
+    /*
+     * REQUIRING ALL CLASSES
+     */
+    require_once 'class.album.php';
+    require_once 'class.artist.php';
+    require_once 'class.db.php';
+    require_once 'class.like.php';
+    require_once 'class.quote.php';
+    require_once 'class.song.php';
+    require_once 'class.user.php';
 ?>

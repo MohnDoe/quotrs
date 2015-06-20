@@ -8,13 +8,13 @@
 
     // require autoload / composer
     require 'model/core.php';
-    require 'vendor/autoload.php';
 
-    // test HashID
-    $hashids = new Hashids\Hashids('SuperSaltQuotrs.LOL', 7);
-    $id = $hashids->encode(1);
-    echo $id;
-    echo "<br/>";
-    echo DBNAME;
-    echo "<br/>";
-    echo $_SERVER["DOCUMENT_ROOT"];
+    // test HashID with quote
+    if(isset($_GET['quote_hashid'])){
+        $Quote = new Quote($_GET['quote_hashid']);
+    }
+    if(isset($_GET['quote_id'])){
+        echo "Quote ID";
+        $Quote = new Quote($_GET['quote_id'], false);
+    }
+    var_dump($Quote);

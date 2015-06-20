@@ -1,8 +1,5 @@
 <?php
-	include_once 'class.db.php';
-	include_once 'class.quote.php';
-	include_once 'class.user.php';
-	include_once 'class.like.php';
+	include_once 'core.php';
 	Class User{
 		public $id;
 		public $date_firstseen;
