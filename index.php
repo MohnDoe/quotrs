@@ -17,4 +17,9 @@
         echo "Quote ID";
         $Quote = new Quote($_GET['quote_id'], false);
     }
-    var_dump($Quote);
+    ?>
+<pre>
+    <?php
+        var_dump($Quote);
+    ?>
+</pre>
