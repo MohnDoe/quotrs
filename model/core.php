@@ -21,8 +21,6 @@ if($_SERVER["REMOTE_ADDR"] != "127.0.0.1"){
 	DEFINE('USER_DB', 'dbo531335009');
 	DEFINE('PASS_DB','PhEP8("QVX@=dM+');
 	DEFINE('ROOT', '/kunden/homepages/45/d399347765/htdocs/quotrs/');
-
-	DEFINE('STATIC_URL', '/static');
 }else{
 	// local
 	$root = $_SERVER["DOCUMENT_ROOT"];
