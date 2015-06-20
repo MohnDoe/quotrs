@@ -40,8 +40,16 @@
         DEFINE('PASS_DB','');
     }
     DEFINE('ROOT', "qtrs.s3-website-eu-west-1.amazonaws.com");
+    DEFINE('WEBROOT', "http://".ROOT."/");
+    // FOLDERS
+    DEFINE('IMAGES_FOLDER', 'img');
+    DEFINE('ALBUMS_COVERS_FOLDER', IMAGES_FOLDER.'/albums_cover');
+    DEFINE('ARTISTES_IMAGES_FOLDER', IMAGES_FOLDER.'/artistes_images');
+    DEFINE('USERS_UMAGES_FOLDER', IMAGES_FOLDER.'/users_images');
+
     DEFINE('SALT_HASHIDS', "12309UJQODJ09ZA8ESQDJLQSJDAZEU");
 
+    DEFINE('AWS_S3_REGION', 'eu-west-1');
     $_AWS_S3_CLIENT = Aws\S3\S3Client::factory(array(
                                        'key' => AWS_ACCESS_KEY_ID,
                                        'secret' => AWS_SECRET_ACCESS_KEY
