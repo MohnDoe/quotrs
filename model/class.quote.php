@@ -125,14 +125,27 @@
                 $this->Song = new Song($this->id_song, ['init_artist'=>false, 'init_album'=>true]);
             }
 
-            if ($this->Song->Album->url_cover != "" && $this->Song->Album->url_cover != 0) {
+            if (!is_null($this->Song->Album->url_cover)) {
                 // album cover exists
                 $url_image_result = $this->Song->Album->url_cover;
+            }else{
+                // pas de cover trouvé,
+                // cherchant dans les artistes
+                if(!$this->initParams['init_artist']){
+                    $this->Artist = new Artist($this->id_artist);
+                }
+                if (!is_null($this->Artist->urlPicture)) {
+                    // image artist exist
+                    $url_image_result = $this->Artist->urlPicture;
+                }
             }
 
-            if(!!$url_image_result){
+
+
+            if(!is_null($url_image_result)){
                 $this->saveURLImage($url_image_result);
             }
+
             //TODO: if no image put an placeholder image
 
             return $url_image_result;

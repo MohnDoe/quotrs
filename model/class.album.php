@@ -46,7 +46,7 @@
 
                 if($data['url_cover'] != "" && $data['url_cover'] != null){
                     //une image existe dans la base de donnée
-                    $url_image_array = explode($this->delimiter_url_image, $data['url_cover']);
+                    $url_image_array = explode($this->delimiter_url_cover, $data['url_cover']);
                     $url_image = $url_image_array[0];
                     $timestamp_last_check = $url_image_array[1];
                     if(time()+(24 * 60 * 60) > (int)$timestamp_last_check){
@@ -74,7 +74,7 @@
         public function getURLCover ()
         {
 
-            $url_cover_result = false;
+            $url_cover_result = null;
 
             // INIT AWS S3 CLIENT
             $_AWS_S3_CLIENT = Aws\S3\S3Client::factory (
@@ -84,25 +84,15 @@
                     'region' => AWS_S3_REGION
                 ]);
             // first let's check if the album have an image
-            //TODO: Make auto image search for Album object
             $key_album_cover = ALBUMS_COVERS_FOLDER . '/' . $this->id . '/original_cover.jpg';
             if ($_AWS_S3_CLIENT->doesObjectExist (S3_BUCKET_NAME, $key_album_cover)) {
                 // album cover exists
                 $url_cover_result = WEBROOT . $key_album_cover;
-            } else {
-                // no album, let check the artist picture
-                //TODO: Make auto image search for Artist object
-
-                $key_artist_image = ARTISTES_IMAGES_FOLDER . '/' . $this->id_artist . '/original_image.jpg';
-                if ($_AWS_S3_CLIENT->doesObjectExist (S3_BUCKET_NAME, $key_artist_image)) {
-                    // artist image exists
-                    $url_cover_result = WEBROOT . $key_artist_image;
-                }
             }
-            if(!!$url_cover_result){
+
+            if(!is_null($url_cover_result)){
                 $this->saveURLCover($url_cover_result);
             }
-            //TODO: if no image put an placeholder image
 
             return $url_cover_result;
         }
@@ -114,7 +104,7 @@
         }
 
         public function saveURLCover ($url_cover_result) {
-            DB::$db->query ("UPDATE " . DB::$tableAlbums . " SET `url_cover`=\"" . $url_cover_result . $this->delimiter_url_cover . time() . "\" WHERE id_artist = " . $this->id);
+            DB::$db->query ("UPDATE " . DB::$tableAlbums . " SET `url_cover`=\"" . $url_cover_result . $this->delimiter_url_cover . time() . "\" WHERE id_album = " . $this->id);
         }
 
     }
