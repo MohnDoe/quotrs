@@ -120,38 +120,16 @@
 
             $url_image_result = false;
 
-            // INIT AWS S3 CLIENT
-            $_AWS_S3_CLIENT = Aws\S3\S3Client::factory (
-                [
-                    'key'    => AWS_ACCESS_KEY_ID,
-                    'secret' => AWS_SECRET_ACCESS_KEY,
-                    'region' => AWS_S3_REGION
-                ]);
             // first let's check if the album have an image
-            //TODO: Make auto image search for Album object
             if(!$this->initParams['init_song']){
                 $this->Song = new Song($this->id_song, ['init_artist'=>false, 'init_album'=>true]);
             }
-            $key_album_cover = ALBUMS_COVERS_FOLDER . '/' . $this->Song->Album->id . '/original_cover.jpg';
-            if ($_AWS_S3_CLIENT->doesObjectExist (S3_BUCKET_NAME, $key_album_cover)) {
-                // album cover exists
-                $url_image_result = WEBROOT . $key_album_cover;
-            } else {
-                // no album, let check the artist picture
-                //TODO: Make auto image search for Artist object
 
-                $key_artist_image = ARTISTES_IMAGES_FOLDER . '/' . $this->id_artist . '/original_image.jpg';
-                if ($_AWS_S3_CLIENT->doesObjectExist (S3_BUCKET_NAME, $key_artist_image)) {
-                    // artist image exists
-                    $url_image_result = WEBROOT . $key_artist_image;
-                } else {
-                    // no artist image, let check the youtube cover
-                    if ($this->Song->urlYoutube != "") {
-                        // cover youtube exists
-                        $url_image_result = 'http://img.youtube.com/vi/' . $this->Song->urlYoutube . '/maxresdefault.jpg';
-                    }
-                }
+            if ($this->Song->Album->url_cover != "" && $this->Song->Album->url_cover != 0) {
+                // album cover exists
+                $url_image_result = $this->Song->Album->url_cover;
             }
+
             if(!!$url_image_result){
                 $this->saveURLImage($url_image_result);
             }
