@@ -1,21 +1,21 @@
 {
-    "name": "Quotrs.",
-    "authors": [
-        {
-            "name": "Kevin F. Poivre",
-            "email": "kfnpfeffer@gmail.com"
-        }
-    ],
-    "bin": [
-        "bin/heroku-hhvm-apache2",
-        "bin/heroku-hhvm-nginx",
-        "bin/heroku-php-apache2",
-        "bin/heroku-php-nginx"
-    ],
-  "require": {
-        "hashids/hashids": "1.0.5",
-        "aws/aws-sdk-php": "~2.6",
-        "detectlanguage/detectlanguage": "*",
-        "slim/slim": "^2.6"
+  "name" : "Quotrs.",
+  "authors" : [
+    {
+      "name" : "Kevin F. Poivre",
+      "email" : "kfnpfeffer@gmail.com"
+    }
+  ],
+  "bin" : [
+    "bin/heroku-hhvm-apache2",
+    "bin/heroku-hhvm-nginx",
+    "bin/heroku-php-apache2",
+    "bin/heroku-php-nginx"
+  ],
+  "require" : {
+    "hashids/hashids" : "1.0.5",
+    "aws/aws-sdk-php" : "~2.6",
+    "detectlanguage/detectlanguage" : "*",
+    "slim/slim" : "^2.6"
   }
 }
