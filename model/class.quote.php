@@ -11,6 +11,8 @@
             'init_artist' => false,
             'init_song' => false
         ];
+
+        private $delimiter_url_image = "###";
         public $id = "";
 
         public $hashid = "";
@@ -94,8 +96,20 @@
                 if($this->initParams['init_song']){
                     $this->Song = new Song($this->id_song);
                 }
-
-                $this->url_image = $this->getURLImage ();
+                if($data['url_image'] != "" && $data['url_image'] != null){
+                    //une image existe dans la base de donnée
+                    $url_image_array = explode($this->delimiter_url_image, $data['url_image']);
+                    $url_image = $url_image_array[0];
+                    $timestamp_last_check = $url_image_array[1];
+                    if(time()+(24 * 60 * 60) > (int)$timestamp_last_check){
+                        // si la derniere check est inférieur à 1 journée
+                        $this->url_image = $url_image;
+                    }else{
+                        $this->url_image = $this->getURLImage();
+                    }
+                }else{
+                    $this->url_image = $this->getURLImage();
+                }
 
                 $this->nbLikes = $this->getNbLikes ();
             }
@@ -138,6 +152,9 @@
                     }
                 }
             }
+            if(!!$url_image_result){
+                $this->saveURLImage($url_image_result);
+            }
             //TODO: if no image put an placeholder image
 
             return $url_image_result;
@@ -146,6 +163,11 @@
         public function saveHashID ()
         {
             DB::$db->query ("UPDATE " . DB::$tableQuotes . " SET `hashid_quote`=\"" . $this->hashid . "\" WHERE id_quote = " . $this->id);
+        }
+
+        public function saveURLImage ($url_image)
+        {
+            DB::$db->query ("UPDATE " . DB::$tableQuotes . " SET `url_image`=\"" . $url_image . $this->delimiter_url_image . time() . "\" WHERE id_quote = " . $this->id);
         }
 
         public function getNbLikes ()
