@@ -4,7 +4,7 @@
         Created : 4.6.14
         Core
     */
-    require 'vendor/autoload.php';
+    require '../vendor/autoload.php';
 
     session_start ();
     header ('Content-Type: text/html; charset=UTF-8');

@@ -6,7 +6,7 @@
         public $id = "";
         public $hashid = "";
 
-        public $content_fr_FR;
+        public $content;
 
         public $date;
         public $Artist;
@@ -36,9 +36,9 @@
 
         public function quote_exists ()
         {
-            if ($this->hashid == "" && $this->id != "") {
+            if ($this->id != "") {
                 $req = DB::$db->query ('SELECT * FROM ' . DB::$tableQuotes . ' WHERE id_quote = ' . $this->id . ' LIMIT 1');
-            } else if ($this->id == "" && $this->hashid != "") {
+            } else if ($this->hashid != "") {
                 $req = DB::$db->query ('SELECT * FROM ' . DB::$tableQuotes . ' WHERE hashid_quote = "' . $this->hashid . '" LIMIT 1');
             } else {
                 return false;
@@ -56,15 +56,13 @@
                 // hashID
                 $HASHIDS = new Hashids\Hashids(SALT_HASHIDS, 7);
                 if ($this->id == "") {
-                    var_dump ("decoding HashID");
                     $this->id = $HASHIDS->decode ($this->hashid);
                 }
                 if ($this->hashid == "") {
-                    var_dump ("encoding HashID");
                     $this->hashid = $HASHIDS->encode ($this->id);
                     $this->saveHashID ();
                 }
-                $this->content_fr_FR = $data['content_quote_fr_FR'];
+                $this->content = $data['content_quote_fr_FR'];
 
                 $this->date = $data['date_quote'];
 
@@ -139,6 +137,33 @@
             } else {
                 return false;
             }
+        }
+
+        public function toJSON () {
+            $json = $this->toArray();
+            return json_encode($json);
+
+        }
+
+        public function toArray () {
+            $array = [];
+
+            $array['id'] = $this->id;
+            $array['hashid'] = $this->hashid;
+            $array['content'] = $this->content;
+            $array['created_at'] = $this->date;
+            $array['url_image'] = $this->url_image;
+
+            $array['artist']['id'] = $this->Artist->id;
+            $array['artist']['name'] = $this->Artist->name;
+
+            $array['song']['id'] = $this->Song->id;
+            $array['song']['title'] = $this->Song->title;
+            $array['song']['album']['id'] = $this->Song->Album->id;
+            $array['song']['album']['name'] = $this->Song->Album->title;
+
+            return $array;
+
         }
     }
 
