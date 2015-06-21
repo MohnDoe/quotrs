@@ -25,7 +25,7 @@
      */
     $app->get('/quotes/:hashid', function($hashid) use($app) {
         $Quote = new Quote($hashid);
-        if($Quote->quote_exists()){
+        if($Quote->is_valid){
             $app->response->setStatus(200);
             $app->response()->headers->set('Content-Type', 'application/json');
             echo $Quote->toJSON();

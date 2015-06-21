@@ -4,6 +4,8 @@
     Class Album
     {
 
+        public $initParams = array('init_artist'=>false);
+
         public $id;
         public $title;
         public $date;
@@ -11,12 +13,18 @@
         public $urlPochetteN;
         public $urlAmazone;
         public $urlITunes;
+
         public $urlOther;
+        public $id_artist;
 
         public $Artist;
 
-        public function __construct ($idAlbum = NULL)
+        public function __construct ($idAlbum = NULL, $initParams = [])
         {
+
+            foreach ($initParams as $nameParam => $value) {
+                $this->initParams[$nameParam] = $value;
+            }
             if (!is_null ($idAlbum) AND $idAlbum != 0 AND $idAlbum != '0') {
                 $this->id = $idAlbum;
                 $this->init ();
@@ -38,7 +46,11 @@
                 $this->urlAmazone = $data['url_amazone_album'];
                 $this->urlITUnes = $data['url_itunes_album'];
                 $this->urlOther = $data['url_other_album'];
-                $this->Artist = new Artist($data['id_artist']);
+
+                $this->id_artist = $data['id_artist'];
+                if($this->initParams['init_artist']){
+                    $this->Artist = new Artist($this->id_artist);
+                }
             }
 
         }

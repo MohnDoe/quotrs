@@ -12,8 +12,13 @@
         public $urlSite;
         public $urlOther;
 
-        function __construct ($idArtist = NULL)
+        function __construct ($idArtist = NULL, $initParams = [])
         {
+
+            foreach ($initParams as $nameParam => $value) {
+                $this->initParams[$nameParam] = $value;
+            }
+
             if (!is_null ($idArtist)) {
                 $this->id = $idArtist;
                 /* INITIALISATION */
@@ -47,7 +52,7 @@
             $req = DB::$db->query('SELECT * FROM ' . DB::$tableQuotes . ' WHERE id_artist = '.$this->id);
             $result = array();
             while($data = $req->fetch()){
-                $result[] = new Quote($data['id_quote'], false);
+                $result[] = new Quote($data['id_quote'], ['isHashID'=>false]);
             }
             return $result;
         }

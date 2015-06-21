@@ -6,6 +6,10 @@
     */
     require '../vendor/autoload.php';
 
+    ini_set('xdebug.var_display_max_depth', 5);
+    ini_set('xdebug.var_display_max_children', 256);
+    ini_set('xdebug.var_display_max_data', 1024);
+
     session_start ();
     header ('Content-Type: text/html; charset=UTF-8');
 

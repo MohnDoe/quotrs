@@ -9,16 +9,31 @@
         public $urlSoundcloud;
         public $urlVimeo;
         public $urlOther;
+
+        public $id_artist;
         public $Artist;
+
+        public $id_album;
         public $Album;
 
-        public function __construct ($idSong = NULL)
+
+        public $initParams = array(
+            'init_artist' => false,
+            'init_album' => false
+        );
+        public function __construct ($idSong = NULL, $initParams = [])
         {
+
+            foreach ($initParams as $nameParam => $value) {
+                $this->initParams[$nameParam] = $value;
+            }
+
             if (!is_null ($idSong)) {
                 $this->id = $idSong;
                 $this->init ();
             }
 
+            $this->initParams = $initParams;
         }
 
         public function song_exists ()
@@ -38,8 +53,16 @@
                 $this->urlSoundcloud = trim ($data['url_soundcloud_song']);
                 $this->urlVimeo = trim ($data['url_vimeo_song']);
                 $this->urlOther = trim ($data['url_other_song']);
-                $this->Artist = new Artist($data['id_artist']);
-                $this->Album = new Album($data['id_album']);
+
+                $this->id_artist = $data['id_artist'];
+                if($this->initParams['init_artist']){
+                    $this->Artist = new Artist($this->id_artist);
+                }
+
+                $this->id_album = $data['id_album'];
+                if($this->initParams['init_album']){
+                    $this->Album = new Album($this->id_artist);
+                }
             }
         }
     }
