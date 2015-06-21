@@ -13,6 +13,8 @@
         public $urlOther;
         public $delimiter_url_image = "###";
 
+        public $is_valid = false;
+
         function __construct ($idArtist = NULL, $initParams = [])
         {
 
@@ -30,6 +32,7 @@
         public function init ()
         {
             if ($this->artist_exists ()) {
+                $this->is_valid = true;
                 $req = DB::$db->query ('SELECT * FROM ' . DB::$tableArtists . ' WHERE id_artist = ' . $this->id . ' LIMIT 1');
                 $data = $req->fetch ();
 
@@ -99,6 +102,26 @@
         private function saveURLPicture ($url_picture_result) {
             DB::$db->query ("UPDATE " . DB::$tableArtists . " SET `url_picture_artist`=\"" . $url_picture_result . $this->delimiter_url_image . time() . "\" WHERE id_artist = " . $this->id);
 
+        }
+
+        /**
+         * @return int
+         */
+        public function addArtist () {
+            $this->name = htmlspecialchars($this->name);
+            $req = "INSERT INTO ".DB::$tableArtists."
+                        (nom_artist)
+                        VALUES
+                        (:nom_artist)";
+
+            $query = DB::$db->prepare($req);
+            $query->bindParam(':nom_artist', $this->name);
+
+            $query->execute();
+
+            $id_new_artist = DB::$db->lastInsertId();
+
+            return (int)$id_new_artist;
         }
 
     }

@@ -16,11 +16,12 @@
         public $id_album;
         public $Album;
 
-
-        public $initParams = array(
+        public $initParams = [
             'init_artist' => false,
             'init_album' => false
-        );
+        ];
+
+        public $is_valid = false;
         public function __construct ($idSong = NULL, $initParams = [])
         {
 
@@ -45,6 +46,7 @@
         public function init ()
         {
             if ($this->song_exists ()) {
+                $this->is_valid = true;
                 $req = DB::$db->query ('SELECT * FROM ' . DB::$tableSongs . ' WHERE id_song = ' . $this->id . ' LIMIT 1');
                 $data = $req->fetch ();
 
@@ -64,6 +66,30 @@
                     $this->Album = new Album($this->id_artist);
                 }
             }
+        }public function addSong () {
+        /*
+            $NewSong->title = $title_new_song;
+            $NewSong->id_artist = $idArtistQuote;
+            $NewSong->id_album = $idAlbumSongQuote;
+            $NewSong->urlYoutube = $parsedYoutubeSongURL['v'];
+
+         */
+            $this->title = htmlspecialchars($this->title);
+            $req = "INSERT INTO ".DB::$tableSongs."
+                        (title_song, url_youtube_song, id_artist, id_album)
+                        VALUES (:title_song, :url_yt_song,:id_artist,:id_album)";
+
+            $query = DB::$db->prepare($req);
+            $query->bindParam(':title_song', $this->title);
+            $query->bindParam(':url_yt_song', $this->urlYoutube);
+            $query->bindParam(':id_artist', $this->id_artist);
+            $query->bindParam(':id_album', $this->id_album);
+
+            $query->execute();
+
+            $id_new_song = DB::$db->lastInsertId();
+
+            return (int)$id_new_song;
         }
     }
 

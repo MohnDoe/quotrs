@@ -22,6 +22,8 @@
 
         public $delimiter_url_cover = "###";
 
+        public $is_valid = false;
+
         public function __construct ($idAlbum = NULL, $initParams = [])
         {
 
@@ -38,6 +40,7 @@
         {
 
             if ($this->album_exists ()) {
+                $this->is_valid = true;
                 $req = DB::$db->query ('SELECT * FROM ' . DB::$tableAlbums . ' WHERE id_album = ' . $this->id . ' LIMIT 1');
                 $data = $req->fetch ();
 
@@ -105,6 +108,23 @@
 
         public function saveURLCover ($url_cover_result) {
             DB::$db->query ("UPDATE " . DB::$tableAlbums . " SET `url_cover`=\"" . $url_cover_result . $this->delimiter_url_cover . time() . "\" WHERE id_album = " . $this->id);
+        }
+
+        public function addAlbum () {
+            $this->title = htmlspecialchars($this->title);
+            $req = "INSERT INTO ".DB::$tableAlbums."
+                    (title_album, id_artist)
+                    VALUES (:title_album,:id_artist)";
+
+            $query = DB::$db->prepare($req);
+            $query->bindParam(':title_album', $this->title);
+            $query->bindParam(':id_artist', $this->id_artist);
+
+            $query->execute();
+
+            $id_new_album = DB::$db->lastInsertId();
+
+            return (int)$id_new_album;
         }
 
     }

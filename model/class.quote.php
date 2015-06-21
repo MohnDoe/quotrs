@@ -153,12 +153,23 @@
 
         public function saveHashID ()
         {
-            DB::$db->query ("UPDATE " . DB::$tableQuotes . " SET `hashid_quote`=\"" . $this->hashid . "\" WHERE id_quote = " . $this->id);
+            $req = 'UPDATE ' . DB::$tableQuotes . ' SET `hashid_quote`= :hashid WHERE id_quote = :id_quote';
+            $query = DB::$db->prepare($req);
+            $query->bindParam(':hashid', $this->hashid);
+            $query->bindParam(':id_quote', $this->id);
+
+            $query->execute();
         }
 
         public function saveURLImage ($url_image)
         {
-            DB::$db->query ("UPDATE " . DB::$tableQuotes . " SET `url_image`=\"" . $url_image . $this->delimiter_url_image . time() . "\" WHERE id_quote = " . $this->id);
+            $req = 'UPDATE ' . DB::$tableQuotes . ' SET `url_image`= :url_image WHERE id_quote = :id_quote';
+            $query = DB::$db->prepare($req);
+            $formatted_url_image = $url_image. $this->delimiter_url_image . time();
+            $query->bindParam(':url_image', $formatted_url_image);
+            $query->bindParam(':id_quote', $this->id);
+
+            $query->execute();
         }
 
         public function getNbLikes ()
@@ -198,6 +209,35 @@
 
             return $array;
 
+        }
+
+        public function addQuote () {
+            /*
+        $NewQuote->content = $content_new_quote;
+        $NewQuote->id_artist = $idArtistQuote;
+        $NewQuote->id_song = $idSongQuote;
+             */
+
+            $req = "INSERT INTO ".DB::$tableQuotes."
+                        (content_quote_fr_FR, date_quote, id_artist, id_song, hashid_quote)
+                        VALUES (:content, NOW(),:id_artist,:id_song, :hashid_quote)";
+
+            $query = DB::$db->prepare($req);
+            $query->bindParam(':content', $this->content);
+            $query->bindParam(':id_artist', $this->id_artist);
+            $query->bindParam(':id_song', $this->id_song);
+            $query->bindParam(':hashid_quote', $this->hashid);
+
+            $query->execute();
+
+            $id_new_quote = DB::$db->lastInsertId();
+
+            $HASHIDS = new Hashids\Hashids(SALT_HASHIDS, 7);
+            $this->hashid = $HASHIDS->encode($id_new_quote);
+            var_dump($this->hashid);
+            $this->saveHashID();
+
+            return (int)$id_new_quote;
         }
     }
 
