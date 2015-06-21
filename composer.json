@@ -13,7 +13,9 @@
         "bin/heroku-php-nginx"
     ],
   "require": {
-    "hashids/hashids": "1.0.5",
-        "aws/aws-sdk-php": "~2.6"
+        "hashids/hashids": "1.0.5",
+        "aws/aws-sdk-php": "~2.6",
+        "detectlanguage/detectlanguage": "*",
+        "slim/slim": "^2.6"
   }
 }
