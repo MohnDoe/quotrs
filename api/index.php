@@ -132,12 +132,13 @@
         if($allParamsPOST['is_new_song']){
             // ajoutons un nouveau morceau
             $title_new_song = htmlspecialchars($allParamsPOST['song_title_quote']);
-            $parsedYoutubeSongURL = parse_str( parse_url( $allParamsPOST['url_yt_song'], PHP_URL_QUERY ), $my_array_of_vars );
+            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $allParamsPOST['url_yt_song'], $parsedYoutubeSongURL);
             $NewSong = new Song();
+            var_dump($parsedYoutubeSongURL);
             $NewSong->title = $title_new_song;
             $NewSong->id_artist = $idArtistQuote;
             $NewSong->id_album = $idAlbumSongQuote;
-            $NewSong->urlYoutube = $parsedYoutubeSongURL['v'];
+            $NewSong->urlYoutube = $parsedYoutubeSongURL[1];
             $idNewSong = $NewSong->addSong();
 
             $idSongQuote = $idNewSong;
