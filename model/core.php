@@ -8,7 +8,6 @@
     ini_set('xdebug.var_display_max_depth', 5);
     ini_set('xdebug.var_display_max_children', 256);
     ini_set('xdebug.var_display_max_data', 1024);
-
     session_start ();
     header ('Content-Type: text/html; charset=UTF-8');
 
@@ -45,9 +44,8 @@
         DEFINE('USER_DB', 'root');
         DEFINE('PASS_DB', '');
 
-        DEFINE('DOCUMENT_ROOT', $_SERVER["DOCUMENT_ROOT"]);
+        DEFINE('DOCUMENT_ROOT', $_SERVER["DOCUMENT_ROOT"]."/quotrs");
     }
-    DEFINE('ROOT_ROOT', DOCUMENT_ROOT."/quotrs");
 
     DEFINE('ROOT', "qtrs.s3-website-eu-west-1.amazonaws.com");
     DEFINE('WEBROOT', "http://" . ROOT . "/");
@@ -60,7 +58,7 @@
     DEFINE('SALT_HASHIDS', "12309UJQODJ09ZA8ESQDJLQSJDAZEU");
 
     DEFINE('AWS_S3_REGION', 'eu-west-1');
-    require ROOT_ROOT.'/vendor/autoload.php';
+    require DOCUMENT_ROOT.'/vendor/autoload.php';
 
     
     $_AWS_S3_CLIENT = Aws\S3\S3Client::factory (
