@@ -4,7 +4,6 @@
         Created : 4.6.14
         Core
     */
-    require '/vendor/autoload.php';
 
     ini_set('xdebug.var_display_max_depth', 5);
     ini_set('xdebug.var_display_max_children', 256);
@@ -29,6 +28,9 @@
         DEFINE('S3_BUCKET_NAME', getenv ('S3_BUCKET_NAME'));
         DEFINE('AWS_ACCESS_KEY_ID', getenv ('AWS_ACCESS_KEY_ID'));
         DEFINE('AWS_SECRET_ACCESS_KEY', getenv ('AWS_SECRET_ACCESS_KEY'));
+
+        DEFINE('DOCUMENT_ROOT', "qtrs.s3-website-eu-west-1.amazonaws.com");
+
     } else {
         // local
 
@@ -42,7 +44,11 @@
         DEFINE('DBNAME', 'db_quotrap');
         DEFINE('USER_DB', 'root');
         DEFINE('PASS_DB', '');
+
+        DEFINE('DOCUMENT_ROOT', $_SERVER["DOCUMENT_ROOT"]);
     }
+    DEFINE('ROOT_ROOT', DOCUMENT_ROOT."/quotrs");
+
     DEFINE('ROOT', "qtrs.s3-website-eu-west-1.amazonaws.com");
     DEFINE('WEBROOT', "http://" . ROOT . "/");
     // FOLDERS
@@ -54,6 +60,9 @@
     DEFINE('SALT_HASHIDS', "12309UJQODJ09ZA8ESQDJLQSJDAZEU");
 
     DEFINE('AWS_S3_REGION', 'eu-west-1');
+    require ROOT_ROOT.'/vendor/autoload.php';
+
+    
     $_AWS_S3_CLIENT = Aws\S3\S3Client::factory (
         [
             'key'    => AWS_ACCESS_KEY_ID,
