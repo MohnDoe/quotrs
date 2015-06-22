@@ -7,6 +7,8 @@
  */
 
     require '../model/core.php';
+    require '../vendor/autoload.php';
+
 
     // INIT SLIM
     \Slim\Slim::registerAutoloader();

@@ -58,16 +58,6 @@
     DEFINE('SALT_HASHIDS', "12309UJQODJ09ZA8ESQDJLQSJDAZEU");
 
     DEFINE('AWS_S3_REGION', 'eu-west-1');
-    require DOCUMENT_ROOT.'/vendor/autoload.php';
-
-    
-    $_AWS_S3_CLIENT = Aws\S3\S3Client::factory (
-        [
-            'key'    => AWS_ACCESS_KEY_ID,
-            'secret' => AWS_SECRET_ACCESS_KEY
-        ]);
-
-
     /*
      * REQUIRING ALL CLASSES
      */
