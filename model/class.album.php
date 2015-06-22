@@ -20,9 +20,10 @@
 
         public $Artist;
 
-        public $delimiter_url_cover = "###";
+        public $delimiter_url_cover = "?";
 
         public $is_valid = false;
+        public $last_version_cover;
 
         public function __construct ($idAlbum = NULL, $initParams = [])
         {
@@ -47,6 +48,7 @@
                 $this->title = $data['title_album'];
                 $this->date = $data['date_album'];
 
+                $this->last_version_cover = $data['last_version_cover'];
                 if($data['url_cover'] != "" && $data['url_cover'] != null){
                     //une image existe dans la base de donnée
                     $url_image_array = explode($this->delimiter_url_cover, $data['url_cover']);
@@ -87,14 +89,14 @@
                     'region' => AWS_S3_REGION
                 ]);
             // first let's check if the album have an image
-            $key_album_cover = ALBUMS_COVERS_FOLDER . '/' . $this->id . '/original_cover.jpg';
+            $key_album_cover = ALBUMS_COVERS_FOLDER . '/' . $this->id . '/'.$this->last_version_cover.'/original_cover.jpg';
             if ($_AWS_S3_CLIENT->doesObjectExist (S3_BUCKET_NAME, $key_album_cover)) {
                 // album cover exists
                 $url_cover_result = WEBROOT . $key_album_cover;
             }
 
             if(!is_null($url_cover_result)){
-                $this->saveURLCover($url_cover_result);
+                $this->saveURLCover($url_cover_result, $this->last_version_cover);
             }
 
             return $url_cover_result;
@@ -106,8 +108,15 @@
             return $req->fetch ();
         }
 
-        public function saveURLCover ($url_cover_result) {
-            DB::$db->query ("UPDATE " . DB::$tableAlbums . " SET `url_cover`=\"" . $url_cover_result . $this->delimiter_url_cover . time() . "\" WHERE id_album = " . $this->id);
+        public function saveURLCover ($url_cover_result, $date_version) {
+            $url_cover = $url_cover_result . $this->delimiter_url_cover . time();
+            $req = "UPDATE " . DB::$tableAlbums . " SET `url_cover`=:url_cover, last_version_cover = :last_version_cover WHERE id_album = :id_album";
+            $query = DB::$db->prepare($req);
+            $query->bindParam(':url_cover', $url_cover);
+            $query->bindParam(':last_version_cover', $date_version);
+            $query->bindParam(':id_album', $this->id);
+
+            $query->execute();
         }
 
         public function addAlbum () {
@@ -125,6 +134,51 @@
             $id_new_album = DB::$db->lastInsertId();
 
             return (int)$id_new_album;
+        }
+
+        public function uploadCover ($cover_album) {
+            $dateVersion = new DateTime();
+            $dateVersion = $dateVersion->getTimestamp();
+
+            $key_album_cover = ALBUMS_COVERS_FOLDER . '/' . $this->id . '/'.$dateVersion.'/original_cover.jpg';
+
+            var_dump($key_album_cover);
+            // Upload to S3
+            $_AWS_S3_CLIENT = Aws\S3\S3Client::factory (
+            [
+                'key'    => AWS_ACCESS_KEY_ID,
+                'secret' => AWS_SECRET_ACCESS_KEY,
+                'region' => AWS_S3_REGION
+            ]);
+
+            //File details
+            $name = $cover_album['name'];
+            $tmp_name = $cover_album['tmp_name'];
+
+            $extension = explode('.', $name);
+            $extension = strtolower(end($extension));
+
+            //Temp details
+            $key = md5(uniqid());
+            $tmp_file_name = $key.'.'.$extension;
+            $tmp_file_path = '../tmp_files/'.$tmp_file_name;
+
+            //move the file
+            move_uploaded_file($tmp_name, $tmp_file_path);
+
+            $_AWS_S3_CLIENT->putObject(array(
+               'Bucket'       => S3_BUCKET_NAME,
+               'Key'          => $key_album_cover,
+               'Body'   => fopen($tmp_file_path, 'rb'),
+               'ACL'          => 'public-read'
+                                       ));
+
+            unlink($tmp_file_path);
+
+
+            $this->url_cover = WEBROOT.$key_album_cover;
+            $this->last_version_cover = $dateVersion;
+            $this->saveURLCover($this->url_cover, $this->last_version_cover);
         }
 
     }

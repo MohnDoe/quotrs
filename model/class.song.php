@@ -63,7 +63,7 @@
 
                 $this->id_album = $data['id_album'];
                 if($this->initParams['init_album']){
-                    $this->Album = new Album($this->id_artist);
+                    $this->Album = new Album($this->id_album);
                 }
             }
         }public function addSong () {

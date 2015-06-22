@@ -107,11 +107,22 @@
             $album_title_song = $allParamsPOST['album_title_song'];
             $NewAlbumSong = new Album();
             $NewAlbumSong->title = $album_title_song;
+
+
+
             //TODO: take care of album who's not made by the quote's artist
             $NewAlbumSong->id_artist = $idArtistQuote;
             $idNewAlbum = $NewAlbumSong->addAlbum();
-
+            $NewAlbumSong->id = $idNewAlbum;
             $idAlbumSongQuote = $idNewAlbum;
+
+            //update cover
+            //TODO: make some check {size, type, etc etc}
+            if(isset($_FILES['cover_album']['name'])){
+                var_dump("Uploading new cover");
+                $NewAlbumSong->uploadCover($_FILES['cover_album']);
+                var_dump($NewAlbumSong->url_cover);
+            }
             var_dump("New album created : #".$idAlbumSongQuote." / ".$NewAlbumSong->title);
 
         }

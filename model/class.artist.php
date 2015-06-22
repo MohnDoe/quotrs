@@ -11,7 +11,7 @@
         public $urlTwitter;
         public $urlSite;
         public $urlOther;
-        public $delimiter_url_image = "###";
+        public $delimiter_url_image = "?";
 
         public $is_valid = false;
 

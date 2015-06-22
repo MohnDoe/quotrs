@@ -12,7 +12,7 @@
             'init_song' => false
         ];
 
-        private $delimiter_url_image = "###";
+        private $delimiter_url_image = "?";
         public $id = "";
 
         public $hashid = "";
@@ -231,6 +231,7 @@
             $query->execute();
 
             $id_new_quote = DB::$db->lastInsertId();
+            $this->id = $id_new_quote;
 
             $HASHIDS = new Hashids\Hashids(SALT_HASHIDS, 7);
             $this->hashid = $HASHIDS->encode($id_new_quote);

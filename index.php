@@ -18,7 +18,7 @@
 <body>
 <h1>S3 upload example</h1>
 <?php
-    $Quote = new Quote(1, ['isHashID'=>false]);
+    $Quote = new Quote(37, ['isHashID'=>false]);
 ?>
 <img src = "<?php echo $Quote->url_image; ?>" />
 <?php

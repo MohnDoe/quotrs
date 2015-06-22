@@ -4,7 +4,7 @@
         Created : 4.6.14
         Core
     */
-    require '../vendor/autoload.php';
+    require '/vendor/autoload.php';
 
     ini_set('xdebug.var_display_max_depth', 5);
     ini_set('xdebug.var_display_max_children', 256);
