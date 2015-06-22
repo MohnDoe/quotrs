@@ -28,7 +28,7 @@
         DEFINE('AWS_ACCESS_KEY_ID', getenv ('AWS_ACCESS_KEY_ID'));
         DEFINE('AWS_SECRET_ACCESS_KEY', getenv ('AWS_SECRET_ACCESS_KEY'));
 
-        DEFINE('DOCUMENT_ROOT', "http://qtrs.s3-website-eu-west-1.amazonaws.com");
+        DEFINE('DOCUMENT_ROOT', "");
 
     } else {
         // local
