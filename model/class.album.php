@@ -155,25 +155,12 @@
             $name = $cover_album['name'];
             $tmp_name = $cover_album['tmp_name'];
 
-            $extension = explode('.', $name);
-            $extension = strtolower(end($extension));
-
-            //Temp details
-            $key = md5(uniqid());
-            $tmp_file_name = $key.'.'.$extension;
-            $tmp_file_path = '../tmp_files/'.$tmp_file_name;
-
-            //move the file
-            move_uploaded_file($tmp_name, $tmp_file_path);
-
             $_AWS_S3_CLIENT->putObject(array(
                'Bucket'       => S3_BUCKET_NAME,
                'Key'          => $key_album_cover,
-               'Body'   => fopen($tmp_file_path, 'rb'),
+               'Body'   => fopen($tmp_name, 'rb'),
                'ACL'          => 'public-read'
                                        ));
-
-            unlink($tmp_file_path);
 
 
             $this->url_cover = WEBROOT.$key_album_cover;
