@@ -155,10 +155,11 @@
             $name = $cover_album['name'];
             $tmp_name = $cover_album['tmp_name'];
 
+            //TODO : other prob, coooooool !
             $_AWS_S3_CLIENT->putObject(array(
                'Bucket'       => S3_BUCKET_NAME,
                'Key'          => $key_album_cover,
-               'Body'   => fopen($tmp_name, 'rb'),
+               'SourceFile'   => $tmp_name,
                'ACL'          => 'public-read'
                                        ));
 
