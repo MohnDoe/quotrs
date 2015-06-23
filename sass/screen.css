@@ -2,16 +2,21 @@
 Error: File to import not found or unreadable: compass/reset.
        Load paths:
          
-        on line 5 of screen.scss
+        on line 6 of screen.scss
 
 1: /* Welcome to Compass.
 2:  * In this file you should write your main styles. (or centralize your imports)
 3:  * Import this file using the following HTML or equivalent:
 4:  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> *\/
-5: @import "compass/reset";
+5: 
+6: @import "compass/reset";
+7: 
+8: .testeststest{
+9:   color: #002F31;
+10: }
 
 Backtrace:
-screen.scss:5
+screen.scss:6
 C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/sass-3.4.13/lib/sass/tree/import_node.rb:66:in `rescue in import'
 C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/sass-3.4.13/lib/sass/tree/import_node.rb:45:in `import'
 C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/sass-3.4.13/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -54,4 +59,4 @@ C:/RailsInstaller/Ruby2.1.0/bin/scss:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: compass/reset.\A        Load paths:\A          \A         on line 5 of screen.scss\A \A 1: /* Welcome to Compass.\A 2:  * In this file you should write your main styles. (or centralize your imports)\A 3:  * Import this file using the following HTML or equivalent:\A 4:  * <link href=\"/stylesheets/screen.css\" media=\"screen, projection\" rel=\"stylesheet\" type=\"text/css\" /> */\A 5: @import \"compass/reset\";"; }
+  content: "Error: File to import not found or unreadable: compass/reset.\A        Load paths:\A          \A         on line 6 of screen.scss\A \A 1: /* Welcome to Compass.\A 2:  * In this file you should write your main styles. (or centralize your imports)\A 3:  * Import this file using the following HTML or equivalent:\A 4:  * <link href=\"/stylesheets/screen.css\" media=\"screen, projection\" rel=\"stylesheet\" type=\"text/css\" /> */\A 5: \A 6: @import \"compass/reset\";\A 7: \A 8: .testeststest{\A 9:   color: #002F31;\A 10: }"; }

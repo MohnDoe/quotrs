@@ -38,7 +38,7 @@
             $json['error']['text'] = 'No such quote.';
             echo json_encode($json);
         }
-    });
+    })->name("getQuoteByHashID");
     /*
      * Va chercher toutes les citations d'un artist
      */
@@ -65,7 +65,7 @@
             $json['error']['text'] = 'No such artist.';
             echo json_encode($json);
         }
-    });
+    })->name("getQuotesByArtistID");
     /*
      * Post une nouvelle citation
      */
@@ -183,6 +183,6 @@
         var_dump("New quote created : #".$idNewQuote." / HashID : ".$NewQuote->hashid);
 
 
-    });
+    })->name("createQuote");
 
     $app->run();

@@ -10,26 +10,27 @@
     require './model/core.php';
     require './vendor/autoload.php';
 
+    // INIT SLIM
+    \Slim\Slim::registerAutoloader();
+
+    $app = new \Slim\Slim([
+          'debug' => true,
+          'templates.path' => './view'
+                          ]);
+
+    $app->group('/', function() use($app){
+        $app->render('assets/head-html.php', array(
+            'titlePage' => "Coucou"
+        ));
+        $app->get('/', function() use($app){
+            $app->render('post-quote-form.php');
+        });
+        $app->render('assets/footer-html.php');
+    });
 
 ?>
 
-<html>
-<head>
-    <meta charset = "UTF-8">
-</head>
-<body>
-<h1>S3 upload example</h1>
 <?php
-    $Quote = new Quote(37, ['isHashID'=>false]);
+    $app->run();
 ?>
-<img src = "<?php echo $Quote->url_image; ?>" />
-<?php
-    die();
-?>
-<h2>Upload a file</h2>
 
-<form enctype = "multipart/form-data" action = "<?= $_SERVER['PHP_SELF'] ?>" method = "POST">
-    <input name = "userfile" type = "file"><input type = "submit" value = "Upload">
-</form>
-</body>
-</html>

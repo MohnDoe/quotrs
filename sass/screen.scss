@@ -2,4 +2,10 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
 @import "compass/reset";
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+
+* {
+  font-family: "Oswald", sans-serif !important;
+}
