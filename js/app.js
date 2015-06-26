@@ -3,18 +3,20 @@
  */
 var app = angular.module('app', []);
 
-app.controller('formController', function ($scope) {
+app.controller('formController', function($scope) {
 
-    $scope.artist = {
-        name: "Hello",
-        age: 20
-    }
-    $scope.$watch(
-        function(){return $scope.artist},
-        function (newVal, oldVal) {
-            $scope.artistTwo = newVal.name;
-        },
-        true
-    );
+  $scope.artist = {
+    name: "Hello",
+    age: 20
+  }
+  $scope.$watch(
+    function() {
+      return $scope.artist
+    },
+    function(newVal, oldVal) {
+      $scope.artistTwo = newVal.name;
+    },
+    true
+  );
 
 });

@@ -16,6 +16,7 @@
     // connexion db
     if ($_SERVER["REMOTE_ADDR"] != "127.0.0.1") {
         // on heroku
+        DEFINE('URL_BASE_HREF', '/');
         // database
         $urlClearDB = parse_url (getenv ("CLEARDB_DATABASE_URL"));
         DEFINE('HOSTNAME', $urlClearDB["host"]);
@@ -32,6 +33,7 @@
 
     } else {
         // local
+        DEFINE('URL_BASE_HREF', '/quotrs/');
 
         // AWS S3
         DEFINE('S3_BUCKET_NAME', "qtrs");
