@@ -18,13 +18,11 @@
           'templates.path' => './view'
                           ]);
 
-    $app->group('/', function() use($app){
+    $app->get('/', function() use($app){
         $app->render('assets/head-html.php', array(
             'titlePage' => "Coucou"
         ));
-        $app->get('/', function() use($app){
-            $app->render('post-quote-form.php');
-        });
+        $app->render('post-quote-form.php');
         $app->render('assets/footer-html.php');
     });
 
