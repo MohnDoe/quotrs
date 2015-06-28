@@ -5,10 +5,7 @@
     {
         public $id;
         public $title;
-        public $urlYoutube;
-        public $urlSoundcloud;
-        public $urlVimeo;
-        public $urlOther;
+        public $url_youtube;
 
         public $id_artist;
         public $Artist;
@@ -51,10 +48,7 @@
                 $data = $req->fetch ();
 
                 $this->title = $data['title_song'];
-                $this->urlYoutube = trim ($data['url_youtube_song']);
-                $this->urlSoundcloud = trim ($data['url_soundcloud_song']);
-                $this->urlVimeo = trim ($data['url_vimeo_song']);
-                $this->urlOther = trim ($data['url_other_song']);
+                $this->url_youtube = trim ($data['url_youtube_song']);
 
                 $this->id_artist = $data['id_artist'];
                 if($this->initParams['init_artist']){
@@ -66,7 +60,8 @@
                     $this->Album = new Album($this->id_album);
                 }
             }
-        }public function addSong () {
+        }
+        public function addSong () {
         /*
             $NewSong->title = $title_new_song;
             $NewSong->id_artist = $idArtistQuote;
@@ -90,6 +85,52 @@
             $id_new_song = DB::$db->lastInsertId();
 
             return (int)$id_new_song;
+        }
+        static function searchSongs($search, $idArtist = null){
+          //TODO : secure that
+          $search = "%".$search."%";
+          $req = "SELECT *
+                  FROM  ".DB::$tableSongs."
+                  WHERE  `title_song` LIKE  :query ";
+          if(!is_null($idArtist)){
+            $req .= "AND id_artist = :idArtist ";
+          }
+          $req .= "LIMIT 0 , 7";
+          $query = DB::$db->prepare($req);
+          $query->bindParam(':query', $search, PDO::PARAM_STR);
+          if(!is_null($idArtist)){
+            $query->bindParam(':idArtist', $idArtist);
+          }
+          $query->execute();
+          $result = array();
+          while($data = $query->fetch()){
+            $Song = new Song();
+            $Song->id = $data['id_song'];
+            $Song->title = $data['title_song'];
+            $Song->url_youtube = $data['url_youtube_song'];
+
+            $Song->id_album = $data['id_album'];
+            $Song->Album = new Album($Song->id_album);
+
+            $result[] = $Song;
+          }
+          return $result;
+        }
+        public function toArray(){
+          $array = [];
+
+          $array['id'] = $this->id;
+          $array['title'] = $this->title;
+          $array['url_youtube'] = $this->url_youtube;
+          $array['album']['id'] = $this->id_album;
+          $array['album']['title'] = $this->Album->title;
+          $array['album']['artist']['id'] = $this->Album->id_artist;
+
+          return $array;
+        }
+
+        public function toJSON(){
+          return json_encode($this->toArray());
         }
     }
 

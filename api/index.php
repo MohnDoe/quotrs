@@ -39,33 +39,43 @@
             echo json_encode($json);
         }
     })->name("getQuoteByHashID");
+
+    $app->get('/artists/:query', function($query) use($app){
+      $ArtistsFound = Artist::searchArtists($query);
+      // var_dump($ArtsitsFound);
+      $json = [];
+      $json['count'] = count($ArtistsFound);
+
+      foreach($ArtistsFound as $Artist){
+          $json['artists'][] = $Artist->toArray();
+      }
+      echo json_encode($json);
+    });
+
+    $app->get('/artists/:idArtist/songs/:query', function($idArtist, $query) use($app){
+      $SongsFound = Song::searchSongs($query, $idArtist);
+      $json = [];
+      $json['count'] = count($SongsFound);
+
+      foreach($SongsFound as $Song){
+          $json['songs'][] = $Song->toArray();
+      }
+      echo json_encode($json);
+    });
+
+    $app->get('/songs/:query', function($query) use($app){
+      $SongsFound = Song::searchSongs($query);
+      $json = [];
+      $json['count'] = count($SongsFound);
+
+      $json['songs'] = $SongsFound;
+      echo json_encode($json);
+    });
+
     /*
      * Va chercher toutes les citations d'un artist
      */
-    $app->get('/quotes/artist/:idArtist', function ($idArtist) use($app){
-        $Artist = new Artist($idArtist);
-        if($Artist->artist_exists()){
-            $app->response->setStatus(200);
-            $app->response()->headers->set('Content-Type', 'application/json');
 
-            $QuotesArtist = $Artist->getQuotes();
-
-
-            $json = [];
-            $json['count'] = count($QuotesArtist);
-
-            foreach($QuotesArtist as $Quote){
-                $json['quotes'][] = $Quote->toArray();
-            }
-            echo json_encode($json);
-        }else{
-            $app->response->setStatus(404);
-            $json = [];
-            $json['error']['type'] = 404;
-            $json['error']['text'] = 'No such artist.';
-            echo json_encode($json);
-        }
-    })->name("getQuotesByArtistID");
     /*
      * Post une nouvelle citation
      */

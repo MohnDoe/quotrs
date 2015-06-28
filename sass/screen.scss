@@ -8,3 +8,8 @@
 *{
   font-family : @font-family-sans-serif;
 }
+
+.typeahead {
+    position:relative !important;
+    z-index:10000;
+}​

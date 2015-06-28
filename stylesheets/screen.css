@@ -7,3 +7,9 @@
 * {
   font-family: 'Open Sans', sans-serif;
 }
+
+
+/*.typeahead {
+    position:relative !important;
+    z-index:10000;
+}​*/

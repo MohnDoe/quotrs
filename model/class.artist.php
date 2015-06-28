@@ -124,6 +124,39 @@
             return (int)$id_new_artist;
         }
 
+        static function searchArtists($search){
+          //TODO : secure that
+          $search = "%".$search."%";
+          $req = "SELECT *
+                  FROM  ".DB::$tableArtists."
+                  WHERE  `nom_artist` LIKE  :query
+                  LIMIT 0 , 7";
+          $query = DB::$db->prepare($req);
+          $query->bindParam(':query', $search, PDO::PARAM_STR);
+          $query->execute();
+          $result = array();
+          while($data = $query->fetch()){
+            $Artist = new Artist();
+            $Artist->id = $data['id_artist'];
+            $Artist->name = $data['nom_artist'];
+
+            $result[] = $Artist;
+          }
+          return $result;
+        }
+
+        public function toArray(){
+          $array = [];
+
+          $array['id'] = $this->id;
+          $array['name'] = $this->name;
+
+          return $array;
+        }
+
+        public function toJSON(){
+          return json_encode($this->toArray());
+        }
     }
 
 ?>
