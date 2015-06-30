@@ -21,20 +21,23 @@ app.controller('formController', function($scope, $http) {
     song: {
       title: "",
       url_youtube: "",
+      songIsNew: true,
+      existingID: -1,
       album: {
         title: "",
-        albumIsNew: false,
+        albumIsNew: true,
         existingID: -1,
+        url_cover: "",
         artist: {
           name: "",
           artistIsSameAsSong: false,
-          artistIsNew: false,
+          artistIsNew: true,
           existingID: -1
         }
       },
       artist: {
         name: "",
-        artistIsNew: false,
+        artistIsNew: true,
         existingID: -1
       }
     }
@@ -68,7 +71,7 @@ app.controller('formController', function($scope, $http) {
   $scope.getSongs = function(val) {
     var songs = [];
     var request = './api/songs/'+val;
-    if($scope.quote.song.artist.existingID != -1){
+    if(false && $scope.quote.song.artist.existingID != -1){
       var request = './api/artists/'+$scope.quote.song.artist.existingID+"/songs/"+val
     }
     return $http.get(request).then(
@@ -85,19 +88,34 @@ app.controller('formController', function($scope, $http) {
     $scope.quote.song.artist = {
       name: $item.name,
       existingID: $item.id,
-      artistIsNew: true
+      artistIsNew: false
     }
+
+    // ALBUM
     $scope.quote.song.album.artist = {
       name: $item.name,
       existingID: $item.id,
-      artistIsNew: true,
+      artistIsNew: false,
       artistIsSameAsSong: true
     }
   };
   $scope.onSelectSong = function($item, $model, $label) {
+    console.log($item);
     $scope.quote.song.title = $item.title;
     $scope.quote.song.url_youtube = $item.url_youtube;
-    $scope.quote.song.album.title = $item.album.title;
+    $scope.quote.song.songIsNew = false;
+    $scope.quote.song.existingID = $item.id;
+
+    $scope.quote.song.artist.name = $item.Artist.name;
+    $scope.quote.song.artist.existingID = $item.Artist.id;
+    $scope.quote.song.artist.artistIsNew = false;
+
+    $scope.quote.song.album.title = $item.Album.title;
+    $scope.quote.song.album.existingID = $item.Album.id;
+    $scope.quote.song.album.url_cover = $item.Album.url_cover;
+    $scope.quote.song.album.albumIsNew = false;
+    // console.log($scope.quote);
+
   };
 
   $scope.$watchCollection(

@@ -104,13 +104,7 @@
           $query->execute();
           $result = array();
           while($data = $query->fetch()){
-            $Song = new Song();
-            $Song->id = $data['id_song'];
-            $Song->title = $data['title_song'];
-            $Song->url_youtube = $data['url_youtube_song'];
-
-            $Song->id_album = $data['id_album'];
-            $Song->Album = new Album($Song->id_album);
+            $Song = new Song($data['id_song'], ['init_artist' => true, 'init_album' => true]);
 
             $result[] = $Song;
           }

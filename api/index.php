@@ -53,6 +53,8 @@
     });
 
     $app->get('/artists/:idArtist/songs/:query', function($idArtist, $query) use($app){
+      $app->response->setStatus(200);
+      $app->response()->headers->set('Content-Type', 'application/json');
       $SongsFound = Song::searchSongs($query, $idArtist);
       $json = [];
       $json['count'] = count($SongsFound);
@@ -64,6 +66,8 @@
     });
 
     $app->get('/songs/:query', function($query) use($app){
+      $app->response->setStatus(200);
+      $app->response()->headers->set('Content-Type', 'application/json');
       $SongsFound = Song::searchSongs($query);
       $json = [];
       $json['count'] = count($SongsFound);
@@ -90,9 +94,9 @@
         /*
          * QUOTE'S ARTIST
          */
-        if($allParamsPOST['is_new_artist_quote']){
+        if($allParamsPOST['song']['artist']['artistIsNew'] == "true"){
             // add new artist in DB
-            $name_new_artist = htmlspecialchars($allParamsPOST['artist_name_quote']);
+            $name_new_artist = htmlspecialchars($allParamsPOST['song']['artist']['name']);
             $NewArtist = new Artist();
             $NewArtist->name = $name_new_artist;
             $idNewArtist = $NewArtist->addArtist();
@@ -102,7 +106,7 @@
         else{
             //not a new artist
             //check if artist exists
-            $ArtistQuote = new Artist($allParamsPOST['id_artist_quote']);
+            $ArtistQuote = new Artist($allParamsPOST['song']['artist']['existingID']);
             if($ArtistQuote->is_valid){
                 $idArtistQuote = $ArtistQuote->id;
                 var_dump("Already existing artist : #".$idArtistQuote." / ".$ArtistQuote->name);
@@ -113,10 +117,10 @@
         /*
          * QUOTE'S SONG'S ALBUM
          */
-        if($allParamsPOST['is_new_album']){
+        if($allParamsPOST['song']['album']['albumIsNew'] == "true"){
             // new album for the quote's song
             // adding new album
-            $album_title_song = $allParamsPOST['album_title_song'];
+            $album_title_song = $allParamsPOST['song']['album']['title'];
             $NewAlbumSong = new Album();
             $NewAlbumSong->title = $album_title_song;
 
@@ -130,7 +134,7 @@
 
             //update cover
             //TODO: make some check {size, type, etc etc}
-            if(isset($_FILES['cover_album']['name'])){
+            if(isset($_FILES['song']['album']['cover_album']['name'])){
                 var_dump("Uploading new cover");
                 $NewAlbumSong->uploadCover($_FILES['cover_album']);
                 var_dump($NewAlbumSong->url_cover);
@@ -141,10 +145,10 @@
         else{
             // album not new
             //check if album exists in DB
-            $AlbumSongQuote = new Album($allParamsPOST['id_album_song']);
+            $AlbumSongQuote = new Album($allParamsPOST['song']['album']['existingID']);
             if($AlbumSongQuote->is_valid){
                 $idAlbumSongQuote = $AlbumSongQuote->id;
-                var_dump("Already existing album : #".$idAlbumSongQuote." / ".$AlbumSongQuote->name);
+                var_dump("Already existing album : #".$idAlbumSongQuote." / ".$AlbumSongQuote->title);
 
             }
         }
@@ -152,16 +156,17 @@
         /*
          * QUOTE'S SONG
          */
-        if($allParamsPOST['is_new_song']){
+        if($allParamsPOST['song']['songIsNew'] == "true"){
             // ajoutons un nouveau morceau
-            $title_new_song = htmlspecialchars($allParamsPOST['song_title_quote']);
-            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $allParamsPOST['url_yt_song'], $parsedYoutubeSongURL);
+            $title_new_song = htmlspecialchars($allParamsPOST['song']['title']);
+            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $allParamsPOST['song']['url_youtube'], $parsedYoutubeSongURL);
             $NewSong = new Song();
             var_dump($parsedYoutubeSongURL);
             $NewSong->title = $title_new_song;
             $NewSong->id_artist = $idArtistQuote;
             $NewSong->id_album = $idAlbumSongQuote;
-            $NewSong->urlYoutube = $parsedYoutubeSongURL[1];
+            //FIXME : check url youtube
+            $NewSong->urlYoutube = $allParamsPOST['song']['url_youtube'];
             $idNewSong = $NewSong->addSong();
 
             $idSongQuote = $idNewSong;
@@ -171,7 +176,7 @@
         else{
             //song not new
             //check if song exist in DB
-            $SongQuote = new Song($allParamsPOST['id_song']);
+            $SongQuote = new Song($allParamsPOST['song']['existingID']);
             if($SongQuote->is_valid){
                 $idSongQuote = $SongQuote->id;
                 var_dump("Already existing song : #".$idSongQuote." / ".$SongQuote->title);
@@ -183,7 +188,11 @@
          * THE QUOTE
          */
         $NewQuote = new Quote();
-        $content_new_quote = htmlspecialchars($allParamsPOST['content_quote']);
+        $content_new_quote = "";
+        for ($i=0; $i < count($allParamsPOST['content']) ; $i++) {
+          $line = htmlspecialchars($allParamsPOST['content'][$i]);
+          $content_new_quote .= $line."\\n";
+        }
         $NewQuote->content = $content_new_quote;
         $NewQuote->id_artist = $idArtistQuote;
         $NewQuote->id_song = $idSongQuote;

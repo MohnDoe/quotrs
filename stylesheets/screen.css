@@ -9,7 +9,7 @@
 }
 
 
-/*.typeahead {
-    position:relative !important;
-    z-index:10000;
-}​*/
+.typeahead {
+    left: auto;
+    top: auto;
+}​

@@ -29,41 +29,76 @@
             </p>
         </div>
         <div class="song-part-form col-md-6">
-            <h3>Le morceau <span class="label label-success">+20</span></h3>
+            <h3>Le morceau <span class="label label-success">+20</span> <small><span class="label label-info" ng-show="quote.song.songIsNew">NEW</span></small></h3>
             <div class="form-group">
                 <label for = "artist-name-song-quote">Artist</label>
-                <input type = "text"
-                typeahead-on-select='onSelectArtistSong($item, $model, $label)'
-                typeahead="artist.name for artist in getArtists($viewValue)"
-                class="form-control" name="artist-name-song-quote" placeholder="Nom artist" ng-model="quote.song.artist.name"/>
+                <div class="input-group">
+                  <input type = "text"
+                  required
+                  typeahead-on-select='onSelectArtistSong($item, $model, $label)'
+                  typeahead="artist.name for artist in getArtists($viewValue)"
+                  aria-describedby ="addon-is-new-artist-song"
+                  class="form-control"
+                  name="artist-name-song-quote"
+                  placeholder="Nom artist"
+                  ng-model="quote.song.artist.name"/>
+                  <span class="input-group-addon" id="addon-is-new-artist-song"><input type="checkbox" id="is-new-artist-song-quote" ng-model="quote.song.artist.artistIsNew" ng-checked="quote.song.artist.artistIsNew"> New</span>
+
+                </div>
             </div>
             <div class="form-group">
                 <label for = "title-song-quote">Titre</label>
-                <input type = "text"
-                typeahead-on-select='onSelectSong($item, $model, $label)'
-                typeahead="song.title for song in getSongs($viewValue)"
-                class="form-control" name="title-song-quote" placeholder="Titre du morceau" ng-model="quote.song.title"/>
+                  <input type = "text"
+                  required
+                  typeahead-on-select='onSelectSong($item, $model, $label)'
+                  typeahead="song.title for song in getSongs($viewValue)"
+                  aria-describedby = "addon-is-new-song"
+                  class="form-control"
+                  name="title-song-quote"
+                  placeholder="Titre du morceau"
+                  ng-model="quote.song.title"/>
             </div>
             <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">http://youtube.com/watch?v=</span>
-                <input type="text" class="form-control" name="link-yt-song-quote" placeholder="Lien Youtube du morceau" aria-describedby="basic-addon1" ng-model="quote.song.url_youtube">
+                <span class="input-group-addon" id="addon-youtube">http://youtube.com/watch?v=</span>
+                <input type="text"
+                class="form-control"
+                name="link-yt-song-quote"
+                placeholder="Lien Youtube du morceau"
+                aria-describedby="addon-youtube"
+                ng-model="quote.song.url_youtube">
+
             </div>
         </div>
         <div class="album-part-form col-md-6">
-            <h3>L'album <span class="label label-success">+15</span></h3>
+            <h3>L'album <span class="label label-success">+15</span> <small><span class="label label-info" ng-show="quote.song.album.albumIsNew">NEW</span></small></h3>
             <div class="form-group">
                 <label for = "album-name-song-quote">Titre album</label>
                 <input id = "album-name-song-quote" class="form-control" type = "text" placeholder="Titre album" ng-model="quote.song.album.title" />
             </div>
             <div class="form-group">
                 <label for = "artist-album-name-song-quote">Artiste album</label>
-                <input disabled type = "text" id="artist-album-name-song-quote" class="form-control" placeholder="Artist de l'album" ng-model="quote.song.album.artist.name"/>
+                <input type = "text"
+                id="artist-album-name-song-quote"
+                class="form-control"
+                placeholder="Artist de l'album"
+                typeahead-on-select='onSelectArtistAlbum($item, $model, $label)'
+                typeahead="artist.name for artist in getArtists($viewValue)"
+                ng-model="quote.song.album.artist.name"/>
             </div>
-            <div class="form-group">
-                <label for = "cover-album-song-quote">Cover de l'album</label>
-                <input id = "cover-album-song-quote" type = "file" />
-                <p class="help-block">Meilleure qualité possible bébé</p>
+            <div class="row">
+            <div class="col-xs-6 col-md-3">
+              <a href="#" class="thumbnail">
+                <img src="{{quote.song.album.url_cover}}" alt="...">
+              </a>
             </div>
+            <div class="col-xs-6 col-md-9">
+              <div class="form-group">
+                  <label for = "cover-album-song-quote">Cover de l'album</label>
+                  <input id = "cover-album-song-quote" type = "file" />
+                  <p class="help-block">Meilleure qualité possible bébé</p>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="submit-part-form col-md-12">
             <button class="btn btn-primary btn-lg btn-block">Envoyer la citation</button>
