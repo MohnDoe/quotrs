@@ -2,14 +2,248 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
+@import "compass";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 
-*{
-  font-family : @font-family-sans-serif;
+$color-black-base : #24221f;
+$color-yellow-base : #feb41c;
+$goldenration-big-percent : 61.8%;
+$goldenration-small-percent : 38.2%;
+
+$gradient-base-25 : linear-gradient(to top, $color-black-base, $color-black-base 25%, transparentize($color-black-base,1));
+$gradient-base-25-revert : linear-gradient(to bottom, $color-black-base, $color-black-base 25%, transparentize($color-black-base,1));
+$gradient-base : linear-gradient(to top, $color-black-base, transparentize($color-black-base,1));
+$gradient-base-revert : linear-gradient(to bottom, $color-black-base, transparentize($color-black-base,1));
+
+
+body{
+  font-family : "Oswald", sans-serif;
+  background-color: $color-black-base;
+  color : white;
+  display: block;
+  height : auto;
+  width : 100%;
+
+}
+*
+{
+  @include box-sizing(border-box);
+}
+.container-quote
+{
+  display: block;
+  height : 100%;
+  width : 100%;
+  position : relative;
+  z-index: 1;
+  &:after{
+    content: "";
+    display: table;
+    clear: both;
+
+  }
+
+  .background-quote{
+    background-size: cover;
+    background-position: center;
+    position : absolute;
+    left : 0;
+    right : 0;
+    bottom : 0;
+    top : 0;
+    display : block;
+    height : 100%;
+    width : 100%;
+    opacity: .8;
+    z-index: 1;
+  }
+
+  .gradient-background-quote{
+
+    z-index: 2;
+    position : absolute;
+    left : 0;
+    right : 0;
+    bottom : 0;
+    top : 0;
+    display : block;
+    height: 100%;
+    width : 100%;
+    @include background($gradient-base-25);
+  }
+  .the-quote{
+    z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    position : relative;
+    width : $goldenration-big-percent;
+    margin: 0 auto;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    .line-quote{
+      color: $color-black-base;
+      font-size: 32px;
+      line-height: 1.5em;
+      font-weight: 400;
+      padding: 0 15px;
+      clear: both;
+      text-transform: uppercase;
+      display: inline;
+      box-decoration-break: clone;
+      cursor: default;
+
+      @include background(linear-gradient(top, rgba(0,0,0,0) 0px, $color-yellow-base 0px, $color-yellow-base 65px, rgba(0,0,0,0) 65px))
+    }
+
+    .author-quote{
+      font-family: "Open Sans", sans-serif;
+      font-weight: lighter;
+      padding: 0 10px;
+      background-color: $color-black-base;
+      align-self: flex-end;
+      color: white;
+    }
+
+  }
+
 }
 
-.typeahead {
-    position:relative !important;
-    z-index:10000;
-}​
+.container-informations-quote
+{
+  position : relative;
+  margin : 0 auto;
+  width : $goldenration-big-percent;
+  height : auto;
+  margin-top: -100px;
+  z-index: 1;
+
+  .container-informations-quote-left, .container-informations-quote-right{
+    position : relative;
+    float : left;
+    height : auto;
+    display : block;
+    min-height: 200px;
+  }
+  .container-informations-quote-left
+  {
+    width: $goldenration-big-percent;
+  }
+
+  .container-informations-quote-right
+  {
+    width: $goldenration-small-percent;
+
+    .container-album
+    {
+      position : relative;
+      float : left;
+      margin-bottom: 20px;
+      width : 100%;
+      .container-cover-album
+      {
+        width : 100%;
+        height: 100px;
+        display : block;
+
+        position : relative;
+        float : left;
+
+
+        .cover-album
+        {
+          position : absolute;
+          left : 0;
+          right : 0;
+          bottom : 0;
+          top : 0;
+          z-index : 1;
+          background-size: cover;
+          background-position: center;
+        }
+        .gradient-cover-album
+        {
+          @include background($gradient-base-revert);
+          opacity: .5;
+          position : absolute;
+          left : 0;
+          right : 0;
+          bottom : 0;
+          top : 0;
+          z-index : 2;
+        }
+
+        .container-informations-album
+        {
+          display: flex;
+          position : absolute;
+          left : 0;
+          right : 0;
+          bottom : 0;
+          top : 0;
+          z-index : 3;
+          align-content: center;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-items: center;
+
+          span{
+            display : block;
+            width : 100%;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 1.6em;
+          }
+
+          .title-album
+          {
+            font-size: 24px;
+            font-weight: lighter;
+            color: $color-yellow-base;
+            &:after
+            {
+              content : " ";
+              display : block;
+              width: 30px;
+              height: 1px;
+              background-color: white;
+              position : relative;
+              margin: 5px auto;
+            }
+          }
+          .artist-album, .release-album
+          {
+            font-weight : lighter;
+          }
+        }
+        
+      }
+    }
+  }
+  
+}
+
+.small-title
+{
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight : bold;
+  margin-bottom: 21px;
+  display : block;
+  position : relative;
+  float : left;
+}
+
+.box-border-white
+{
+  position : absolute;
+  left : 0;
+  right : 0;
+  bottom : 0;
+  top : 0;
+  border : 1px solid rgba(255, 255, 255, .1);
+  z-index : 9;
+}

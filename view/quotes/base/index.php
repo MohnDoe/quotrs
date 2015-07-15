@@ -5,8 +5,8 @@
  * Date: 23/06/2015
  * Time: 19:47
  */
-?>
-
+/*
+<!--
 <div class="container">
     <form action = "./api/quotes/create" ng-submit="create($event)" method="POST" ng-controller="formController">
         <div class="quote-part-form">
@@ -105,3 +105,37 @@
         </div>
     </form>
 </div>
+-->*/
+?>
+
+<section id="container-quote" class="container-quote">
+    <div id="the-quote" class="the-quote">
+        <span class="line-quote">Hello</span>
+        <span class="line-quote">Hello</span>
+        <div class="author-quote">Médine</div>
+    </div>
+    <div class="gradient-background-quote"></div>
+    <div class="background-quote" style="background-image: url('<?= $Quote->url_image;?>')"></div>
+</section>
+<section id="container-informations-quote" class="container-informations-quote">
+    <div class="container-informations-quote-left">
+        <div class="container-comments">
+
+        </div>
+    </div>
+    <div class="container-informations-quote-right">
+        <div class="container-album">
+            <h3 class="small-title">L'album</h3>
+            <div class="container-cover-album">
+                <div class="container-informations-album">
+                    <span class="title-album">Démineur</span>
+                    <span class="artist-album">Médine</span>
+                    <span class="release-album">28 mars 2014</span>
+                </div>
+                <div class="gradient-cover-album"></div>
+                <div class="border-cover-album box-border-white"></div>
+                <div class="cover-album" style="background-image: url('<?= $Quote->Song->Album->url_cover;?>');"></div>
+            </div>
+        </div>
+    </div>
+</section>

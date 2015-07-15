@@ -9,7 +9,8 @@
         public $initParams = [
             'isHashID' => true,
             'init_artist' => false,
-            'init_song' => false
+            'init_song' => false,
+            'init_song_album' => true,
         ];
 
         private $delimiter_url_image = "?";
@@ -20,16 +21,14 @@
         public $content;
 
         public $date;
+
         public $id_artist;
-
         public $Artist;
-        public $id_song;
 
+        public $id_song;
         public $Song;
 
         public $url_image;
-
-        public $Explain;
 
         public $nbLikes;
         public $originalLang;
@@ -63,13 +62,13 @@
             } else {
                 return false;
             }
-            return $req->fetch ();
+            $this->is_valid = true;
+            return $req->fetch();
         }
 
         public function init ()
         {
             if ($data = $this->quote_exists ()) {
-                $this->is_valid = true;
 
                 $this->id = $data['id_quote'];
                 $this->hashid = $data['hashid_quote'];
@@ -94,7 +93,11 @@
 
                 $this->id_song = $data['id_song'];
                 if($this->initParams['init_song']){
-                    $this->Song = new Song($this->id_song);
+                    $this->Song = new Song($this->id_song,
+                                           array(
+                                               'init_album' => $this->initParams['init_song_album']
+                                           )
+                    );
                 }
                 if($data['url_image'] != "" && $data['url_image'] != null){
                     //une image existe dans la base de donnée

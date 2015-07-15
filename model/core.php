@@ -70,4 +70,3 @@
     require_once 'class.quote.php';
     require_once 'class.song.php';
     require_once 'class.user.php';
-?>

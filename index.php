@@ -15,19 +15,30 @@
 
     $app = new \Slim\Slim([
           'debug' => true,
-          'templates.path' => './view'
+          'templates.path' => './view/'
                           ]);
 
-    $app->get('/', function() use($app){
-        $app->render('assets/head-html.php', array(
-            'titlePage' => "Coucou"
+    $app->get('/quote/:hashID', function($hashID) use($app){
+        $Quote = new Quote($hashID, array(
+            'init_artist' => true,
+            'init_song' => true
         ));
-        $app->render('post-quote-form.php');
-        $app->render('assets/footer-html.php');
+        if($Quote->is_valid){
+            $app->render(
+                'quotes/base/index.php',
+                array( 'Quote' => $Quote)
+                );
+        }
+
     });
 
 ?>
 
 <?php
+    $app->render('assets/head-html.php', array(
+        'titlePage' => "Poster une citation"
+    ));
     $app->run();
+    $app->render('assets/footer-html.php');
+
 ?>
