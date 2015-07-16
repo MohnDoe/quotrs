@@ -124,6 +124,10 @@
         </div>
     </div>
     <div class="container-informations-quote-right">
+        <?php if($Quote->Song->is_valid):?>
+
+        <?php endif;?>
+
         <?php if($Quote->Song->Album->is_valid):?>
         <div class="container-album">
             <h3 class="small-title">L'album</h3>

@@ -40,10 +40,8 @@
         public function init ()
         {
 
-            if ($this->album_exists ()) {
+            if ($data = $this->album_exists ()) {
                 $this->is_valid = true;
-                $req = DB::$db->query ('SELECT * FROM ' . DB::$tableAlbums . ' WHERE id_album = ' . $this->id . ' LIMIT 1');
-                $data = $req->fetch ();
 
                 $this->title = $data['title_album'];
                 $this->date = $data['date_album'];

@@ -31,10 +31,8 @@
 
         public function init ()
         {
-            if ($this->artist_exists ()) {
+            if ($data = $this->artist_exists ()) {
                 $this->is_valid = true;
-                $req = DB::$db->query ('SELECT * FROM ' . DB::$tableArtists . ' WHERE id_artist = ' . $this->id . ' LIMIT 1');
-                $data = $req->fetch ();
 
                 $this->name = $data['nom_artist'];
                 $this->description = $data['description_artist'];

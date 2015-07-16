@@ -43,10 +43,8 @@
 
         public function init ()
         {
-            if ($this->song_exists ()) {
+            if ($data = $this->song_exists ()) {
                 $this->is_valid = true;
-                $req = DB::$db->query ('SELECT * FROM ' . DB::$tableSongs . ' WHERE id_song = ' . $this->id . ' LIMIT 1');
-                $data = $req->fetch ();
 
                 $this->title = $data['title_song'];
                 $this->url_youtube = trim ($data['url_youtube_song']);

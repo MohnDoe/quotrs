@@ -25,9 +25,7 @@
 
         public function init ()
         {
-            if ($this->like_exists ()) {
-                $req = DB::$db->query ('SELECT * FROM ' . DB::$tableLikes . ' WHERE id_like = ' . $this->id . ' LIMIT 1');
-                $data = $req->fetch ();
+            if ($data = $this->like_exists ()) {
 
                 $this->date = $data['date_like'];
                 $this->User = new User($data['id_user'], 2);
