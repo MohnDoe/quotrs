@@ -15,7 +15,8 @@
 
         public $initParams = [
             'init_artist' => false,
-            'init_album' => false
+            'init_album' => false,
+            'init_album_artist' => false
         ];
 
         public $is_valid = false;
@@ -57,7 +58,9 @@
 
                 $this->id_album = $data['id_album'];
                 if($this->initParams['init_album']){
-                    $this->Album = new Album($this->id_album);
+                    $this->Album = new Album($this->id_album, array(
+                        'init_artist' => $this->initParams['init_album_artist']
+                    ));
                 }
             }
         }

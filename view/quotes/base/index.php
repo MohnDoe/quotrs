@@ -124,18 +124,20 @@
         </div>
     </div>
     <div class="container-informations-quote-right">
+        <?php if($Quote->Song->Album->is_valid):?>
         <div class="container-album">
             <h3 class="small-title">L'album</h3>
             <div class="container-cover-album">
                 <div class="container-informations-album">
-                    <span class="title-album">Démineur</span>
-                    <span class="artist-album">Médine</span>
-                    <span class="release-album">28 mars 2014</span>
+                    <span class="title-album"><?= $Quote->Song->Album->title;?></span>
+                    <span class="artist-album"><?= $Quote->Song->Album->Artist->name;?></span>
+                    <span class="release-album"><?= $Quote->Song->Album->date;?></span>
                 </div>
                 <div class="gradient-cover-album"></div>
                 <div class="border-cover-album box-border-white"></div>
                 <div class="cover-album" style="background-image: url('<?= $Quote->Song->Album->url_cover;?>');"></div>
             </div>
         </div>
+        <?php endif;?>
     </div>
 </section>

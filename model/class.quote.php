@@ -11,6 +11,7 @@
             'init_artist' => false,
             'init_song' => false,
             'init_song_album' => true,
+            'init_song_album_artist' => true
         ];
 
         private $delimiter_url_image = "?";
@@ -95,7 +96,8 @@
                 if($this->initParams['init_song']){
                     $this->Song = new Song($this->id_song,
                                            array(
-                                               'init_album' => $this->initParams['init_song_album']
+                                               'init_album' => $this->initParams['init_song_album'],
+                                               'init_album_artist' => $this->initParams['init_song_album_artist']
                                            )
                     );
                 }
