@@ -119,6 +119,13 @@
 </section>
 <section id="container-informations-quote" class="container-informations-quote">
     <div class="container-informations-quote-left">
+        <div class="container-share-buttons-quote">
+            <ul class="share-buttons">
+                <li class="share-button share-facebook"></li>
+                <li class="share-button share-twitter"></li>
+                <li class="share-button share-link"></li>
+            </ul>
+        </div>
         <div class="container-comments">
 
         </div>

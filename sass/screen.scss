@@ -3,11 +3,13 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 @import "compass";
+@import "compass/reset";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 
 $color-black-base : #24221f;
 $color-yellow-base : #feb41c;
+
 $goldenration-big-percent : 61.8%;
 $goldenration-small-percent : 38.2%;
 
@@ -15,6 +17,14 @@ $gradient-base-25 : linear-gradient(to top, $color-black-base, $color-black-base
 $gradient-base-25-revert : linear-gradient(to bottom, $color-black-base, $color-black-base 25%, transparentize($color-black-base,1));
 $gradient-base : linear-gradient(to top, $color-black-base, transparentize($color-black-base,1));
 $gradient-base-revert : linear-gradient(to bottom, $color-black-base, transparentize($color-black-base,1));
+
+$color-facebook : #3b5998;
+$color-facebook-lighten : lighten($color-facebook, 15%);
+$color-twitter : #50abf1;
+$color-twitter-lighten : lighten($color-twitter, 15%);
+
+$padding-base-quote : 200px;
+$padding-base-quote-extra : 300px;
 
 
 body{
@@ -41,10 +51,10 @@ body{
     content: "";
     display: table;
     clear: both;
-
   }
 
-  .background-quote{
+  .background-quote
+  {
     background-size: cover;
     background-position: center;
     position : absolute;
@@ -59,8 +69,8 @@ body{
     z-index: 1;
   }
 
-  .gradient-background-quote{
-
+  .gradient-background-quote
+  {
     z-index: 2;
     position : absolute;
     left : 0;
@@ -74,16 +84,14 @@ body{
   }
   .the-quote{
     z-index: 10;
-    display: flex;
-    justify-content: flex-start;
-    height: 100%;
+    display: block;
+    height: auto;
     position : relative;
     width : $goldenration-big-percent;
     margin: 0 auto;
-    align-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: flex-start;
+
+    padding : $padding-base-quote 0 ($padding-base-quote + $padding-base-quote-extra);
+
     .line-quote{
       color: $color-black-base;
       font-size: 32px;
@@ -104,7 +112,8 @@ body{
       font-weight: lighter;
       padding: 0 10px;
       background-color: $color-black-base;
-      align-self: flex-end;
+      float : right;
+      position : relative;
       color: white;
     }
 
@@ -115,11 +124,11 @@ body{
 .container-informations-quote
 {
   position : relative;
-  margin : 0 auto;
   width : $goldenration-big-percent;
   height : auto;
-  margin-top: -100px;
+  margin : -($padding-base-quote-extra) auto 0;
   z-index: 1;
+
 
   .container-informations-quote-left, .container-informations-quote-right{
     position : relative;
@@ -131,6 +140,49 @@ body{
   .container-informations-quote-left
   {
     width: $goldenration-big-percent;
+
+    .container-share-buttons-quote
+    {
+      position : absolute;
+      left : -50px;
+      top : 0;
+      display : block;
+
+      .share-buttons{
+        width : 50px;
+        position : relative;
+        display : block;
+
+        .share-button
+        {
+          display: block;
+          position : relative;
+          float : right;
+          height : 30px;
+          width : 30px;
+          background-color: #DDD;
+          border : 1px solid white;
+          margin-bottom: 5px;
+
+          &:after{
+            content: "";
+            display: table;
+            clear: both;
+          }
+
+          &.share-facebook
+          {
+            background-color: $color-facebook;
+            border-color: $color-facebook-lighten;
+          }
+          &.share-twitter
+          {
+            background-color: $color-twitter;
+            border-color: $color-twitter-lighten;
+          }
+        }
+      }
+    }
   }
 
   .container-informations-quote-right
@@ -143,12 +195,12 @@ body{
       float : left;
       margin-bottom: 20px;
       width : 100%;
+
       .container-cover-album
       {
         width : 100%;
         height: 100px;
         display : block;
-
         position : relative;
         float : left;
 
