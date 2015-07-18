@@ -94,7 +94,7 @@ body, html{
     height: auto;
     position : relative;
     width: auto;
-    margin-top: -$padding-base-quote-extra/2;
+    margin-top: -$padding-base-quote-extra;
     max-width : $goldenration-big-percent;
 
     .line-quote, .author-quote{
@@ -539,7 +539,7 @@ body, html{
   font-size: 18px;
   text-transform: uppercase;
   font-weight : bold;
-  margin-bottom: 21px;
+  margin-bottom: 10px;
   display : block;
   position : relative;
   float : left;
