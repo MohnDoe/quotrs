@@ -24,16 +24,17 @@ $color-twitter : #50abf1;
 $color-twitter-lighten : lighten($color-twitter, 15%);
 
 $padding-base-quote : 200px;
-$padding-base-quote-extra : 300px;
+$padding-base-quote-extra : 100px;
 
 
-body{
+
+body, html{
   font-family : "Oswald", sans-serif;
   background-color: $color-black-base;
   color : white;
   display: block;
-  height : auto;
   width : 100%;
+  height: 100%; margin: 0; padding: 0;
 
 }
 *
@@ -42,8 +43,11 @@ body{
 }
 .container-quote
 {
-  display: block;
-  height : 500px;
+  @include display-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height : 100%;
   width : 100%;
   position : relative;
   z-index: 1;
@@ -87,34 +91,49 @@ body{
     display: block;
     height: auto;
     position : relative;
-    width : $goldenration-big-percent;
-    margin: 0 auto;
+    width: auto;
+    max-width : $goldenration-big-percent;
 
-    padding : $padding-base-quote 0 ($padding-base-quote + $padding-base-quote-extra);
+    //padding : $padding-base-quote 0 ($padding-base-quote + $padding-base-quote-extra);
 
-    .line-quote{
+    .line-quote, .author-quote{
       color: $color-black-base;
       font-size: 32px;
       line-height: 1.5em;
       font-weight: 400;
-      padding: 0 15px;
-      clear: both;
       text-transform: uppercase;
       display: inline;
       box-decoration-break: clone;
       cursor: default;
-
-      @include background(linear-gradient(top, rgba(0,0,0,0) 0px, $color-yellow-base 0px, $color-yellow-base 65px, rgba(0,0,0,0) 65px))
+      clear: both;
+      &:after{
+        content: "";
+        display: table;
+        clear: both;
+      }
     }
-
-    .author-quote{
+    .line-quote
+  {
+      box-shadow: 15px 0 0 $color-yellow-base, -15px 0 0 $color-yellow-base;
+      @include background(linear-gradient(top, rgba(0,0,0,0) 0px, $color-yellow-base 0px, $color-yellow-base 65px, rgba(0,0,0,0) 65px));
+    }
+    .author-quote
+    {
+      font-size: 14px;
       font-family: "Open Sans", sans-serif;
       font-weight: lighter;
-      padding: 0 10px;
-      background-color: $color-black-base;
-      float : right;
-      position : relative;
       color: white;
+      text-transform: none;
+      padding: 0 10px;
+      font-style: italic;
+      float : right;
+      background-color: $color-black-base;
+
+      &:before
+      {
+        color: inherit;
+        content: "\2014 \00a0";
+      }
     }
 
   }
@@ -127,7 +146,7 @@ body{
   width : $goldenration-big-percent;
   height : auto;
   margin : -($padding-base-quote-extra) auto 0;
-  z-index: 1;
+  z-index: 2;
 
 
   .container-informations-quote-left, .container-informations-quote-right{

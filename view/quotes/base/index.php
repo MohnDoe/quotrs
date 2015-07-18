@@ -110,9 +110,8 @@
 
 <section id="container-quote" class="container-quote">
     <div id="the-quote" class="the-quote">
-        <span class="line-quote">Hello</span>
-        <span class="line-quote">Hello</span>
-        <div class="author-quote">Médine</div>
+        <span class="line-quote"><?= str_replace("\\n", "<br/>", $Quote->content);?></span>
+        <div class="author-quote"><?= $Quote->Artist->name;?></div>
     </div>
     <div class="gradient-background-quote"></div>
     <div class="background-quote" style="background-image: url('<?= $Quote->url_image;?>')"></div>

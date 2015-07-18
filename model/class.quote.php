@@ -75,7 +75,7 @@
                 $this->hashid = $data['hashid_quote'];
 
                 // hashID
-                $HASHIDS = new Hashids\Hashids(SALT_HASHIDS, 7);
+                $HASHIDS = new Hashids\Hashids(SALT_HASHIDS, 12,'abcdefghijklmnopqrstuvwxyz1234567890');
                 if ($this->id == "") {
                     $this->id = $HASHIDS->decode($this->hashid);
                 }
@@ -238,7 +238,7 @@
             $id_new_quote = DB::$db->lastInsertId();
             $this->id = $id_new_quote;
 
-            $HASHIDS = new Hashids\Hashids(SALT_HASHIDS, 7);
+            $HASHIDS = new Hashids\Hashids(SALT_HASHIDS, 12, 'abcdefghij1234567890');
             $this->hashid = $HASHIDS->encode($id_new_quote);
             var_dump($this->hashid);
             $this->saveHashID();
