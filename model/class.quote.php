@@ -139,9 +139,9 @@
                 if(!$this->initParams['init_artist']){
                     $this->Artist = new Artist($this->id_artist);
                 }
-                if (!is_null($this->Artist->urlPicture)) {
+                if (!is_null($this->Artist->url_image)) {
                     // image artist exist
-                    $url_image_result = $this->Artist->urlPicture;
+                    $url_image_result = $this->Artist->url_image;
                 }
             }
 

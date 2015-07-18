@@ -6,7 +6,7 @@
         public $id;
         public $name;
         public $description;
-        public $urlPicture;
+        public $url_image;
         public $urlFacebook;
         public $urlTwitter;
         public $urlSite;
@@ -37,7 +37,7 @@
                 $this->name = $data['nom_artist'];
                 $this->description = $data['description_artist'];
 
-                $this->urlPicture = $data['url_picture_artist'];
+                $this->url_image = $data['url_picture_artist'];
                 if($data['url_picture_artist'] != "" && $data['url_picture_artist'] != null){
                     //une image existe dans la base de donnée
                     $url_image_array = explode($this->delimiter_url_image, $data['url_picture_artist']);
@@ -45,12 +45,12 @@
                     $timestamp_last_check = $url_image_array[1];
                     if(time()+(24 * 60 * 60) > (int)$timestamp_last_check){
                         // si la derniere check est inférieur à 1 journée
-                        $this->urlPicture = $url_image;
+                        $this->url_image = $url_image;
                     }else{
-                        $this->urlPicture = $this->getURLPicture();
+                        $this->url_image = $this->getURLPicture();
                     }
                 }else{
-                    $this->urlPicture = $this->getURLPicture();
+                    $this->url_image = $this->getURLPicture();
                 }
                 $this->urlFacebook = $data['url_facebook_artist'];
                 $this->urlTwitter = $data['url_twitter_artist'];
@@ -132,7 +132,7 @@
           $query = DB::$db->prepare($req);
           $query->bindParam(':query', $search, PDO::PARAM_STR);
           $query->execute();
-          $result = array();
+          $result = [];
           while($data = $query->fetch()){
             $Artist = new Artist();
             $Artist->id = $data['id_artist'];

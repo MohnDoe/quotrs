@@ -125,15 +125,55 @@
                 <li class="share-button share-link"></li>
             </ul>
         </div>
-        <div class="container-comments">
-
+        <div class="section-comments">
+            <h3 class="small-title">12 commentaires</h3>
+            <div class="container-comments">
+                <span class="load-more-comments">Afficher plus de commentaires (+90)</span>
+                <div class="comment">
+                    <div class="picture-user-comment">
+                        <img src = "" alt = "" />
+                    </div>
+                    <div class="content-comment">
+                        <div class="top-comment">
+                            <span class="author-comment">John Doe</span>
+                            <span class="date-comment">Hier</span>
+                            <span class="comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur deserunt eveniet laudantium molestiae neque quo ratione suscipit veritatis voluptatem? Distinctio eius ipsum praesentium repudiandae veniam! Harum id quis unde!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="container-informations-quote-right">
         <?php if($Quote->Song->is_valid):?>
 
         <?php endif;?>
+        <?php if($Quote->Artist->is_valid):?>
+            <div class="container-artist">
+                <h3 class="small-title">L'artist</h3>
+                <div class="container-informations-artist">
+                    <div class="container-image-artist">
+                        <div class="border-cover-album box-border-white"></div>
+                        <div class="image-artist" style="background-image: url('<?= $Quote->Artist->url_image;?>');"></div>
+                    </div>
+                    <div class="container-informations">
+                        <span class="information-artist name-artist"><?= $Quote->Artist->name;?></span>
+                        <span class="information-artist information-artist-part nb-quotes">
+                            <span class="information-title">Citations</span>
+                            <span class="information-content">2,304</span>
+                        </span>
+                        <span class="information-artist information-artist-part nb-quotes">
+                            <span class="information-title">Fans</span>
+                            <span class="information-content">13,290,304</span>
+                        </span>
+                    </div>
+                    <div class="border-informations-artist box-border-white"></div>
+                    <div class="gradient-image-artist"></div>
+                    <div class="image-artist" style="background-image: url('<?= $Quote->Artist->url_image;?>');"></div>
 
+                </div>
+            </div>
+        <?php endif;?>
         <?php if($Quote->Song->Album->is_valid):?>
         <div class="container-album">
             <h3 class="small-title">L'album</h3>
