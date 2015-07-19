@@ -74,6 +74,22 @@
             return $result;
         }
 
+        public function getAlbums(){
+            $req = DB::$db->query('SELECT * FROM ' . DB::$tableAlbums . ' WHERE id_artist = '.$this->id);
+            $result = [];
+            while($data = $req->fetch()){
+                $result[] = new Album($data['id_album'], ['isHashID'=>false]);
+            }
+            return $result;
+        }
+
+        public function getNbQuotes(){
+            $req = DB::$db->query('SELECT COUNT(*) AS result FROM ' . DB::$tableQuotes . ' WHERE id_artist = '.$this->id);
+            $data = $req->fetch();
+
+            return $data['result'];
+        }
+
         private function getURLPicture () {
             $url_picture_result = null;
 

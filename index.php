@@ -20,7 +20,7 @@
 
     $app->array_meta_page = $array_meta_page;
 
-    $app->get('/quote/:hashID', function($hashID) use($app){
+    $app->get('/quotes/:hashID', function($hashID) use($app){
         $Quote = new Quote($hashID, array(
             'init_artist' => true,
             'init_song' => true
@@ -29,20 +29,31 @@
             //$app->array_meta_page['titlePage'] .= " - ".$Quote->Artist->name;
             $app->render(
                 'quotes/base/index.php',
-                array( 'Quote' => $Quote)
+                array( 'Quote' => $Quote,
+                    'app' => $app)
                 );
         }
 
     });
-    $app->get('/artist/:idArtist', function($idArtist) use($app){
+    $app->get('/artists/:idArtist', function($idArtist) use($app){
         $Artist = new Artist($idArtist);
         if($Artist->is_valid){
             $app->render(
                 'artists/base/index.php',
-                array('Artist' => $Artist)
+                array('Artist' => $Artist, 'app' => $app)
             );
         }
-    });
+    })->name('artistUrl');
+
+    $app->get('/albums/:idAlbum', function($idAlbum) use($app){
+        $Album = new Album($idAlbum);
+        if($Album->is_valid){
+            $app->render(
+                'albums/base/index.php',
+                array('Album' => $Album, 'app' => $app)
+            );
+        }
+    })->name('albumUrl');
 
 ?>
 

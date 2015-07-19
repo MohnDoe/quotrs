@@ -43,6 +43,21 @@ body, html{
 {
   @include box-sizing(border-box);
 }
+
+a
+{
+  color: inherit;
+  text-transform: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+
+  &:hover
+  {
+    color: inherit;
+    text-transform: inherit;
+    text-decoration: inherit;
+  }
+}
 #logo
 {
   width : auto;
@@ -352,86 +367,125 @@ body, html{
       {
         height : 200px;
       }
-      .container-cover-album
-      {
-        width : 100%;
-        height: 100px;
-        display : block;
-        position : relative;
-        float : left;
 
-
-        .cover-album
-        {
-          position : absolute;
-          left : 0;
-          right : 0;
-          bottom : 0;
-          top : 0;
-          z-index : 1;
-          background-size: cover;
-          background-position: center;
-        }
-        .gradient-cover-album
-        {
-          @include background($gradient-base-revert);
-          opacity: .5;
-          position : absolute;
-          left : 0;
-          right : 0;
-          bottom : 0;
-          top : 0;
-          z-index : 2;
-        }
-
-        .container-informations-album
-        {
-          display: flex;
-          position : absolute;
-          left : 0;
-          right : 0;
-          bottom : 0;
-          top : 0;
-          z-index : 3;
-          align-content: center;
-          flex-direction: column;
-          flex-wrap: wrap;
-          align-items: center;
-
-          span{
-            display : block;
-            width : 100%;
-            text-align: center;
-            text-transform: uppercase;
-            line-height: 1.6em;
-          }
-
-          .title-album
-          {
-            font-size: 24px;
-            font-weight: lighter;
-            color: $color-yellow-base;
-            &:after
-            {
-              content : " ";
-              display : block;
-              width: 30px;
-              height: 1px;
-              background-color: white;
-              position : relative;
-              margin: 5px auto;
-            }
-          }
-          .artist-album, .release-album
-          {
-            font-weight : lighter;
-          }
-        }
-        
-      }
     }
   }
   
+}
+.container-album
+{
+  position : relative;
+  float : left;
+  margin-bottom: 20px;
+  width : 100%;
+
+  .container-cover-album
+  {
+    width : 100%;
+    height: 100px;
+    display : block;
+    position : relative;
+    float : left;
+
+
+    .cover-album
+    {
+      position : absolute;
+      left : 0;
+      right : 0;
+      bottom : 0;
+      top : 0;
+      z-index : 1;
+      background-size: cover;
+      background-position: center;
+    }
+    .gradient-cover-album
+    {
+      @include background($gradient-base-revert);
+      opacity: .5;
+      position : absolute;
+      left : 0;
+      right : 0;
+      bottom : 0;
+      top : 0;
+      z-index : 2;
+    }
+
+    .container-informations-album
+    {
+      display: flex;
+      position : absolute;
+      left : 0;
+      right : 0;
+      bottom : 0;
+      top : 0;
+      z-index : 10;
+      align-content: center;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+
+      span{
+        display : block;
+        width : 100%;
+        text-align: center;
+        text-transform: uppercase;
+        line-height: 1.6em;
+      }
+
+      .title-album
+      {
+        font-size: 24px;
+        font-weight: lighter;
+        color: $color-yellow-base;
+        &:after
+        {
+          content : " ";
+          display : block;
+          width: 30px;
+          height: 1px;
+          background-color: white;
+          position : relative;
+          margin: 5px auto;
+        }
+      }
+      .artist-album, .release-album
+      {
+        font-weight : lighter;
+      }
+    }
+
+  }
+}
+.container-album-small
+{
+  height: 50px;
+  position : relative;
+  float : left;
+  width : 200px;
+  margin : 0 10px 0 0;
+
+  .container-cover-album
+  {
+    height: 100%;
+    .container-informations-album
+    {
+
+      span
+      {
+        font-size: 12px;
+      }
+      .title-album
+      {
+        font-size: 14px;
+
+        &:after
+        {
+          margin: 3px auto;
+        }
+      }
+    }
+  }
 }
 .container-artist
 {
@@ -449,16 +503,18 @@ body, html{
       position : relative;
       float : left;
       z-index : 3;
+      overflow: hidden;
       .image-artist
       {
         position : absolute;
-        top : 0;
+        top : -25px;
         right : 0;
-        left : 0;
-        bottom : 0;
+        left :-10px;
+        bottom : -25px;
         z-index : 1;
-        background-position: center;
-        background-size: cover;
+        background-position-x: -170px;
+        background-position-y: center;
+        background-size: auto 100%;
         opacity : 1 !important;
       }
     }
@@ -469,7 +525,7 @@ body, html{
       width: calc(100% - 100px);
       position : relative;
       float : left;
-      z-index : 3;
+      z-index : 10;
 
       .information-artist
       {
@@ -528,20 +584,22 @@ body, html{
       right : 0;
       top : 0;
       bottom : 0;
-      background-size: cover;
-      background-position: center;
+      background-position-x: -170px;
+      background-position-y: center;
+      background-size: auto 100%;
       opacity: .4;
       z-index : 1;
     }
     .gradient-image-artist
     {
-      @include background($gradient-base-25-right);
       position : absolute;
       top : 0;
       right : 0;
       left : 0;
       bottom : 0;
       z-index : 2;
+      background : linear-gradient(to right, transparentize($color-black-base,1), $color-black-base 100px, $color-black-base);
+
 
     }
   }
@@ -558,14 +616,21 @@ body, html{
     .container-image-artist
     {
       width : 200px;
-      height : calc(100% - 100px);
-      margin: 50px;
+      height : calc(100% - 125px);
+      margin : 75px 50px 50px;
+      .image-artist
+      {
+        left : -50px;
+        bottom : -50px;
+        top : -75px;
+        background-position-x: -550px;
+      }
 
     }
     .container-informations
     {
       height : auto;
-      margin-top: 50px;
+      margin-top: 75px;
       width: calc(100% - 300px);
       
       .name-artist
@@ -576,7 +641,10 @@ body, html{
     .gradient-image-artist
     {
       background : linear-gradient(to right, transparentize($color-black-base,1), $color-black-base 550px, $color-black-base);
-
+    }
+    .image-artist
+    {
+      background-position-x: -550px !important;
     }
   }
 }

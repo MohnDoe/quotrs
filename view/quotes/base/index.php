@@ -148,46 +148,22 @@
         <?php if($Quote->Song->is_valid):?>
 
         <?php endif;?>
-        <?php if($Quote->Artist->is_valid):?>
-            <div class="container-artist">
-                <h3 class="small-title">L'artist</h3>
-                <div class="container-informations-artist">
-                    <div class="container-image-artist">
-                        <div class="border-cover-album box-border-white"></div>
-                        <div class="image-artist" style="background-image: url('<?= $Quote->Artist->url_image;?>');"></div>
-                    </div>
-                    <div class="container-informations">
-                        <span class="information-artist name-artist"><?= $Quote->Artist->name;?></span>
-                        <span class="information-artist information-artist-part nb-quotes">
-                            <span class="information-title">Citations</span>
-                            <span class="information-content">2,304</span>
-                        </span>
-                        <span class="information-artist information-artist-part nb-quotes">
-                            <span class="information-title">Fans</span>
-                            <span class="information-content">13,290,304</span>
-                        </span>
-                    </div>
-                    <div class="border-informations-artist box-border-white"></div>
-                    <div class="gradient-image-artist"></div>
-                    <div class="image-artist" style="background-image: url('<?= $Quote->Artist->url_image;?>');"></div>
+        <?php
+            if($Quote->Artist->is_valid){
+                $app->render('artists/container/container-artist.php',
+                             array(
+                                 'Artist' => $Quote->Artist,
+                                 'mode' => 'info'
+                             ));
+            }
 
-                </div>
-            </div>
-        <?php endif;?>
-        <?php if($Quote->Song->Album->is_valid):?>
-        <div class="container-album">
-            <h3 class="small-title">L'album</h3>
-            <div class="container-cover-album">
-                <div class="container-informations-album">
-                    <span class="title-album"><?= $Quote->Song->Album->title;?></span>
-                    <span class="artist-album"><?= $Quote->Song->Album->Artist->name;?></span>
-                    <span class="release-album"><?= $Quote->Song->Album->date;?></span>
-                </div>
-                <div class="gradient-cover-album"></div>
-                <div class="border-cover-album box-border-white"></div>
-                <div class="cover-album" style="background-image: url('<?= $Quote->Song->Album->url_cover;?>');"></div>
-            </div>
-        </div>
-        <?php endif;?>
+            if($Quote->Song->Album->is_valid){
+                $app->render('albums/container/container-album.php',
+                             array(
+                                 'Album' => $Quote->Song->Album,
+                                 'mode' => 'info'
+                             ));
+            }
+        ?>
     </div>
 </section>
