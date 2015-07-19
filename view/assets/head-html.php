@@ -7,17 +7,15 @@
  */
 ?>
 <!DOCTYPE html>
-<html lang="fr" ng-app="app">
+<html lang="fr" ng-app="appQuotrs">
     <head>
         <meta charset = "UTF-8">
         <base href = "<?= URL_BASE_HREF; ?>" />
         <title><?= $titlePage; ?></title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link href="./stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="./stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
         <!--[if IE]>
-        <link chref="./stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link href="./stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
         <![endif]-->
 
     </head>

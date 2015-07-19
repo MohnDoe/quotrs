@@ -184,14 +184,14 @@ a:hover {
   box-decoration-break: clone;
   cursor: default;
   clear: both;
+  /*
+  &:after{
+    content: "";
+    display: table;
+    clear: both;
+  }*/
 }
-/* line 135, ../sass/screen.scss */
-.container-quote .the-quote .line-quote:after, .container-quote .the-quote .author-quote:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-/* line 141, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 .container-quote .the-quote .line-quote {
   box-shadow: 15px 0 0 #feb41c, -15px 0 0 #feb41c;
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmViNDFjIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmViNDFjIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
@@ -200,7 +200,7 @@ a:hover {
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0px, #feb41c 0px, #feb41c 65px, rgba(0, 0, 0, 0) 65px);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, #feb41c 0px, #feb41c 65px, rgba(0, 0, 0, 0) 65px);
 }
-/* line 146, ../sass/screen.scss */
+/* line 147, ../sass/screen.scss */
 .container-quote .the-quote .author-quote {
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
@@ -212,13 +212,29 @@ a:hover {
   float: right;
   background-color: #24221f;
 }
-/* line 158, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 .container-quote .the-quote .author-quote:before {
   color: inherit;
   content: "\2014 \00a0";
 }
 
-/* line 169, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
+form.form-create-quote {
+  width: 100%;
+  display: block;
+  height: 100%;
+}
+
+/* line 180, ../sass/screen.scss */
+.container-quote-create span {
+  outline: none !important;
+}
+/* line 183, ../sass/screen.scss */
+.container-quote-create span:focus, .container-quote-create span:active {
+  outline: none !important;
+}
+
+/* line 189, ../sass/screen.scss */
 .container-informations-quote {
   position: relative;
   width: 61.8%;
@@ -226,7 +242,7 @@ a:hover {
   margin: -100px auto 0;
   z-index: 2;
 }
-/* line 178, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left, .container-informations-quote .container-informations-quote-right {
   position: relative;
   float: left;
@@ -234,27 +250,27 @@ a:hover {
   display: block;
   min-height: 200px;
 }
-/* line 185, ../sass/screen.scss */
+/* line 205, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left {
   width: calc(61.8% - 10px);
   margin-right: 10px;
   position: relative;
   float: left;
 }
-/* line 192, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote {
   position: absolute;
   left: -60px;
   top: 0;
   display: block;
 }
-/* line 199, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons {
   width: 50px;
   position: relative;
   display: block;
 }
-/* line 204, ../sass/screen.scss */
+/* line 224, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button {
   display: block;
   position: relative;
@@ -266,38 +282,38 @@ a:hover {
   margin-bottom: 5px;
   cursor: pointer;
 }
-/* line 217, ../sass/screen.scss */
+/* line 237, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button:after {
   content: "";
   display: table;
   clear: both;
 }
-/* line 222, ../sass/screen.scss */
+/* line 242, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button:hover {
   background-color: #090807;
   border-color: #24221f;
 }
-/* line 227, ../sass/screen.scss */
+/* line 247, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button.share-facebook {
   background-color: #3b5998;
   border-color: #5f7ec1;
 }
-/* line 231, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button.share-facebook:hover {
   background-color: #263961;
   border-color: #3b5998;
 }
-/* line 238, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button.share-twitter {
   background-color: #50abf1;
   border-color: #97cdf7;
 }
-/* line 242, ../sass/screen.scss */
+/* line 262, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button.share-twitter:hover {
   background-color: #1288e2;
   border-color: #50abf1;
 }
-/* line 251, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments {
   display: block;
   position: relative;
@@ -305,7 +321,7 @@ a:hover {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
 }
-/* line 259, ../sass/screen.scss */
+/* line 279, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .load-more-comments {
   display: block;
   height: 40px;
@@ -325,19 +341,19 @@ a:hover {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 276, ../sass/screen.scss */
+/* line 296, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .load-more-comments:hover {
   background-color: #f5f5f5;
   color: #24221f;
 }
-/* line 282, ../sass/screen.scss */
+/* line 302, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment {
   width: 100%;
   margin-bottom: 10px;
   position: relative;
   float: left;
 }
-/* line 289, ../sass/screen.scss */
+/* line 309, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .picture-user-comment {
   background-color: #feb41c;
   width: 60px;
@@ -345,12 +361,12 @@ a:hover {
   position: relative;
   float: left;
 }
-/* line 297, ../sass/screen.scss */
+/* line 317, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .picture-user-comment img {
   height: 100%;
   width: 100%;
 }
-/* line 303, ../sass/screen.scss */
+/* line 323, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment {
   background-color: #272521;
   width: calc(100% - 60px);
@@ -359,7 +375,7 @@ a:hover {
   float: right;
   font-size: 14px;
 }
-/* line 312, ../sass/screen.scss */
+/* line 332, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment .top-comment {
   margin-bottom: 10px;
   position: relative;
@@ -367,19 +383,19 @@ a:hover {
   height: 20px;
   line-height: 20px;
 }
-/* line 320, ../sass/screen.scss */
+/* line 340, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment .top-comment .author-comment {
   color: #feb41c;
   font-weight: bold;
 }
-/* line 325, ../sass/screen.scss */
+/* line 345, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment .top-comment .date-comment {
   color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
   float: right;
   font-size: 12px;
 }
-/* line 334, ../sass/screen.scss */
+/* line 354, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment .comment {
   font-size: 14px;
   color: #f5f5f5;
@@ -390,36 +406,36 @@ a:hover {
   float: left;
   height: auto;
 }
-/* line 345, ../sass/screen.scss */
+/* line 365, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment .comment:after {
   content: "";
   display: table;
   clear: both;
 }
-/* line 356, ../sass/screen.scss */
+/* line 376, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-right {
   width: 38.2%;
 }
-/* line 360, ../sass/screen.scss */
+/* line 380, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-right .container-album, .container-informations-quote .container-informations-quote-right .container-artist {
   position: relative;
   float: left;
   margin-bottom: 20px;
   width: 100%;
 }
-/* line 366, ../sass/screen.scss */
+/* line 386, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-right .container-album .container-informations-artist, .container-informations-quote .container-informations-quote-right .container-artist .container-informations-artist {
   height: 200px;
 }
 
-/* line 375, ../sass/screen.scss */
+/* line 395, ../sass/screen.scss */
 .container-album {
   position: relative;
   float: left;
   margin-bottom: 20px;
   width: 100%;
 }
-/* line 382, ../sass/screen.scss */
+/* line 402, ../sass/screen.scss */
 .container-album .container-cover-album {
   width: 100%;
   height: 100px;
@@ -427,7 +443,7 @@ a:hover {
   position: relative;
   float: left;
 }
-/* line 391, ../sass/screen.scss */
+/* line 411, ../sass/screen.scss */
 .container-album .container-cover-album .cover-album {
   position: absolute;
   left: 0;
@@ -438,7 +454,7 @@ a:hover {
   background-size: cover;
   background-position: center;
 }
-/* line 402, ../sass/screen.scss */
+/* line 422, ../sass/screen.scss */
 .container-album .container-cover-album .gradient-cover-album {
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI0MjIxZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzI0MjIxZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #24221f), color-stop(100%, rgba(36, 34, 31, 0)));
@@ -453,7 +469,7 @@ a:hover {
   top: 0;
   z-index: 2;
 }
-/* line 414, ../sass/screen.scss */
+/* line 434, ../sass/screen.scss */
 .container-album .container-cover-album .container-informations-album {
   display: flex;
   position: absolute;
@@ -467,7 +483,7 @@ a:hover {
   flex-wrap: wrap;
   align-items: center;
 }
-/* line 428, ../sass/screen.scss */
+/* line 448, ../sass/screen.scss */
 .container-album .container-cover-album .container-informations-album span {
   display: block;
   width: 100%;
@@ -475,13 +491,13 @@ a:hover {
   text-transform: uppercase;
   line-height: 1.6em;
 }
-/* line 436, ../sass/screen.scss */
+/* line 456, ../sass/screen.scss */
 .container-album .container-cover-album .container-informations-album .title-album {
   font-size: 24px;
   font-weight: lighter;
   color: #feb41c;
 }
-/* line 441, ../sass/screen.scss */
+/* line 461, ../sass/screen.scss */
 .container-album .container-cover-album .container-informations-album .title-album:after {
   content: " ";
   display: block;
@@ -491,12 +507,12 @@ a:hover {
   position: relative;
   margin: 5px auto;
 }
-/* line 452, ../sass/screen.scss */
+/* line 472, ../sass/screen.scss */
 .container-album .container-cover-album .container-informations-album .artist-album, .container-album .container-cover-album .container-informations-album .release-album {
   font-weight: lighter;
 }
 
-/* line 460, ../sass/screen.scss */
+/* line 480, ../sass/screen.scss */
 .container-album-small {
   height: 50px;
   position: relative;
@@ -504,30 +520,30 @@ a:hover {
   width: 200px;
   margin: 0 10px 0 0;
 }
-/* line 468, ../sass/screen.scss */
+/* line 488, ../sass/screen.scss */
 .container-album-small .container-cover-album {
   height: 100%;
 }
-/* line 474, ../sass/screen.scss */
+/* line 494, ../sass/screen.scss */
 .container-album-small .container-cover-album .container-informations-album span {
   font-size: 12px;
 }
-/* line 478, ../sass/screen.scss */
+/* line 498, ../sass/screen.scss */
 .container-album-small .container-cover-album .container-informations-album .title-album {
   font-size: 14px;
 }
-/* line 482, ../sass/screen.scss */
+/* line 502, ../sass/screen.scss */
 .container-album-small .container-cover-album .container-informations-album .title-album:after {
   margin: 3px auto;
 }
 
-/* line 492, ../sass/screen.scss */
+/* line 512, ../sass/screen.scss */
 .container-artist .container-informations-artist {
   position: relative;
   float: left;
   width: 100%;
 }
-/* line 497, ../sass/screen.scss */
+/* line 517, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-image-artist {
   width: 50px;
   height: 150px;
@@ -538,7 +554,7 @@ a:hover {
   z-index: 3;
   overflow: hidden;
 }
-/* line 507, ../sass/screen.scss */
+/* line 527, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-image-artist .image-artist {
   position: absolute;
   top: -25px;
@@ -551,7 +567,7 @@ a:hover {
   background-size: auto 100%;
   opacity: 1 !important;
 }
-/* line 521, ../sass/screen.scss */
+/* line 541, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations {
   height: 200px;
   margin: 25px 0;
@@ -560,7 +576,7 @@ a:hover {
   float: left;
   z-index: 10;
 }
-/* line 530, ../sass/screen.scss */
+/* line 550, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist {
   position: relative;
   float: left;
@@ -570,14 +586,14 @@ a:hover {
   line-height: 1.5em;
   text-transform: uppercase;
 }
-/* line 540, ../sass/screen.scss */
+/* line 560, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist.name-artist {
   color: #feb41c;
   font-size: 21px;
   font-weight: lighter;
   margin-bottom: 10px;
 }
-/* line 548, ../sass/screen.scss */
+/* line 568, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist.information-artist-part {
   line-height: 1em;
   font-size: 14px;
@@ -588,24 +604,24 @@ a:hover {
   display: block;
   width: 100%;
 }
-/* line 559, ../sass/screen.scss */
+/* line 579, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist.information-artist-part .information-title, .container-artist .container-informations-artist .container-informations .information-artist.information-artist-part .information-content {
   display: block;
   position: relative;
   float: left;
 }
-/* line 565, ../sass/screen.scss */
+/* line 585, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist.information-artist-part .information-title {
   width: 100%;
   margin-bottom: 3px;
   font-weight: bold;
 }
-/* line 571, ../sass/screen.scss */
+/* line 591, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist.information-artist-part .information-content {
   font-weight: lighter;
   font-size: 15px;
 }
-/* line 580, ../sass/screen.scss */
+/* line 600, ../sass/screen.scss */
 .container-artist .container-informations-artist .image-artist {
   position: absolute;
   left: 0;
@@ -618,7 +634,7 @@ a:hover {
   opacity: .4;
   z-index: 1;
 }
-/* line 593, ../sass/screen.scss */
+/* line 613, ../sass/screen.scss */
 .container-artist .container-informations-artist .gradient-image-artist {
   position: absolute;
   top: 0;
@@ -629,47 +645,47 @@ a:hover {
   background: linear-gradient(to right, rgba(36, 34, 31, 0), #24221f 100px, #24221f);
 }
 
-/* line 608, ../sass/screen.scss */
+/* line 628, ../sass/screen.scss */
 .container-artist-big {
   height: 100%;
 }
-/* line 612, ../sass/screen.scss */
+/* line 632, ../sass/screen.scss */
 .container-artist-big .container-informations-artist {
   height: 100%;
 }
-/* line 616, ../sass/screen.scss */
+/* line 636, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .container-image-artist {
   width: 200px;
   height: calc(100% - 125px);
   margin: 75px 50px 50px;
 }
-/* line 621, ../sass/screen.scss */
+/* line 641, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .container-image-artist .image-artist {
   left: -50px;
   bottom: -50px;
   top: -75px;
   background-position-x: -550px;
 }
-/* line 630, ../sass/screen.scss */
+/* line 650, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .container-informations {
   height: auto;
   margin-top: 75px;
   width: calc(100% - 300px);
 }
-/* line 636, ../sass/screen.scss */
+/* line 656, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .container-informations .name-artist {
   font-size: 36px !important;
 }
-/* line 641, ../sass/screen.scss */
+/* line 661, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .gradient-image-artist {
   background: linear-gradient(to right, rgba(36, 34, 31, 0), #24221f 550px, #24221f);
 }
-/* line 645, ../sass/screen.scss */
+/* line 665, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .image-artist {
   background-position-x: -550px !important;
 }
 
-/* line 651, ../sass/screen.scss */
+/* line 671, ../sass/screen.scss */
 .small-title {
   font-size: 18px;
   text-transform: uppercase;
@@ -680,7 +696,7 @@ a:hover {
   float: left;
 }
 
-/* line 662, ../sass/screen.scss */
+/* line 682, ../sass/screen.scss */
 .box-border-white {
   position: absolute;
   left: 0;

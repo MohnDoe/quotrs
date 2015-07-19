@@ -1,7 +1,7 @@
 /**
  * Created by Personne on 24/06/2015.
  */
-var app = angular.module('app', ['ui.bootstrap']);
+var app = angular.module('appQuotrs', ['ui.bootstrap']);
 
 app.config(function($httpProvider) {
   $httpProvider.defaults.transformRequest = function(data) {
@@ -12,11 +12,42 @@ app.config(function($httpProvider) {
   };
   $httpProvider.defaults.headers.post['Content-Type'] = '' + 'application/x-www-form-urlencoded; charset=UTF-8';
 });
+app.directive('contenteditable', function() {
+    return {
+        restrict: 'A', // only activate on element attribute
+        require: '?ngModel', // get a hold of NgModelController
+        link: function(scope, element, attrs, ngModel) {
+            if(!ngModel) return; // do nothing if no ng-model
 
-app.controller('formController', function($scope, $http) {
+            // Specify how UI should be updated
+            ngModel.$render = function() {
+                element.html(ngModel.$viewValue || '');
+            };
+
+            // Listen for change events to enable binding
+            element.on('blur keyup change', function() {
+                scope.$apply(read);
+            });
+            read(); // initialize
+
+            // Write data to the model
+            function read() {
+                var html = element.html();
+                // When we clear the content editable the browser leaves a <br> behind
+                // If strip-br attribute is provided then we strip this out
+                if( attrs.stripBr && html == '<br>' ) {
+                    html = '';
+                }
+                ngModel.$setViewValue(html);
+            }
+        }
+    }
+});
+
+app.controller('formQuoteController', function($scope, $http) {
 
   $scope.quote = {
-    content: [],
+    content: "",
     words: 0,
     song: {
       title: "",
@@ -44,7 +75,7 @@ app.controller('formController', function($scope, $http) {
   };
   $scope.autocompleteArtists = {};
 
-  $scope.create = function(event) {
+  $scope.createQuote = function(event) {
     event.preventDefault();
     $http.post('./api/quotes/create', $scope.quote).
     success(function(data, status, headers, config) {
@@ -60,6 +91,7 @@ app.controller('formController', function($scope, $http) {
 
   $scope.getArtists = function(val) {
     var artists = [];
+      console.log(val);
     return $http.get('./api/artists/' + val).then(
       function(res) {
         angular.forEach(res.data.artists, function(artist) {

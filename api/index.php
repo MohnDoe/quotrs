@@ -188,11 +188,8 @@
          * THE QUOTE
          */
         $NewQuote = new Quote();
-        $content_new_quote = "";
-        for ($i=0; $i < count($allParamsPOST['content']) ; $i++) {
-          $line = htmlspecialchars($allParamsPOST['content'][$i]);
-          $content_new_quote .= $line."\\n";
-        }
+        $content_new_quote = htmlspecialchars(str_replace("<br>", "\\n",$allParamsPOST['content']));
+
         $NewQuote->content = $content_new_quote;
         $NewQuote->id_artist = $idArtistQuote;
         $NewQuote->id_song = $idSongQuote;

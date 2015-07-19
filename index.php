@@ -20,6 +20,16 @@
 
     $app->array_meta_page = $array_meta_page;
 
+    $app->get('/quotes/create', function() use ($app){
+        $app->render(
+            'quotes/base/index.php',
+            array(
+                'mode' => 'create',
+                'app' => $app
+            )
+        );
+    })->name('createQuoteUrl');
+
     $app->get('/quotes/:hashID', function($hashID) use($app){
         $Quote = new Quote($hashID, array(
             'init_artist' => true,
@@ -29,12 +39,15 @@
             //$app->array_meta_page['titlePage'] .= " - ".$Quote->Artist->name;
             $app->render(
                 'quotes/base/index.php',
-                array( 'Quote' => $Quote,
-                    'app' => $app)
-                );
+                array(
+                    'Quote' => $Quote,
+                    'mode' => 'quote',
+                    'app' => $app
+                )
+            );
         }
+    })->name('quoteUrl');
 
-    });
     $app->get('/artists/:idArtist', function($idArtist) use($app){
         $Artist = new Artist($idArtist);
         if($Artist->is_valid){

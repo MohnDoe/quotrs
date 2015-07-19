@@ -132,11 +132,12 @@ a
       box-decoration-break: clone;
       cursor: default;
       clear: both;
+      /*
       &:after{
         content: "";
         display: table;
         clear: both;
-      }
+      }*/
     }
     .line-quote
   {
@@ -166,6 +167,25 @@ a
 
 }
 
+
+form.form-create-quote
+{
+  width : 100%;
+  display: block;
+  height : 100%;
+}
+
+.container-quote-create
+{
+  span
+  {
+    outline: none !important;
+    &:focus, &:active
+    {
+      outline: none !important;
+    }
+  }
+}
 .container-informations-quote
 {
   position : relative;

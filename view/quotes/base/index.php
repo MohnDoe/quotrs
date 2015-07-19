@@ -108,16 +108,52 @@
 -->*/
 ?>
 
-<section id="container-quote" class="container-quote">
-    <div id="the-quote" class="the-quote">
-        <span class="line-quote"><?= str_replace("\\n", "<br/>", $Quote->content);?></span>
-        <div class="author-quote"><?= $Quote->Artist->name;?></div>
-    </div>
-    <div class="gradient-background-quote"></div>
-    <div class="background-quote" style="background-image: url('<?= $Quote->url_image;?>')"></div>
-</section>
+<?php if($mode == "create"):?>
+<form action = "./api/quotes/create" ng-submit="createQuote($event)" method="POST" ng-controller="formQuoteController" class="form-create-quote">
+<?php endif;?>
+    <section id="container-quote" class="container-quote container-quote-<?= $mode; ?>">
+            <div id="the-quote" class="the-quote">
+            <span class="line-quote line-quote-<?= $mode; ?>"
+                  contenteditable="<?= ($mode == "create" ? "true" : "false"); ?>"
+                  ng-model="quote.content"> <?php
+                    if($mode == "quote"){
+                        echo str_replace("\\n", "<br/>", $Quote->content);
+                    }elseif($mode == "create")
+                    {
+                        echo "Rédigez votre citation..";
+                    }
+                ?></span>
+            <div style="clear: both; display: table;"></div>
+            <span class="author-quote author-quote-<?= $mode; ?>"
+                 contenteditable="<?= ($mode == "create" ? "true" : "false"); ?>"
+                 typeahead-on-select='onSelectArtistSong($item, $model, $label)'
+                 typeahead="artist.name for artist in getArtists($viewValue)"
+                 ng-model="quote.song.artist.name"><?php
+                    if($mode == "quote"){
+                        echo $Quote->Artist->name;
+                    }else if($mode == "create"){
+                        echo "Nom artiste..";
+                    }
+                ?></span>
+        </div>
+        <div class="gradient-background-quote"></div>
+
+        <?php
+            if($mode == "quote"){
+                $url_background_quote = $Quote->url_image;
+            }else if($mode == "create"){
+                $url_background_quote = "";
+            }
+        ?>
+        <div class="background-quote" style="background-image: url('<?= $url_background_quote;?>')"></div>
+    </section>
+<?php if($mode == "create"):?>
+    <input type = "button" class="btn btn-primary btn-submit" ng-click="createQuote($event)" value="Poster la citation" />
+</form>
+<?php endif;?>
 <section id="container-informations-quote" class="container-informations-quote">
     <div class="container-informations-quote-left">
+        <?php if($mode == 'quote'):?>
         <div class="container-share-buttons-quote">
             <ul class="share-buttons">
                 <li class="share-button share-facebook"></li>
@@ -125,6 +161,9 @@
                 <li class="share-button share-link"></li>
             </ul>
         </div>
+        <?php endif;?>
+
+        <?php if($mode == 'quote'):?>
         <div class="section-comments">
             <h3 class="small-title">12 commentaires</h3>
             <div class="container-comments">
@@ -143,27 +182,31 @@
                 </div>
             </div>
         </div>
+        <?php endif;?>
+
     </div>
     <div class="container-informations-quote-right">
-        <?php if($Quote->Song->is_valid):?>
+        <?php if($mode == 'quote'):?>
+            <?php if($Quote->Song->is_valid):?>
 
+            <?php endif;?>
+            <?php
+                if($Quote->Artist->is_valid){
+                    $app->render('artists/container/container-artist.php',
+                                 array(
+                                     'Artist' => $Quote->Artist,
+                                     'mode' => 'info'
+                                 ));
+                }
+
+                if($Quote->Song->Album->is_valid){
+                    $app->render('albums/container/container-album.php',
+                                 array(
+                                     'Album' => $Quote->Song->Album,
+                                     'mode' => 'info'
+                                 ));
+                }
+            ?>
         <?php endif;?>
-        <?php
-            if($Quote->Artist->is_valid){
-                $app->render('artists/container/container-artist.php',
-                             array(
-                                 'Artist' => $Quote->Artist,
-                                 'mode' => 'info'
-                             ));
-            }
-
-            if($Quote->Song->Album->is_valid){
-                $app->render('albums/container/container-album.php',
-                             array(
-                                 'Album' => $Quote->Song->Album,
-                                 'mode' => 'info'
-                             ));
-            }
-        ?>
     </div>
 </section>
