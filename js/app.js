@@ -44,7 +44,7 @@ app.directive('contenteditable', function() {
     }
 });
 
-app.controller('formQuoteController', function($scope, $http) {
+app.controller('formQuoteController', function($scope, $http, $sce) {
 
   $scope.quote = {
     content: "",
@@ -82,6 +82,7 @@ app.controller('formQuoteController', function($scope, $http) {
       // this callback will be called asynchronously
       // when the response is available
       console.log(data);
+        window.location = data['url_quote'];
     }).
     error(function(data, status, headers, config) {
       // called asynchronously if an error occurs
@@ -103,7 +104,7 @@ app.controller('formQuoteController', function($scope, $http) {
   $scope.getSongs = function(val) {
     var songs = [];
     var request = './api/songs/'+val;
-    if(false && $scope.quote.song.artist.existingID != -1){
+    if($scope.quote.song.artist.existingID != -1){
       var request = './api/artists/'+$scope.quote.song.artist.existingID+"/songs/"+val
     }
     return $http.get(request).then(

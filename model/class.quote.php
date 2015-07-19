@@ -240,7 +240,7 @@
 
             $HASHIDS = new Hashids\Hashids(SALT_HASHIDS, 12, 'abcdefghij1234567890');
             $this->hashid = $HASHIDS->encode($id_new_quote);
-            var_dump($this->hashid);
+            //var_dump($this->hashid);
             $this->saveHashID();
 
             return (int)$id_new_quote;

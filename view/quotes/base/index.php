@@ -127,13 +127,32 @@
                  typeahead-on-select='onSelectArtistSong($item, $model, $label)'
                  typeahead="artist.name for artist in getArtists($viewValue)"
                  ng-model="quote.song.artist.name"
-                 placeholder="Nom de l'artiste..."><?php
+                 placeholder="— Nom de l'artiste..."><?php
                     if($mode == "quote"){
                         echo $Quote->Artist->name;
                     }
                 ?></span>
                 <div style="clear: both; display: table;"></div>
             </div>
+        <?php if($mode == "create"):?>
+        <div class="song-form-quote">
+            <span class="info-text">Veuillez préciser le titre du morceau dans lequel cette citation apparaît.</span>
+            <br />
+            <input type = "text"
+               required
+               typeahead-on-select='onSelectSong($item, $model, $label)'
+               typeahead="song.title for song in getSongs($viewValue)"
+               name="title-song-quote"
+               placeholder="Titre du morceau"
+               ng-model="quote.song.title"/>
+            <input type = "text"
+                   name="youtube-song-quote"
+                   placeholder="Lien YouTube"
+                   ng-model="quote.song.url_youtube"/>
+        </div>
+        <input type = "button" class="btn btn-primary btn-submit btn-submit-quote" ng-click="createQuote($event)" value="Poster la citation" />
+        <span class="info-text">Vous pourrez ajouter l'album ainsi que d'autres détails plus tard.</span>
+        <?php endif;?>
         <div class="gradient-background-quote"></div>
 
         <?php
@@ -146,7 +165,6 @@
         <div class="background-quote" style="background-image: url('<?= $url_background_quote;?>')"></div>
     </section>
 <?php if($mode == "create"):?>
-    <input type = "button" class="btn btn-primary btn-submit" ng-click="createQuote($event)" value="Poster la citation" />
 </form>
 <?php endif;?>
 <section id="container-informations-quote" class="container-informations-quote">

@@ -13,3 +13,15 @@
         <img src = "./img/logo.png" alt = "Quotrs."/>
     </a>
 </div>
+<div id="links-top">
+    <span class="link">
+        <a href = "./login">
+            Se connecter
+        </a>
+    </span>
+    <span class="link link-primary">
+        <a href = "<?= $app->urlFor ("createQuoteUrl"); ?>">
+            Poster une citation
+        </a>
+    </span>
+</div>

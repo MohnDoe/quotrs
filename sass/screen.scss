@@ -4,7 +4,7 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 @import "compass";
 @import "compass/reset";
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,500,600,300);
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 
 $color-black-base : #24221f;
@@ -183,9 +183,8 @@ form.form-create-quote
     font-weight: normal;
     width : 200px;
     padding: 5px 10px;
-    position : absolute;
-    right : 0;
-    top : 100%;
+    position : relative;
+    float : left;
     clear : both;
 
     li
@@ -206,6 +205,64 @@ form.form-create-quote
 
     }
   }
+  .song-form-quote
+  {
+    margin-top: 30px;
+
+    .container-player-youtube
+    {
+      width : 640px;
+      height : auto;
+      position : relative;
+      margin-bottom: 10px;
+    }
+    .dropdown-menu
+    {
+      position: relative;
+      width : 100%;
+    }
+  }
+
+  input
+  {
+    z-index : 15;
+  }
+
+  input[type="text"]
+  {
+    background-color: lighten($color-black-base, 5%);
+    border: 1px solid darken(white, 50%);
+    line-height: 30px;
+    color: darken(white, 30%);
+    padding: 0 10px;
+    font-size: 14px;
+    width : 100%;
+    position : relative;
+    float : left;
+    margin: 5px 0;
+    font-family: "Open Sans", sans-serif;
+    outline-color: $color-yellow-base;
+  }
+
+  .btn-submit-quote
+  {
+    margin-top: 20px;
+    z-index : 5;
+
+  }
+  .song-form-quote
+  {
+    z-index : 10;
+  }
+  .info-text
+  {
+    z-index : 5;
+    font-size: 10px;
+    margin-top: 5px;
+    color: transparentize(white, .7);
+    font-weight: normal;
+    font-family: "Open Sans", sans-serif;
+  }
 }
 
 .container-quote-create
@@ -216,11 +273,20 @@ form.form-create-quote
   }
   span
   {
-    outline: none !important;
-    &:focus, &:active
+    &.line-quote-create
     {
-      outline: none !important;
+      &:hover, &:active,&:focus
+      {
+        outline : lighten($color-yellow-base, 10%) solid medium;
+      }
     }
+    &.author-quote
+    {
+      &:hover, &:active,&:focus{
+        outline : lighten($color-black-base, 10%) solid medium;
+      }
+    }
+
   }
 }
 .container-informations-quote
@@ -725,4 +791,82 @@ form.form-create-quote
   top : 0;
   border : 1px solid rgba(255, 255, 255, .1);
   z-index : 9;
+}
+
+#links-top
+{
+  position: absolute;
+  top : 10px;
+  right : 10px;
+  z-index : 20;
+  .link
+  {
+    font-family: "Open Sans", sans-serif;
+    color: transparentize(white, .05);
+    line-height: 25px;
+    text-transform: uppercase;
+    font-weight: normal;
+    cursor: pointer;
+    position : relative;
+    float : left;
+    margin-left: 30px;
+    font-size: 12px;
+
+    &.link-primary
+    {
+      padding: 0 5px;
+      border: 1px solid $color-yellow-base;
+      color: $color-yellow-base;
+      font-weight: bold;
+
+      &:hover
+      {
+        background-color: $color-yellow-base;
+        color: $color-black-base;
+      }
+    }
+  }
+}
+
+.btn
+{
+  width : auto;
+  height : auto;
+  line-height : 1.5em;
+  font-size: 14px;
+  background: transparent;
+  //@include background(linear-gradient(to bottom, white, darken(white, 10%)));
+  border: 1px solid darken(white, 10%);
+  color: white;
+  font-weight: bold;
+  padding : 5px 10px;
+  text-transform: uppercase;
+  box-shadow: 0 1px 2px transparentize(black, .9);
+  cursor: pointer;
+  outline: none;
+  transition: .25s;
+
+  &:active{
+    outline: none;
+  }
+
+  &:disabled
+  {
+    color: transparentize(white, .5);
+    border-color: transparentize(white, .5);
+  }
+  &.btn-primary
+  {
+    //@include background(linear-gradient(to bottom, $color-yellow-base, darken($color-yellow-base, 5%)));
+
+    border-color: transparentize($color-yellow-base, .1);
+    color: transparentize($color-yellow-base, .1);
+
+    &:hover
+    {
+      //@include background(linear-gradient(to bottom, $color-yellow-base, lighten($color-yellow-base, 1%)));
+      border-color: $color-yellow-base;
+      color: $color-yellow-base;
+    }
+  }
 }

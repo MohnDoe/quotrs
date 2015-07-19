@@ -72,7 +72,7 @@
 
 <?php
     $app->render('assets/head-html.php', $app->array_meta_page);
-    $app->render('base/top.php');
+    $app->render('base/top.php', array('app'=>$app));
     $app->run();
     $app->render('assets/footer-html.php');
 

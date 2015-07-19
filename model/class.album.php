@@ -144,7 +144,7 @@
 
             $key_album_cover = ALBUMS_COVERS_FOLDER . '/' . $this->id . '/'.$dateVersion.'/original_cover.jpg';
 
-            var_dump($key_album_cover);
+            //var_dump($key_album_cover);
             // Upload to S3
             $_AWS_S3_CLIENT = Aws\S3\S3Client::factory (
             [

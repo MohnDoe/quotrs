@@ -85,7 +85,7 @@
      */
     $app->post('/quotes/create', function() use ($app){
         $allParamsPOST = $app->request->post();
-        var_dump($allParamsPOST);
+        //var_dump($allParamsPOST);
 
         $idArtistQuote = -1;
         $idAlbumSongQuote = -1;
@@ -101,7 +101,7 @@
             $NewArtist->name = $name_new_artist;
             $idNewArtist = $NewArtist->addArtist();
             $idArtistQuote = $idNewArtist;
-            var_dump("New artist created : #".$idArtistQuote." / ".$NewArtist->name);
+            //var_dump("New artist created : #".$idArtistQuote." / ".$NewArtist->name);
         }
         else{
             //not a new artist
@@ -109,7 +109,7 @@
             $ArtistQuote = new Artist($allParamsPOST['song']['artist']['existingID']);
             if($ArtistQuote->is_valid){
                 $idArtistQuote = $ArtistQuote->id;
-                var_dump("Already existing artist : #".$idArtistQuote." / ".$ArtistQuote->name);
+                //var_dump("Already existing artist : #".$idArtistQuote." / ".$ArtistQuote->name);
 
             }
         }
@@ -164,7 +164,7 @@
             $title_new_song = htmlspecialchars($allParamsPOST['song']['title']);
             preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $allParamsPOST['song']['url_youtube'], $parsedYoutubeSongURL);
             $NewSong = new Song();
-            var_dump($parsedYoutubeSongURL);
+            //var_dump($parsedYoutubeSongURL);
             $NewSong->title = $title_new_song;
             $NewSong->id_artist = $idArtistQuote;
             $NewSong->id_album = $idAlbumSongQuote;
@@ -173,7 +173,7 @@
             $idNewSong = $NewSong->addSong();
 
             $idSongQuote = $idNewSong;
-            var_dump("New song created : #".$idSongQuote." / ".$NewSong->title);
+            //var_dump("New song created : #".$idSongQuote." / ".$NewSong->title);
 
         }
         else{
@@ -182,7 +182,7 @@
             $SongQuote = new Song($allParamsPOST['song']['existingID']);
             if($SongQuote->is_valid){
                 $idSongQuote = $SongQuote->id;
-                var_dump("Already existing song : #".$idSongQuote." / ".$SongQuote->title);
+                //var_dump("Already existing song : #".$idSongQuote." / ".$SongQuote->title);
 
             }
         }
@@ -190,7 +190,7 @@
         /*
          * THE QUOTE
          */
-        $NewQuote = new Quote();
+        $NewQuote = new Quote(git);
         $content_new_quote = htmlspecialchars(str_replace("<br>", "\\n",$allParamsPOST['content']));
 
         $NewQuote->content = $content_new_quote;
@@ -199,7 +199,10 @@
 
         $idNewQuote = $NewQuote->addQuote();
 
-        var_dump("New quote created : #".$idNewQuote." / HashID : ".$NewQuote->hashid);
+        $response_json = [];
+        $response_json['url_quote'] = "./quotes/".$NewQuote->hashid;
+        echo json_encode($response_json);
+        //var_dump("New quote created : #".$idNewQuote." / HashID : ".$NewQuote->hashid);
 
 
     })->name("createQuote");
