@@ -183,8 +183,9 @@ form.form-create-quote
     font-weight: normal;
     width : 200px;
     padding: 5px 10px;
-    position: relative;
-    float : right;
+    position : absolute;
+    right : 0;
+    top : 100%;
     clear : both;
 
     li
