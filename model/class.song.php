@@ -30,6 +30,11 @@
             if (!is_null ($idSong)) {
                 $this->id = $idSong;
                 $this->init ();
+
+                if($idSong == -1){
+                    $this->title = "Morceau inconnu";
+                    $this->is_valid = false;
+                }
             }
 
             $this->initParams = $initParams;

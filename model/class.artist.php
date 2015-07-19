@@ -26,6 +26,10 @@
                 $this->id = $idArtist;
                 /* INITIALISATION */
                 $this->init ();
+                if($idArtist == -1){
+                    $this->name = "Artiste inconnu(e)";
+                    $this->is_valid = false;
+                }
             }
         }
 

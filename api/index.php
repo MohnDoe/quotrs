@@ -116,7 +116,10 @@
 
         /*
          * QUOTE'S SONG'S ALBUM
+         * TODO: in the future;
          */
+        /*
+
         if($allParamsPOST['song']['album']['albumIsNew'] == "true"){
             // new album for the quote's song
             // adding new album
@@ -152,7 +155,7 @@
 
             }
         }
-
+        */
         /*
          * QUOTE'S SONG
          */

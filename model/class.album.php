@@ -34,6 +34,10 @@
             if (!is_null ($idAlbum) AND $idAlbum != 0 AND $idAlbum != '0') {
                 $this->id = $idAlbum;
                 $this->init ();
+                if($idAlbum == -1){
+                    $this->title = "Album inconnu";
+                    $this->is_valid = false;
+                }
             }
         }
 
