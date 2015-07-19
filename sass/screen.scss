@@ -173,10 +173,46 @@ form.form-create-quote
   width : 100%;
   display: block;
   height : 100%;
+
+  .dropdown-menu
+  {
+    background-color: #F5F5F5;
+    color: $color-black-base;
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: normal;
+    width : 200px;
+    padding: 5px 10px;
+    position: relative;
+    float : right;
+    clear : both;
+
+    li
+    {
+      width : 100%;
+      line-height: 30px;
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      padding: 0 5px;
+      &.active
+      {
+        background-color: $color-black-base;
+        color: white;
+      }
+      &:last-child
+      {
+        border : none;
+      }
+
+    }
+  }
 }
 
 .container-quote-create
 {
+  [contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    display: inherit; /* For Firefox */
+  }
   span
   {
     outline: none !important;

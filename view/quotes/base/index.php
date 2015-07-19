@@ -115,12 +115,10 @@
             <div id="the-quote" class="the-quote">
             <span class="line-quote line-quote-<?= $mode; ?>"
                   contenteditable="<?= ($mode == "create" ? "true" : "false"); ?>"
-                  ng-model="quote.content"> <?php
+                  ng-model="quote.content"
+                  placeholder="Rédigez votre citation.."><?php
                     if($mode == "quote"){
                         echo str_replace("\\n", "<br/>", $Quote->content);
-                    }elseif($mode == "create")
-                    {
-                        echo "Rédigez votre citation..";
                     }
                 ?></span>
             <div style="clear: both; display: table;"></div>
@@ -128,14 +126,14 @@
                  contenteditable="<?= ($mode == "create" ? "true" : "false"); ?>"
                  typeahead-on-select='onSelectArtistSong($item, $model, $label)'
                  typeahead="artist.name for artist in getArtists($viewValue)"
-                 ng-model="quote.song.artist.name"><?php
+                 ng-model="quote.song.artist.name"
+                 placeholder="Nom de l'artiste..."><?php
                     if($mode == "quote"){
                         echo $Quote->Artist->name;
-                    }else if($mode == "create"){
-                        echo "Nom artiste..";
                     }
                 ?></span>
-        </div>
+                <div style="clear: both; display: table;"></div>
+            </div>
         <div class="gradient-background-quote"></div>
 
         <?php
