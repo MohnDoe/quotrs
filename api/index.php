@@ -190,7 +190,7 @@
         /*
          * THE QUOTE
          */
-        $NewQuote = new Quote(git);
+        $NewQuote = new Quote();
         $content_new_quote = htmlspecialchars(str_replace("<br>", "\\n",$allParamsPOST['content']));
 
         $NewQuote->content = $content_new_quote;
