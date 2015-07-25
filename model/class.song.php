@@ -1,6 +1,7 @@
 <?php
     include_once 'core.php';
 
+
     Class Song
     {
         public $id;
@@ -12,6 +13,8 @@
 
         public $id_album;
         public $Album;
+
+        public $url_rg;
 
         public $initParams = [
             'init_artist' => false,
@@ -61,13 +64,13 @@
 
                 $this->id_album = $data['id_album'];
                 if($this->initParams['init_album']){
-                    $this->Album = new Album($this->id_album, array(
+                    $this->Album = new Album($this->id_album, [
                         'init_artist' => $this->initParams['init_album_artist']
-                    ));
+                    ]);
                 }
             }
         }
-        public function addSong () {
+        public function addSong ($comeFromRG = true) {
         /*
             $NewSong->title = $title_new_song;
             $NewSong->id_artist = $idArtistQuote;
@@ -75,22 +78,38 @@
             $NewSong->urlYoutube = $parsedYoutubeSongURL['v'];
 
          */
-            $this->title = htmlspecialchars($this->title);
-            $req = "INSERT INTO ".DB::$tableSongs."
+            if($comeFromRG){
+                $this->title = htmlspecialchars($this->title);
+                $req = "INSERT INTO ".DB::$tableSongs."
+                        (id_song, title_song, url_other_song, id_artist, id_album)
+                        VALUES (:id_song,:title_song,:url_other_song,:id_artist,:id_album)";
+
+                $query = DB::$db->prepare($req);
+                $query->bindParam(':id_song', $this->id);
+                $query->bindParam(':title_song', $this->title);
+                $query->bindParam(':url_other_song', $this->url_rg);
+                $query->bindParam(':id_artist', $this->id_artist);
+                $query->bindParam(':id_album', $this->id_album);
+
+                $query->execute();
+            }else{
+                $this->title = htmlspecialchars($this->title);
+                $req = "INSERT INTO ".DB::$tableSongs."
                         (title_song, url_youtube_song, id_artist, id_album)
                         VALUES (:title_song, :url_yt_song,:id_artist,:id_album)";
 
-            $query = DB::$db->prepare($req);
-            $query->bindParam(':title_song', $this->title);
-            $query->bindParam(':url_yt_song', $this->urlYoutube);
-            $query->bindParam(':id_artist', $this->id_artist);
-            $query->bindParam(':id_album', $this->id_album);
+                $query = DB::$db->prepare($req);
+                $query->bindParam(':title_song', $this->title);
+                $query->bindParam(':url_yt_song', $this->urlYoutube);
+                $query->bindParam(':id_artist', $this->id_artist);
+                $query->bindParam(':id_album', $this->id_album);
 
-            $query->execute();
+                $query->execute();
 
-            $id_new_song = DB::$db->lastInsertId();
+                $id_new_song = DB::$db->lastInsertId();
 
-            return (int)$id_new_song;
+                return (int)$id_new_song;
+            }
         }
         static function searchSongs($search, $idArtist = null){
           //TODO : secure that
@@ -108,7 +127,7 @@
             $query->bindParam(':idArtist', $idArtist);
           }
           $query->execute();
-          $result = array();
+          $result = [];
           while($data = $query->fetch()){
             $Song = new Song($data['id_song'], ['init_artist' => true, 'init_album' => true]);
 

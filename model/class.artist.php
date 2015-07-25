@@ -11,6 +11,7 @@
         public $urlTwitter;
         public $urlSite;
         public $urlOther;
+        public $url_rg;
         public $delimiter_url_image = "?";
 
         public $is_valid = false;
@@ -42,6 +43,7 @@
                 $this->description = $data['description_artist'];
 
                 $this->url_image = $data['url_picture_artist'];
+                /*
                 if($data['url_picture_artist'] != "" && $data['url_picture_artist'] != null){
                     //une image existe dans la base de donnée
                     $url_image_array = explode($this->delimiter_url_image, $data['url_picture_artist']);
@@ -56,6 +58,7 @@
                 }else{
                     $this->url_image = $this->getURLPicture();
                 }
+                */
                 $this->urlFacebook = $data['url_facebook_artist'];
                 $this->urlTwitter = $data['url_twitter_artist'];
                 $this->urlSite = $data['url_site_artist'];
@@ -125,21 +128,36 @@
         /**
          * @return int
          */
-        public function addArtist () {
-            $this->name = htmlspecialchars($this->name);
-            $req = "INSERT INTO ".DB::$tableArtists."
+        public function addArtist ($comeFromRG = true) {
+            if($comeFromRG){
+                $req = "INSERT INTO ".DB::$tableArtists."
+                        (id_artist, nom_artist, url_picture_artist, url_other_artist)
+                        VALUES
+                        (:id_artist, :nom_artist, :url_picture_artist, :url_other_artist)";
+
+                $query = DB::$db->prepare($req);
+                $query->bindParam(':nom_artist', $this->name);
+                $query->bindParam(':id_artist', $this->id);
+                $query->bindParam(':url_picture_artist', $this->url_image);
+                $query->bindParam(':url_other_artist', $this->url_rg);
+
+                $query->execute();
+            }else{
+                $this->name = htmlspecialchars($this->name);
+                $req = "INSERT INTO ".DB::$tableArtists."
                         (nom_artist)
                         VALUES
                         (:nom_artist)";
 
-            $query = DB::$db->prepare($req);
-            $query->bindParam(':nom_artist', $this->name);
+                $query = DB::$db->prepare($req);
+                $query->bindParam(':nom_artist', $this->name);
 
-            $query->execute();
+                $query->execute();
 
-            $id_new_artist = DB::$db->lastInsertId();
+                $id_new_artist = DB::$db->lastInsertId();
 
-            return (int)$id_new_artist;
+                return (int)$id_new_artist;
+            }
         }
 
         static function searchArtists($search){

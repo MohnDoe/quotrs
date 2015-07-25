@@ -1,31 +1,33 @@
 /**
  * Created by Personne on 24/06/2015.
  */
-var app = angular.module('appQuotrs', ['ui.bootstrap']);
+//$(document).ready(function() {
+var app = angular.module('appQuotrs', ['ngRoute', 'ui.bootstrap']);
 
-app.config(function($httpProvider) {
-  $httpProvider.defaults.transformRequest = function(data) {
-    if (data === undefined) {
-      return data;
-    }
-    return $.param(data);
-  };
-  $httpProvider.defaults.headers.post['Content-Type'] = '' + 'application/x-www-form-urlencoded; charset=UTF-8';
+app.config(function ($httpProvider) {
+    $httpProvider.defaults.transformRequest = function (data) {
+        if (data === undefined) {
+            return data;
+        }
+        return $.param(data);
+    };
+    $httpProvider.defaults.headers.post['Content-Type'] = '' + 'application/x-www-form-urlencoded; charset=UTF-8';
 });
-app.directive('contenteditable', function() {
+
+app.directive('contenteditable', function () {
     return {
         restrict: 'A', // only activate on element attribute
         require: '?ngModel', // get a hold of NgModelController
-        link: function(scope, element, attrs, ngModel) {
-            if(!ngModel) return; // do nothing if no ng-model
+        link: function (scope, element, attrs, ngModel) {
+            if (!ngModel) return; // do nothing if no ng-model
 
             // Specify how UI should be updated
-            ngModel.$render = function() {
+            ngModel.$render = function () {
                 element.html(ngModel.$viewValue || '');
             };
 
             // Listen for change events to enable binding
-            element.on('blur keyup change', function() {
+            element.on('blur keyup change', function () {
                 scope.$apply(read);
             });
             read(); // initialize
@@ -35,7 +37,7 @@ app.directive('contenteditable', function() {
                 var html = element.html();
                 // When we clear the content editable the browser leaves a <br> behind
                 // If strip-br attribute is provided then we strip this out
-                if( attrs.stripBr && html == '<br>' ) {
+                if (attrs.stripBr && html == '<br>') {
                     html = '';
                 }
                 ngModel.$setViewValue(html);
@@ -44,131 +46,157 @@ app.directive('contenteditable', function() {
     }
 });
 
-app.controller('formQuoteController', function($scope, $http, $sce) {
+app.controller('formQuoteController', function ($scope, $http) {
 
-  $scope.quote = {
-    content: "",
-    words: 0,
-    song: {
-      title: "",
-      url_youtube: "",
-      songIsNew: true,
-      existingID: -1,
-      album: {
-        title: "",
-        albumIsNew: true,
-        existingID: -1,
-        url_cover: "",
-        artist: {
-          name: "",
-          artistIsSameAsSong: false,
-          artistIsNew: true,
-          existingID: -1
+    $scope.quote = {
+        content: "",
+        words: 0,
+        url_background: "",
+        song: {
+            title: "",
+            id_rg: -1,
+            ur_rg: "",
+            url_img_rg: "",
+            artist: {
+                name: "",
+                id_rg: -1,
+                url_rg: "",
+                url_img_rg: ""
+            }
         }
-      },
-      artist: {
-        name: "",
-        artistIsNew: true,
-        existingID: -1
-      }
-    }
-  };
-  $scope.autocompleteArtists = {};
+    };
+    $scope.autocompleteArtists = {};
 
-  $scope.createQuote = function(event) {
-    event.preventDefault();
-    $http.post('./api/quotes/create', $scope.quote).
-    success(function(data, status, headers, config) {
-      // this callback will be called asynchronously
-      // when the response is available
-      console.log(data);
-        window.location = data['url_quote'];
-    }).
-    error(function(data, status, headers, config) {
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
-    });
-  };
+    $scope.createQuote = function (event) {
+        console.log('posting quote...');
+        event.preventDefault();
+        $http.post('./api/quotes/create', $scope.quote).
+            success(function (data, status, headers, config) {
+                // this callback will be called asynchronously
+                // when the response is available
+                console.log(data);
+            }).
+            error(function (data, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+    };
 
-  $scope.getArtists = function(val) {
-    var artists = [];
-      console.log(val);
-    return $http.get('./api/artists/' + val).then(
-      function(res) {
-        angular.forEach(res.data.artists, function(artist) {
-          artists.push(artist);
-        });
-        return artists;
-      });
-  };
-  $scope.getSongs = function(val) {
-    var songs = [];
-    var request = './api/songs/'+val;
-    if($scope.quote.song.artist.existingID != -1){
-      var request = './api/artists/'+$scope.quote.song.artist.existingID+"/songs/"+val
-    }
-    return $http.get(request).then(
-      function(res) {
-        $scope.autocompleteArtists = res.data.artists;
-        angular.forEach(res.data.songs, function(song) {
-          songs.push(song);
-        });
-        return songs;
-      });
-  };
+    $scope.getArtists = function (val) {
+        if (typeof(val) != undefined) {
+            return $http.get('api/artists/' + val).then(
+                function (res) {
+                    var artists = [];
+                    angular.forEach(res.data.artists, function (artist) {
+                        artists.push(artist)
+                    })
+                    return artists;
+                }
+            )
+        } else {
+            return [];
+        }
+    };
+    $scope.getSongs = function (val) {
+        var request = './api/songs/' + val;
+        if ($scope.quote.song.artist.existingID != -1) {
+            request = './api/artists/' + $scope.quote.song.artist.existingID + "/songs/" + val
+        }
+        return $http.get(request).then(
+            function (res) {
+                var songs = [];
+                $scope.autocompleteArtists = res.data.artists;
+                angular.forEach(res.data.songs, function (song) {
+                    songs.push(song);
+                });
+                return songs;
+            });
+    };
 
-  $scope.onSelectArtistSong = function($item, $model, $label) {
-    $scope.quote.song.artist = {
-      name: $item.name,
-      existingID: $item.id,
-      artistIsNew: false
-    }
+    $scope.onSelectArtistSong = function ($item, $model, $label) {
+        $scope.quote.song.artist = {
+            name: $item.name,
+            existingID: $item.id,
+            artistIsNew: false
+        }
 
-    // ALBUM
-    $scope.quote.song.album.artist = {
-      name: $item.name,
-      existingID: $item.id,
-      artistIsNew: false,
-      artistIsSameAsSong: true
-    }
-  };
-  $scope.onSelectSong = function($item, $model, $label) {
-    console.log($item);
-    $scope.quote.song.title = $item.title;
-    $scope.quote.song.url_youtube = $item.url_youtube;
-    $scope.quote.song.songIsNew = false;
-    $scope.quote.song.existingID = $item.id;
+        // ALBUM
+        $scope.quote.song.album.artist = {
+            name: $item.name,
+            existingID: $item.id,
+            artistIsNew: false,
+            artistIsSameAsSong: true
+        }
+    };
 
-    $scope.quote.song.artist.name = $item.Artist.name;
-    $scope.quote.song.artist.existingID = $item.Artist.id;
-    $scope.quote.song.artist.artistIsNew = false;
+    $scope.onSelectSong = function ($item, $model, $label) {
+        //console.log($item);
+        $scope.quote.song.title = $item.title;
+        $scope.quote.song.url_youtube = $item.url_youtube;
+        $scope.quote.song.songIsNew = false;
+        $scope.quote.song.existingID = $item.id;
 
-    $scope.quote.song.album.title = $item.Album.title;
-    $scope.quote.song.album.existingID = $item.Album.id;
-    $scope.quote.song.album.url_cover = $item.Album.url_cover;
-    $scope.quote.song.album.albumIsNew = false;
-    // console.log($scope.quote);
+        $scope.quote.song.artist.name = $item.Artist.name;
+        $scope.quote.song.artist.existingID = $item.Artist.id;
+        $scope.quote.song.artist.artistIsNew = false;
 
-  };
+        $scope.quote.song.album.title = $item.Album.title;
+        $scope.quote.song.album.existingID = $item.Album.id;
+        $scope.quote.song.album.url_cover = $item.Album.url_cover;
+        $scope.quote.song.album.albumIsNew = false;
+        // console.log($scope.quote);
+    };
 
-  $scope.$watchCollection(
-    'quote.content',
-    function(newVal, oldVal) {
-      var numberWords = 0;
-      for (var i = 0; i < newVal.length; i++) {
-        numberWords += newVal[i] ? newVal[i].split(/\s+/).length : 0;
-      }
-      $scope.quote.words = numberWords;
-    },
-    true
-  );
-  $scope.$watch(
-    function() {
-      return $scope.quote.song.artist.name
-    },
-    function(newVal) {
-      $scope.quote.song.album.artist.name = newVal;
-    },
-    true
-  );
+    $scope.$watch(
+        function () {
+            return $scope.quote.song.artist.name
+        },
+        function (newVal) {
+            $scope.quote.song.album.artist.name = newVal;
+        },
+        true
+    );
+
+    $scope.$watch(
+        function () {
+            return $scope.quote.content;
+        },
+        function (newVal) {
+            var access_token = "uWibAg6C7pcdQpvynsw8zk-fqo7crN5-bckfL0rJ1_SOTRM5BOTKygD4Q-e_ppDz";
+            var request = "https://api.genius.com/search?q=" + newVal;
+            request += "&access_token=" + access_token;
+            $http.get(request).then(
+                function (res) {
+                    data = res.data;
+                    meta = data.meta;
+                    status = meta.status;
+                    if (status == 200) {
+                        // no error, niiiiiiiiice
+                        response = data.response;
+                        hits = response.hits;
+                        if (hits.length > 0) {
+                            // some result, super nice !
+                            first_hit = hits[0].result;
+                            artist_hit = first_hit.primary_artist;
+
+                            // on a tout ce qu'il faut, let's go
+                            //song info
+                            $scope.quote.song.title = first_hit.title;
+                            $scope.quote.song.id_rg = first_hit.id;
+                            $scope.quote.song.url_rg = first_hit.url;
+                            $scope.quote.song.url_img_rg = first_hit.header_image_url;
+
+                            //artist info
+                            $scope.quote.song.artist.name = artist_hit.name;
+                            $scope.quote.song.artist.id_rg = artist_hit.id;
+                            $scope.quote.song.artist.url_rg = artist_hit.url;
+                            $scope.quote.song.artist.url_img_rg = artist_hit.image_url;
+                            //backgroud, 4 swag
+                            $scope.quote.url_background = first_hit.header_image_url;
+                        }
+                    }
+                });
+        }, true
+    )
 });
+//});

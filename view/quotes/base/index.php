@@ -124,8 +124,10 @@
             <div style="clear: both; display: table;"></div>
             <span class="author-quote author-quote-<?= $mode; ?>"
                  contenteditable="<?= ($mode == "create" ? "true" : "false"); ?>"
+                 <?php if(false):?>
                  typeahead-on-select='onSelectArtistSong($item, $model, $label)'
                  typeahead="artist.name for artist in getArtists($viewValue)"
+                 <?php endif;?>
                  ng-model="quote.song.artist.name"
                  placeholder="— Nom de l'artiste..."><?php
                     if($mode == "quote"){
@@ -133,8 +135,12 @@
                     }
                 ?></span>
                 <div style="clear: both; display: table;"></div>
+                <?php if($mode == "create"):?>
+                <span>{{quote.song.title}} par {{quote.song.artist.name}}</span>
+                <?php endif;?>
             </div>
-        <?php if($mode == "create"):?>
+
+        <?php if($mode == "create" && false):?>
         <div class="song-form-quote">
             <span class="info-text">Veuillez préciser le titre du morceau dans lequel cette citation apparaît.</span>
             <br />
@@ -150,8 +156,11 @@
                    placeholder="Lien YouTube"
                    ng-model="quote.song.url_youtube"/>
         </div>
-        <input type = "button" class="btn btn-primary btn-submit btn-submit-quote" ng-click="createQuote($event)" value="Poster la citation" />
         <span class="info-text">Vous pourrez ajouter l'album ainsi que d'autres détails plus tard.</span>
+        <?php endif;?>
+        <?php if($mode == "create"):?>
+            <input type = "button" class="btn btn-primary btn-submit btn-submit-quote" ng-click="createQuote($event)" value="Poster la citation" />
+
         <?php endif;?>
         <div class="gradient-background-quote"></div>
 
@@ -162,14 +171,21 @@
                 $url_background_quote = "";
             }
         ?>
-        <div class="background-quote" style="background-image: url('<?= $url_background_quote;?>')"></div>
+        <div class="background-quote"
+            <?php if($mode != "create"):?>
+                style="background-image: url('<?= $url_background_quote;?>')"
+            <?php endif;?>
+            <?php if($mode == "create"):?>
+                style="background-image: url('{{quote.url_background}}')"
+            <?php endif;?>
+            ></div>
     </section>
 <?php if($mode == "create"):?>
 </form>
 <?php endif;?>
+<?php if($mode == 'quote'):?>
 <section id="container-informations-quote" class="container-informations-quote">
     <div class="container-informations-quote-left">
-        <?php if($mode == 'quote'):?>
         <div class="container-share-buttons-quote">
             <ul class="share-buttons">
                 <li class="share-button share-facebook"></li>
@@ -177,9 +193,6 @@
                 <li class="share-button share-link"></li>
             </ul>
         </div>
-        <?php endif;?>
-
-        <?php if($mode == 'quote'):?>
         <div class="section-comments">
             <h3 class="small-title">12 commentaires</h3>
             <div class="container-comments">
@@ -198,11 +211,8 @@
                 </div>
             </div>
         </div>
-        <?php endif;?>
-
     </div>
     <div class="container-informations-quote-right">
-        <?php if($mode == 'quote'):?>
             <?php if($Quote->Song->is_valid):?>
 
             <?php endif;?>
@@ -223,6 +233,6 @@
                                  ));
                 }
             ?>
-        <?php endif;?>
     </div>
 </section>
+<?php endif;?>

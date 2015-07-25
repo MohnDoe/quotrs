@@ -101,7 +101,9 @@
                                            )
                     );
                 }
-                if($data['url_image'] != "" && $data['url_image'] != null){
+                $this->url_image = $data['url_image'];
+                /*
+                if(false && $data['url_image'] != "" && $data['url_image'] != null){
                     //une image existe dans la base de donnée
                     $url_image_array = explode($this->delimiter_url_image, $data['url_image']);
                     $url_image = $url_image_array[0];
@@ -115,6 +117,7 @@
                 }else{
                     $this->url_image = $this->getURLImage();
                 }
+                */
 
                 $this->nbLikes = $this->getNbLikes ();
             }
@@ -224,14 +227,15 @@
              */
 
             $req = "INSERT INTO ".DB::$tableQuotes."
-                        (content_quote_fr_FR, date_quote, id_artist, id_song, hashid_quote)
-                        VALUES (:content, NOW(),:id_artist,:id_song, :hashid_quote)";
+                        (content_quote_fr_FR, date_quote, id_artist, id_song, hashid_quote, url_image)
+                        VALUES (:content, NOW(),:id_artist,:id_song, :hashid_quote, :url_image)";
 
             $query = DB::$db->prepare($req);
             $query->bindParam(':content', $this->content);
             $query->bindParam(':id_artist', $this->id_artist);
             $query->bindParam(':id_song', $this->id_song);
             $query->bindParam(':hashid_quote', $this->hashid);
+            $query->bindParam(':url_image', $this->url_image);
 
             $query->execute();
 
