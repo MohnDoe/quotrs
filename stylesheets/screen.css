@@ -865,3 +865,83 @@ form.form-create-quote .info-text {
   border-color: #feb41c;
   color: #feb41c;
 }
+
+/* line 875, ../sass/screen.scss */
+#footer {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: auto;
+  z-index: 10;
+  padding: 50px 0;
+}
+/* line 884, ../sass/screen.scss */
+#footer:before {
+  content: " ";
+  height: 1px;
+  width: 61.8%;
+  background-color: #feb41c;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjEuMCIgeTE9IjAuNSIgeDI9IjAuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2ZlYjQxYyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(50%, #feb41c), color-stop(100%, rgba(0, 0, 0, 0)));
+  background: -moz-linear-gradient(right, rgba(0, 0, 0, 0), #feb41c, rgba(0, 0, 0, 0));
+  background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0), #feb41c, rgba(0, 0, 0, 0));
+  background: linear-gradient(to left, rgba(0, 0, 0, 0), #feb41c, rgba(0, 0, 0, 0));
+  margin: 0 auto;
+  position: relative;
+  display: block;
+}
+/* line 896, ../sass/screen.scss */
+#footer .section-links {
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  align-items: center;
+}
+/* line 908, ../sass/screen.scss */
+#footer .section-links .title-section {
+  color: #3f3c37;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+/* line 918, ../sass/screen.scss */
+#footer .section-links .container-links {
+  color: #c0bcb5;
+}
+/* line 922, ../sass/screen.scss */
+#footer .section-links .container-links .container-link {
+  margin: 0 10px;
+  height: auto;
+  position: relative;
+  width: auto;
+  float: left;
+}
+/* line 930, ../sass/screen.scss */
+#footer .section-links .container-links .container-link .label-link {
+  letter-spacing: 1px;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: right;
+  margin-right: 2px;
+  display: inline-block;
+}
+/* line 939, ../sass/screen.scss */
+#footer .section-links .container-links .container-link .link {
+  font-size: 32px;
+}
+/* line 943, ../sass/screen.scss */
+#footer .section-links .container-links .container-link .link a {
+  transition: .5s;
+}
+/* line 946, ../sass/screen.scss */
+#footer .section-links .container-links .container-link .link a:hover {
+  text-decoration: underline;
+  color: #efeeec;
+}

@@ -99,6 +99,7 @@
             $name_new_artist = htmlspecialchars($allParamsPOST['song']['artist']['name']);
             $NewArtist = new Artist();
             $NewArtist->name = $name_new_artist;
+            // TODO : check if artist alrady exist
             $NewArtist->id = $allParamsPOST['song']['artist']['id_rg'];
             $NewArtist->url_rg = $allParamsPOST['song']['artist']['url_rg'];
             $NewArtist->url_image = $allParamsPOST['song']['artist']['url_img_rg'];
@@ -169,6 +170,7 @@
             $NewSong = new Song();
             //var_dump($parsedYoutubeSongURL);
             $NewSong->title = $title_new_song;
+            //TODO ; check if song already exist
             $NewSong->id = $allParamsPOST['song']['id_rg'];
             $NewSong->url_rg = $allParamsPOST['song']['url_rg'];
             $NewSong->id_artist = $idArtistQuote;

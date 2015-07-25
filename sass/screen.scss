@@ -871,3 +871,86 @@ form.form-create-quote
     }
   }
 }
+
+#footer
+{
+  position : relative;
+  float : left;
+  width : 100%;
+  height : auto;
+  z-index : 10;
+  padding: 50px 0;
+
+  &:before
+  {
+    content: " ";
+    height: 1px;
+    width : $goldenration-big-percent;
+    background-color: $color-yellow-base;
+    @include background(linear-gradient(to left, transparent, $color-yellow-base, transparent));
+    margin: 0 auto;
+    position : relative;
+    display : block;
+  }
+
+  .section-links
+{
+    display: flex;
+    width : 100%;
+    margin-top: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+    align-items: center;
+
+    .title-section
+    {
+      color: lighten($color-black-base, 10%);
+      margin-bottom: 20px;
+      width : 100%;
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+
+    .container-links
+    {
+      color: lighten($color-black-base, 60%);
+
+      .container-link
+    {
+        margin: 0 10px;
+        height : auto;
+        position : relative;
+        width : auto;
+        float : left;
+
+        .label-link
+      {
+          letter-spacing: 1px;
+          font-size: 14px;
+          line-height: 16px;
+          text-align: right;
+          margin-right: 2px;
+          display: inline-block;
+        }
+        .link
+        {
+          font-size: 32px;
+
+          a
+          {
+            transition: .5s;
+            &:hover
+            {
+              text-decoration: underline;
+              color: lighten($color-black-base, 80%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
