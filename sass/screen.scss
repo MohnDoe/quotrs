@@ -14,11 +14,11 @@ $goldenration-big-percent : 61.8%;
 $goldenration-big-percent-minus-10 : calc(61.8% - 10px);
 $goldenration-small-percent : 38.2%;
 
-$gradient-base-25 : linear-gradient(to top, $color-black-base, $color-black-base 25%, transparentize($color-black-base,1));
-$gradient-base-25-revert : linear-gradient(to bottom, $color-black-base, $color-black-base 25%, transparentize($color-black-base,1));
-$gradient-base : linear-gradient(to top, $color-black-base, transparentize($color-black-base,1));
-$gradient-base-revert : linear-gradient(to bottom, $color-black-base, transparentize($color-black-base,1));
-$gradient-base-25-right : linear-gradient(to left, $color-black-base, $color-black-base 25%, transparentize($color-black-base,1));
+$gradient-base-25 : linear-gradient(to top, $color-black-base, $color-black-base 25%, transparentize($color-black-base, 1));
+$gradient-base-25-revert : linear-gradient(to bottom, $color-black-base, $color-black-base 25%, transparentize($color-black-base, 1));
+$gradient-base : linear-gradient(to top, $color-black-base, transparentize($color-black-base, 1));
+$gradient-base-revert : linear-gradient(to bottom, $color-black-base, transparentize($color-black-base, 1));
+$gradient-base-25-right : linear-gradient(to left, $color-black-base, $color-black-base 25%, transparentize($color-black-base, 1));
 
 $color-facebook : #3b5998;
 $color-facebook-lighten : lighten($color-facebook, 15%);
@@ -28,17 +28,19 @@ $color-twitter-lighten : lighten($color-twitter, 15%);
 $padding-base-quote : 200px;
 $padding-base-quote-extra : 100px;
 
-
-
-body, html{
-  font-family : "Oswald", sans-serif;
-  background-color: $color-black-base;
-  color : white;
-  display: block;
-  width : 100%;
-  height: 100%; margin: 0; padding: 0;
+body, html
+{
+  font-family      : "Oswald", sans-serif;
+  background-color : $color-black-base;
+  color            : white;
+  display          : block;
+  width            : 100%;
+  height           : 100%;
+  margin           : 0;
+  padding          : 0;
 
 }
+
 *
 {
   @include box-sizing(border-box);
@@ -46,93 +48,98 @@ body, html{
 
 a
 {
-  color: inherit;
-  text-transform: inherit;
-  text-decoration: inherit;
-  cursor: pointer;
+  color           : inherit;
+  text-transform  : inherit;
+  text-decoration : inherit;
+  cursor          : pointer;
 
   &:hover
   {
-    color: inherit;
-    text-transform: inherit;
-    text-decoration: inherit;
+    color           : inherit;
+    text-transform  : inherit;
+    text-decoration : inherit;
   }
 }
+
 #logo
 {
-  width : auto;
-  height: 20px;
-  display : block;
-  position : fixed;
-  margin-top: 20px;
-  margin-left: 20px;
-  z-index : 10;
+  width       : auto;
+  height      : 20px;
+  display     : block;
+  position    : fixed;
+  margin-top  : 20px;
+  margin-left : 20px;
+  z-index     : 10;
 }
+
 .container-quote
 {
   @include display-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height : calc(100% + 200px);
-  padding-bottom: 200px;
-  width : 100%;
-  position : relative;
-  z-index: 1;
-  &:after{
-    content: "";
-    display: table;
-    clear: both;
+  flex-direction  : column;
+  align-items     : center;
+  justify-content : center;
+  height          : calc(100% + 200px);
+  padding-bottom  : 200px;
+  width           : 100%;
+  position        : relative;
+  z-index         : 1;
+  &:after
+  {
+    content : "";
+    display : table;
+    clear   : both;
   }
 
   .background-quote
   {
-    background-size: cover;
-    background-position: center;
-    position : absolute;
-    left : 0;
-    right : 0;
-    bottom : 0;
-    top : 0;
-    display : block;
-    height : 100%;
-    width : 100%;
-    opacity: .8;
-    z-index: 1;
+    background-size     : cover;
+    background-position : center;
+    position            : absolute;
+    left                : 0;
+    right               : 0;
+    bottom              : 0;
+    top                 : 0;
+    display             : block;
+    height              : 100%;
+    width               : 100%;
+    opacity             : .8;
+    z-index             : 1;
   }
 
   .gradient-background-quote
   {
-    z-index: 2;
+    z-index  : 2;
     position : absolute;
-    left : 0;
-    right : 0;
-    bottom : 0;
-    top : 0;
-    display : block;
-    height: 100%;
-    width : 100%;
+    left     : 0;
+    right    : 0;
+    bottom   : 0;
+    top      : 0;
+    display  : block;
+    height   : 100%;
+    width    : 100%;
     @include background($gradient-base-25);
   }
-  .the-quote{
-    z-index: 10;
-    display: block;
-    height: auto;
-    position : relative;
-    width: auto;
-    margin-top: -$padding-base-quote-extra;
-    max-width : $goldenration-big-percent;
+  .the-quote
+  {
+    z-index    : 10;
+    display    : block;
+    height     : auto;
+    position   : relative;
+    width      : auto;
+    margin-top : -$padding-base-quote-extra;
+    max-width  : $goldenration-big-percent;
 
-    .line-quote, .author-quote{
-      color: $color-black-base;
-      font-size: 32px;
-      line-height: 1.5em;
-      font-weight: 400;
-      text-transform: uppercase;
-      display: inline;
-      box-decoration-break: clone;
-      cursor: default;
-      clear: both;
+    .line-quote, .author-quote
+    {
+      color                : $color-black-base;
+      font-size            : 32px;
+      line-height          : 1.5em;
+      font-weight          : 400;
+      text-transform       : uppercase;
+      display              : inline;
+      box-decoration-break : clone;
+      cursor               : default;
+      clear                : both;
       /*
       &:after{
         content: "";
@@ -141,26 +148,26 @@ a
       }*/
     }
     .line-quote
-  {
-      box-shadow: 15px 0 0 $color-yellow-base, -15px 0 0 $color-yellow-base;
-      @include background(linear-gradient(top, rgba(0,0,0,0) 0px, $color-yellow-base 0px, $color-yellow-base 65px, rgba(0,0,0,0) 65px));
+    {
+      box-shadow : 15px 0 0 $color-yellow-base, -15px 0 0 $color-yellow-base;
+      @include background(linear-gradient(top, rgba(0, 0, 0, 0) 0px, $color-yellow-base 0px, $color-yellow-base 65px, rgba(0, 0, 0, 0) 65px));
     }
     .author-quote
     {
-      font-size: 14px;
-      font-family: "Open Sans", sans-serif;
-      font-weight: lighter;
-      color: white;
-      text-transform: none;
-      padding: 0 10px;
-      font-style: italic;
-      float : right;
-      background-color: $color-black-base;
+      font-size        : 14px;
+      font-family      : "Open Sans", sans-serif;
+      font-weight      : lighter;
+      color            : white;
+      text-transform   : none;
+      padding          : 0 10px;
+      font-style       : italic;
+      float            : right;
+      background-color : $color-black-base;
 
       &:before
       {
-        color: inherit;
-        content: "\2014 \00a0";
+        color   : inherit;
+        content : "\2014 \00a0";
       }
     }
 
@@ -168,36 +175,35 @@ a
 
 }
 
-
 form.form-create-quote
 {
-  width : 100%;
-  display: block;
-  height : 100%;
+  width   : 100%;
+  display : block;
+  height  : 100%;
 
   .dropdown-menu
   {
-    background-color: #F5F5F5;
-    color: $color-black-base;
-    font-size: 14px;
-    font-family: "Open Sans", sans-serif;
-    font-weight: normal;
-    width : 200px;
-    padding: 5px 10px;
-    position : relative;
-    float : left;
-    clear : both;
+    background-color : #F5F5F5;
+    color            : $color-black-base;
+    font-size        : 14px;
+    font-family      : "Open Sans", sans-serif;
+    font-weight      : normal;
+    width            : 200px;
+    padding          : 5px 10px;
+    position         : relative;
+    float            : left;
+    clear            : both;
 
     li
     {
-      width : 100%;
-      line-height: 30px;
-      border-bottom: 1px solid rgba(0,0,0,.1);
-      padding: 0 5px;
+      width         : 100%;
+      line-height   : 30px;
+      border-bottom : 1px solid rgba(0, 0, 0, .1);
+      padding       : 0 5px;
       &.active
       {
-        background-color: $color-black-base;
-        color: white;
+        background-color : $color-black-base;
+        color            : white;
       }
       &:last-child
       {
@@ -208,19 +214,19 @@ form.form-create-quote
   }
   .song-form-quote
   {
-    margin-top: 30px;
+    margin-top : 30px;
 
     .container-player-youtube
     {
-      width : 640px;
-      height : auto;
-      position : relative;
-      margin-bottom: 10px;
+      width         : 640px;
+      height        : auto;
+      position      : relative;
+      margin-bottom : 10px;
     }
     .dropdown-menu
     {
-      position: relative;
-      width : 100%;
+      position : relative;
+      width    : 100%;
     }
   }
 
@@ -231,24 +237,24 @@ form.form-create-quote
 
   input[type="text"]
   {
-    background-color: lighten($color-black-base, 5%);
-    border: 1px solid darken(white, 50%);
-    line-height: 30px;
-    color: darken(white, 30%);
-    padding: 0 10px;
-    font-size: 14px;
-    width : 100%;
-    position : relative;
-    float : left;
-    margin: 5px 0;
-    font-family: "Open Sans", sans-serif;
-    outline-color: $color-yellow-base;
+    background-color : lighten($color-black-base, 5%);
+    border           : 1px solid darken(white, 50%);
+    line-height      : 30px;
+    color            : darken(white, 30%);
+    padding          : 0 10px;
+    font-size        : 14px;
+    width            : 100%;
+    position         : relative;
+    float            : left;
+    margin           : 5px 0;
+    font-family      : "Open Sans", sans-serif;
+    outline-color    : $color-yellow-base;
   }
 
   .btn-submit-quote
   {
-    margin-top: 20px;
-    z-index : 5;
+    margin-top : 20px;
+    z-index    : 5;
 
   }
   .song-form-quote
@@ -257,75 +263,83 @@ form.form-create-quote
   }
   .info-text
   {
-    z-index : 5;
-    font-size: 10px;
-    margin-top: 5px;
-    color: transparentize(white, .7);
-    font-weight: normal;
-    font-family: "Open Sans", sans-serif;
+    z-index     : 5;
+    font-size   : 10px;
+    margin-top  : 5px;
+    color       : transparentize(white, .7);
+    font-weight : normal;
+    font-family : "Open Sans", sans-serif;
   }
-  
+
   .related-songs-rg
   {
-    position : relative;
-    margin-top: 5px;
-    
+    position    : relative;
+    margin-top  : 5px;
+
+    font-family : "Open Sans", sans-serif;
+    font-size   : 12px;
+    .title
+    {
+      width       : 100%;
+      display     : block;
+      text-align  : center;
+      color       : transparentize(white, .5);
+      line-height : 2em;
+      position    : relative;
+    }
     .related-songs
     {
-      
       li.related-song
       {
-        transition: .5s;
-        width : 150px;
-        height : 50px;
-        background-color: $color-black-base;
-        display : block;
-        margin: 0 2px;
-        font-family: "Open Sans",sans-serif;
-        font-size: 12px;
-        position : relative;
-        float : left;
-        padding: 10px;
+        transition       : .5s;
+        width            : 150px;
+        height           : 50px;
+        background-color : $color-black-base;
+        display          : block;
+        margin           : 0 2px;
+        position         : relative;
+        float            : left;
+        padding          : 10px;
 
         .title-song, .artist-name
         {
-          position : relative;
-          float : left;
-          width : 100%;
-          line-height: 1.4em;
-          z-index : 3;
-          font-weight: lighter;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          display: inline-block;
+          position      : relative;
+          float         : left;
+          width         : 100%;
+          line-height   : 1.4em;
+          z-index       : 3;
+          font-weight   : lighter;
+          overflow      : hidden;
+          white-space   : nowrap;
+          text-overflow : ellipsis;
+          display       : inline-block;
         }
         .title-song
         {
-          font-weight: lighter;
+          font-weight : lighter;
         }
 
         .artist-name
         {
-          font-weight: bold;
+          font-weight : bold;
         }
 
         .background-related-song, .gradient-related-song
         {
           position : absolute;
-          top : 0;
-          left : 0;
-          right : 0;
-          bottom : 0;
-          display : block;
+          top      : 0;
+          left     : 0;
+          right    : 0;
+          bottom   : 0;
+          display  : block;
         }
 
         .background-related-song
         {
-          opacity : 0.5;
-          z-index : 1;
-          background-size: cover;
-          background-position: center;
+          opacity             : 0.5;
+          z-index             : 1;
+          background-size     : cover;
+          background-position : center;
         }
 
         .gradient-related-song
@@ -339,7 +353,7 @@ form.form-create-quote
         {
           .background-related-song
           {
-            opacity: .8;
+            opacity : .8;
           }
         }
       }
@@ -349,105 +363,109 @@ form.form-create-quote
 
 .container-quote-create
 {
-  [contenteditable=true]:empty:before {
-    content: attr(placeholder);
-    display: inherit; /* For Firefox */
+  [contenteditable=true]:empty:before
+  {
+    content : attr(placeholder);
+    display : inherit; /* For Firefox */
   }
   span
   {
     &.line-quote-create
     {
-      &:hover, &:active,&:focus
+      &:hover, &:active, &:focus
       {
         outline : lighten($color-yellow-base, 10%) solid medium;
       }
     }
     &.author-quote
     {
-      &:hover, &:active,&:focus{
+      &:hover, &:active, &:focus
+      {
         outline : lighten($color-black-base, 10%) solid medium;
       }
     }
 
   }
 }
+
 .container-informations-quote
 {
   position : relative;
-  width : $goldenration-big-percent;
-  height : auto;
-  margin : -($padding-base-quote-extra + 200px) auto 0;
-  z-index: 2;
+  width    : $goldenration-big-percent;
+  height   : auto;
+  margin   : -($padding-base-quote-extra + 200px) auto 0;
+  z-index  : 2;
 
-
-  .container-informations-quote-left, .container-informations-quote-right{
-    position : relative;
-    float : left;
-    height : auto;
-    display : block;
-    min-height: 200px;
+  .container-informations-quote-left, .container-informations-quote-right
+  {
+    position   : relative;
+    float      : left;
+    height     : auto;
+    display    : block;
+    min-height : 200px;
   }
   .container-informations-quote-left
   {
-    width: $goldenration-big-percent-minus-10;
-    margin-right: 10px;
-    position : relative;
-    float : left;
+    width        : $goldenration-big-percent-minus-10;
+    margin-right : 10px;
+    position     : relative;
+    float        : left;
 
     .container-share-buttons-quote
     {
       position : absolute;
-      left : -60px;
-      top : 0;
-      display : block;
+      left     : -60px;
+      top      : 0;
+      display  : block;
 
-      .share-buttons{
-        width : 50px;
+      .share-buttons
+      {
+        width    : 50px;
         position : relative;
-        display : block;
+        display  : block;
 
         .share-button
         {
-          display: block;
-          position : relative;
-          float : right;
-          height : 30px;
-          width : 30px;
-          background-color: $color-black-base;
-          border : 1px solid lighten($color-black-base, 15%);
-          margin-bottom: 5px;
-          cursor: pointer;
+          display          : block;
+          position         : relative;
+          float            : right;
+          height           : 30px;
+          width            : 30px;
+          background-color : $color-black-base;
+          border           : 1px solid lighten($color-black-base, 15%);
+          margin-bottom    : 5px;
+          cursor           : pointer;
 
-
-          &:after{
-            content: "";
-            display: table;
-            clear: both;
+          &:after
+          {
+            content : "";
+            display : table;
+            clear   : both;
           }
           &:hover
           {
-            background-color: darken($color-black-base, 10%);
-            border-color: $color-black-base;
+            background-color : darken($color-black-base, 10%);
+            border-color     : $color-black-base;
           }
           &.share-facebook
           {
-            background-color: $color-facebook;
-            border-color: $color-facebook-lighten;
+            background-color : $color-facebook;
+            border-color     : $color-facebook-lighten;
             &:hover
             {
-              background-color: darken($color-facebook, 15%);
-              border-color: $color-facebook;
+              background-color : darken($color-facebook, 15%);
+              border-color     : $color-facebook;
             }
           }
 
           &.share-twitter
           {
-            background-color: $color-twitter;
-            border-color: $color-twitter-lighten;
+            background-color : $color-twitter;
+            border-color     : $color-twitter-lighten;
             &:hover
             {
-              background-color: darken($color-twitter, 15%);
-              border-color: $color-twitter;
+              background-color : darken($color-twitter, 15%);
+              border-color     : $color-twitter;
             }
           }
         }
@@ -455,102 +473,103 @@ form.form-create-quote
     }
     .container-comments
     {
-      display : block;
-      position : relative;
-      width : 100%;
-      font-family: "Open Sans", sans-serif;
-      font-size: 14px;
+      display     : block;
+      position    : relative;
+      width       : 100%;
+      font-family : "Open Sans", sans-serif;
+      font-size   : 14px;
 
       .load-more-comments
       {
-        display : block;
-        height : 40px;
-        width : 100%;
-        background-color: lighten($color-black-base, 1);
-        color: white;
-        line-height: 40px;
-        text-align: center;
-        box-shadow: 0 1px 2px rgba(0,0,0,.1);
-        margin-bottom: 10px;
-        position : relative;
-        float : left;
-        cursor : pointer;
-        font-weight: bold;
-        font-size: 12px;
+        display          : block;
+        height           : 40px;
+        width            : 100%;
+        background-color : lighten($color-black-base, 1);
+        color            : white;
+        line-height      : 40px;
+        text-align       : center;
+        box-shadow       : 0 1px 2px rgba(0, 0, 0, .1);
+        margin-bottom    : 10px;
+        position         : relative;
+        float            : left;
+        cursor           : pointer;
+        font-weight      : bold;
+        font-size        : 12px;
         @include border-radius(3px);
         &:hover
         {
-          background-color: #f5f5f5;
-          color: $color-black-base;
+          background-color : #f5f5f5;
+          color            : $color-black-base;
         }
       }
       .comment
       {
-        width : 100%;
-        margin-bottom: 10px;
-        position : relative;
-        float : left;
+        width         : 100%;
+        margin-bottom : 10px;
+        position      : relative;
+        float         : left;
 
         .picture-user-comment
         {
-          background-color: $color-yellow-base;
-          width : 60px;
-          height : 60px;
-          position : relative;
-          float : left;
+          background-color : $color-yellow-base;
+          width            : 60px;
+          height           : 60px;
+          position         : relative;
+          float            : left;
 
           img
           {
             height : 100%;
-            width : 100%;
+            width  : 100%;
           }
         }
         .content-comment
         {
-          background-color: lighten($color-black-base, 1);
-          width : calc(100% - 60px);
-          padding: 10px;
-          box-shadow: 0 1px 2px rgba(0,0,0,.1);
-          float: right;
-          font-size: 14px;
-          
+          background-color : lighten($color-black-base, 1);
+          width            : calc(100% - 60px);
+          padding          : 10px;
+          box-shadow       : 0 1px 2px rgba(0, 0, 0, .1);
+          float            : right;
+          font-size        : 14px;
+
           .top-comment
           {
-            margin-bottom: 10px;
-            position: relative;
-            float : left;
-            height: 20px;
-            line-height: 20px;
-            
+            margin-bottom : 10px;
+            position      : relative;
+            float         : left;
+            height        : 20px;
+            line-height   : 20px;
+
             .author-comment
             {
-              color: $color-yellow-base;
-              font-weight: bold;
+              color       : $color-yellow-base;
+              font-weight : bold;
             }
             .date-comment
             {
-              color: rgba(255,255,255,.3);
-              text-transform: uppercase;
-              float : right;
-              font-size: 12px;
+              color          : rgba(255, 255, 255, .3);
+              text-transform : uppercase;
+              float          : right;
+              font-size      : 12px;
             }
 
           }
           .comment
           {
-            font-size : 14px;
-            color: #f5f5f5;
-            line-height: 1.5em;
-            display : block;
-            padding : 0 20px;
-            position : relative;
-            float : left;
-            height : auto;
+            font-size   : 14px;
+            color       : #f5f5f5;
+            line-height : 1.5em;
+            display     : block;
+            padding     : 0 20px;
+            position    : relative;
+            float       : left;
+            height      : auto;
 
-            &:after{
-              content: "";
-              display: table;
-              clear: both;
+            &:after
+            {
+              content : "";
+              display : table;
+              clear   : both;
             }
           }
         }
@@ -560,14 +579,14 @@ form.form-create-quote
 
   .container-informations-quote-right
   {
-    width: $goldenration-small-percent;
+    width : $goldenration-small-percent;
 
     .container-album, .container-artist
     {
-      position : relative;
-      float : left;
-      margin-bottom: 20px;
-      width : 100%;
+      position      : relative;
+      float         : left;
+      margin-bottom : 20px;
+      width         : 100%;
       .container-informations-artist
       {
         height : 200px;
@@ -575,83 +594,84 @@ form.form-create-quote
 
     }
   }
-  
+
 }
+
 .container-album
 {
-  position : relative;
-  float : left;
-  margin-bottom: 20px;
-  width : 100%;
+  position      : relative;
+  float         : left;
+  margin-bottom : 20px;
+  width         : 100%;
 
   .container-cover-album
   {
-    width : 100%;
-    height: 100px;
-    display : block;
+    width    : 100%;
+    height   : 100px;
+    display  : block;
     position : relative;
-    float : left;
-
+    float    : left;
 
     .cover-album
     {
-      position : absolute;
-      left : 0;
-      right : 0;
-      bottom : 0;
-      top : 0;
-      z-index : 1;
-      background-size: cover;
-      background-position: center;
+      position            : absolute;
+      left                : 0;
+      right               : 0;
+      bottom              : 0;
+      top                 : 0;
+      z-index             : 1;
+      background-size     : cover;
+      background-position : center;
     }
     .gradient-cover-album
     {
       @include background($gradient-base-revert);
-      opacity: .5;
+      opacity  : .5;
       position : absolute;
-      left : 0;
-      right : 0;
-      bottom : 0;
-      top : 0;
-      z-index : 2;
+      left     : 0;
+      right    : 0;
+      bottom   : 0;
+      top      : 0;
+      z-index  : 2;
     }
 
     .container-informations-album
     {
-      display: flex;
-      position : absolute;
-      left : 0;
-      right : 0;
-      bottom : 0;
-      top : 0;
-      z-index : 10;
-      align-content: center;
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-items: center;
+      display        : flex;
+      position       : absolute;
+      left           : 0;
+      right          : 0;
+      bottom         : 0;
+      top            : 0;
+      z-index        : 10;
+      align-content  : center;
+      flex-direction : column;
+      flex-wrap      : wrap;
+      align-items    : center;
 
-      span{
-        display : block;
-        width : 100%;
-        text-align: center;
-        text-transform: uppercase;
-        line-height: 1.6em;
+      span
+      {
+        display        : block;
+        width          : 100%;
+        text-align     : center;
+        text-transform : uppercase;
+        line-height    : 1.6em;
       }
 
       .title-album
       {
-        font-size: 24px;
-        font-weight: lighter;
-        color: $color-yellow-base;
+        font-size   : 24px;
+        font-weight : lighter;
+        color       : $color-yellow-base;
         &:after
         {
-          content : " ";
-          display : block;
-          width: 30px;
-          height: 1px;
-          background-color: white;
-          position : relative;
-          margin: 5px auto;
+          content          : " ";
+          display          : block;
+          width            : 30px;
+          height           : 1px;
+          background-color : white;
+          position         : relative;
+          margin           : 5px auto;
         }
       }
       .artist-album, .release-album
@@ -662,121 +682,123 @@ form.form-create-quote
 
   }
 }
+
 .container-album-small
 {
-  height: 50px;
+  height   : 50px;
   position : relative;
-  float : left;
-  width : 200px;
-  margin : 0 10px 0 0;
+  float    : left;
+  width    : 200px;
+  margin   : 0 10px 0 0;
 
   .container-cover-album
   {
-    height: 100%;
+    height : 100%;
     .container-informations-album
     {
 
       span
       {
-        font-size: 12px;
+        font-size : 12px;
       }
       .title-album
       {
-        font-size: 14px;
+        font-size : 14px;
 
         &:after
         {
-          margin: 3px auto;
+          margin : 3px auto;
         }
       }
     }
   }
 }
+
 .container-artist
 {
   .container-informations-artist
   {
     position : relative;
-    float : left;
-    width : 100%;
+    float    : left;
+    width    : 100%;
     .container-image-artist
     {
-      width : 50px;
-      height : 150px;
-      margin: 25px 10px;
-      display : block;
+      width    : 50px;
+      height   : 150px;
+      margin   : 25px 10px;
+      display  : block;
       position : relative;
-      float : left;
-      z-index : 3;
-      overflow: hidden;
+      float    : left;
+      z-index  : 3;
+      overflow : hidden;
       .image-artist
       {
-        position : absolute;
-        top : -25px;
-        right : 0;
-        left :-10px;
-        bottom : -25px;
-        z-index : 1;
-        background-position-x: -170px;
-        background-position-y: center;
-        background-size: auto 100%;
-        opacity : 1 !important;
+        position              : absolute;
+        top                   : -25px;
+        right                 : 0;
+        left                  : -10px;
+        bottom                : -25px;
+        z-index               : 1;
+        background-position-x : -170px;
+        background-position-y : center;
+        background-size       : auto 100%;
+        opacity               : 1 !important;
       }
     }
     .container-informations
     {
-      height : 200px;
-      margin: 25px 0;
-      width: calc(100% - 100px);
+      height   : 200px;
+      margin   : 25px 0;
+      width    : calc(100% - 100px);
       position : relative;
-      float : left;
-      z-index : 10;
+      float    : left;
+      z-index  : 10;
 
       .information-artist
       {
-        position : relative;
-        float : left;
-        margin-bottom: 5px;
-        width : 100%;
-        display : block;
-        line-height: 1.5em;
-        text-transform: uppercase;
+        position       : relative;
+        float          : left;
+        margin-bottom  : 5px;
+        width          : 100%;
+        display        : block;
+        line-height    : 1.5em;
+        text-transform : uppercase;
 
         &.name-artist
         {
-          color: $color-yellow-base;
-          font-size: 21px;
-          font-weight: lighter;
-          margin-bottom: 10px;
+          color         : $color-yellow-base;
+          font-size     : 21px;
+          font-weight   : lighter;
+          margin-bottom : 10px;
         }
 
         &.information-artist-part
         {
-          line-height: 1em;
-          font-size: 14px;
-          text-transform: uppercase;
-          margin-bottom: 10px;
-          position : relative;
-          float : left;
-          display : block;
-          width : 100%;
+          line-height    : 1em;
+          font-size      : 14px;
+          text-transform : uppercase;
+          margin-bottom  : 10px;
+          position       : relative;
+          float          : left;
+          display        : block;
+          width          : 100%;
 
           .information-title, .information-content
           {
-            display : block;
+            display  : block;
             position : relative;
-            float : left;
+            float    : left;
           }
           .information-title
           {
-            width : 100%;
-            margin-bottom: 3px;
-            font-weight: bold;
+            width         : 100%;
+            margin-bottom : 3px;
+            font-weight   : bold;
           }
           .information-content
           {
-            font-weight: lighter;
-            font-size: 15px;
+            font-weight : lighter;
+            font-size   : 15px;
           }
         }
       }
@@ -784,27 +806,26 @@ form.form-create-quote
 
     .image-artist
     {
-      position : absolute;
-      left : 0;
-      right : 0;
-      top : 0;
-      bottom : 0;
-      background-position-x: -170px;
-      background-position-y: center;
-      background-size: auto 100%;
-      opacity: .4;
-      z-index : 1;
+      position              : absolute;
+      left                  : 0;
+      right                 : 0;
+      top                   : 0;
+      bottom                : 0;
+      background-position-x : -170px;
+      background-position-y : center;
+      background-size       : auto 100%;
+      opacity               : .4;
+      z-index               : 1;
     }
     .gradient-image-artist
     {
-      position : absolute;
-      top : 0;
-      right : 0;
-      left : 0;
-      bottom : 0;
-      z-index : 2;
-      background : linear-gradient(to right, transparentize($color-black-base,1), $color-black-base 100px, $color-black-base);
-
+      position   : absolute;
+      top        : 0;
+      right      : 0;
+      left       : 0;
+      bottom     : 0;
+      z-index    : 2;
+      background : linear-gradient(to right, transparentize($color-black-base, 1), $color-black-base 100px, $color-black-base);
 
     }
   }
@@ -813,98 +834,99 @@ form.form-create-quote
 .container-artist-big
 {
   height : 100%;
-  
+
   .container-informations-artist
   {
-    height: 100%;
+    height : 100%;
 
     .container-image-artist
     {
-      width : 200px;
+      width  : 200px;
       height : calc(100% - 125px);
       margin : 75px 50px 50px;
       .image-artist
       {
-        left : -50px;
-        bottom : -50px;
-        top : -75px;
-        background-position-x: -550px;
+        left                  : -50px;
+        bottom                : -50px;
+        top                   : -75px;
+        background-position-x : -550px;
       }
 
     }
     .container-informations
     {
-      height : auto;
-      margin-top: 75px;
-      width: calc(100% - 300px);
-      
+      height     : auto;
+      margin-top : 75px;
+      width      : calc(100% - 300px);
+
       .name-artist
       {
-        font-size: 36px !important;
+        font-size : 36px !important;
       }
     }
     .gradient-image-artist
     {
-      background : linear-gradient(to right, transparentize($color-black-base,1), $color-black-base 550px, $color-black-base);
+      background : linear-gradient(to right, transparentize($color-black-base, 1), $color-black-base 550px, $color-black-base);
     }
     .image-artist
     {
-      background-position-x: -550px !important;
+      background-position-x : -550px !important;
     }
   }
 }
+
 .small-title
 {
-  font-size: 18px;
-  text-transform: uppercase;
-  font-weight : bold;
-  margin-bottom: 10px;
-  display : block;
-  position : relative;
-  float : left;
+  font-size      : 18px;
+  text-transform : uppercase;
+  font-weight    : bold;
+  margin-bottom  : 10px;
+  display        : block;
+  position       : relative;
+  float          : left;
 }
 
 .box-border-white
 {
   position : absolute;
-  left : 0;
-  right : 0;
-  bottom : 0;
-  top : 0;
-  border : 1px solid rgba(255, 255, 255, .1);
-  z-index : 9;
+  left     : 0;
+  right    : 0;
+  bottom   : 0;
+  top      : 0;
+  border   : 1px solid rgba(255, 255, 255, .1);
+  z-index  : 9;
 }
 
 #links-top
 {
-  position: absolute;
-  top : 10px;
-  right : 10px;
-  z-index : 20;
+  position : absolute;
+  top      : 10px;
+  right    : 10px;
+  z-index  : 20;
   .link
   {
-    font-family: "Open Sans", sans-serif;
-    color: transparentize(white, .05);
-    line-height: 25px;
-    text-transform: uppercase;
-    font-weight: normal;
-    cursor: pointer;
-    position : relative;
-    float : left;
-    margin-left: 30px;
-    font-size: 12px;
+    font-family    : "Open Sans", sans-serif;
+    color          : transparentize(white, .05);
+    line-height    : 25px;
+    text-transform : uppercase;
+    font-weight    : normal;
+    cursor         : pointer;
+    position       : relative;
+    float          : left;
+    margin-left    : 30px;
+    font-size      : 12px;
 
     &.link-primary
     {
-      padding: 0 5px;
-      border: 1px solid $color-yellow-base;
-      color: $color-yellow-base;
-      font-weight: bold;
+      padding     : 0 5px;
+      border      : 1px solid $color-yellow-base;
+      color       : $color-yellow-base;
+      font-weight : bold;
 
       &:hover
       {
-        background-color: $color-yellow-base;
-        color: $color-black-base;
+        background-color : $color-yellow-base;
+        color            : $color-black-base;
       }
     }
   }
@@ -912,43 +934,44 @@ form.form-create-quote
 
 .btn
 {
-  width : auto;
-  height : auto;
-  line-height : 1.5em;
-  font-size: 14px;
-  background: transparent;
+  width          : auto;
+  height         : auto;
+  line-height    : 1.5em;
+  font-size      : 14px;
+  background     : transparent;
   //@include background(linear-gradient(to bottom, white, darken(white, 10%)));
-  border: 1px solid darken(white, 10%);
-  color: white;
-  font-weight: bold;
-  padding : 5px 10px;
-  text-transform: uppercase;
-  box-shadow: 0 1px 2px transparentize(black, .9);
-  cursor: pointer;
-  outline: none;
-  transition: .25s;
+  border         : 1px solid darken(white, 10%);
+  color          : white;
+  font-weight    : bold;
+  padding        : 5px 10px;
+  text-transform : uppercase;
+  box-shadow     : 0 1px 2px transparentize(black, .9);
+  cursor         : pointer;
+  outline        : none;
+  transition     : .25s;
 
-  &:active{
-    outline: none;
+  &:active
+  {
+    outline : none;
   }
 
   &:disabled
   {
-    color: transparentize(white, .5);
-    border-color: transparentize(white, .5);
+    color        : transparentize(white, .5);
+    border-color : transparentize(white, .5);
   }
   &.btn-primary
   {
     //@include background(linear-gradient(to bottom, $color-yellow-base, darken($color-yellow-base, 5%)));
 
-    border-color: transparentize($color-yellow-base, .1);
-    color: transparentize($color-yellow-base, .1);
+    border-color : transparentize($color-yellow-base, .1);
+    color        : transparentize($color-yellow-base, .1);
 
     &:hover
     {
       //@include background(linear-gradient(to bottom, $color-yellow-base, lighten($color-yellow-base, 1%)));
-      border-color: $color-yellow-base;
-      color: $color-yellow-base;
+      border-color : $color-yellow-base;
+      color        : $color-yellow-base;
     }
   }
 }
@@ -956,78 +979,78 @@ form.form-create-quote
 #footer
 {
   position : relative;
-  float : left;
-  width : 100%;
-  height : auto;
-  z-index : 10;
-  padding: 50px 0;
+  float    : left;
+  width    : 100%;
+  height   : auto;
+  z-index  : 10;
+  padding  : 50px 0;
 
   &:before
   {
-    content: " ";
-    height: 1px;
-    width : $goldenration-big-percent;
-    background-color: $color-yellow-base;
+    content          : " ";
+    height           : 1px;
+    width            : $goldenration-big-percent;
+    background-color : $color-yellow-base;
     @include background(linear-gradient(to left, transparent, $color-yellow-base, transparent));
-    margin: 0 auto;
-    position : relative;
-    display : block;
+    margin           : 0 auto;
+    position         : relative;
+    display          : block;
   }
 
   .section-links
-{
-    display: flex;
-    width : 100%;
-    margin-top: 30px;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    font-family: "Oswald", sans-serif;
-    text-transform: uppercase;
-    align-items: center;
+  {
+    display         : flex;
+    width           : 100%;
+    margin-top      : 30px;
+    flex-direction  : column;
+    justify-content : center;
+    align-content   : center;
+    font-family     : "Oswald", sans-serif;
+    text-transform  : uppercase;
+    align-items     : center;
 
     .title-section
     {
-      color: lighten($color-black-base, 10%);
-      margin-bottom: 20px;
-      width : 100%;
-      text-align: center;
-      font-size: 18px;
-      letter-spacing: 2px;
+      color          : lighten($color-black-base, 10%);
+      margin-bottom  : 20px;
+      width          : 100%;
+      text-align     : center;
+      font-size      : 18px;
+      letter-spacing : 2px;
     }
 
     .container-links
     {
-      color: lighten($color-black-base, 60%);
+      color : lighten($color-black-base, 60%);
 
       .container-link
-    {
-        margin: 0 10px;
-        height : auto;
+      {
+        margin   : 0 10px;
+        height   : auto;
         position : relative;
-        width : auto;
-        float : left;
+        width    : auto;
+        float    : left;
 
         .label-link
-      {
-          letter-spacing: 1px;
-          font-size: 14px;
-          line-height: 16px;
-          text-align: right;
-          margin-right: 2px;
-          display: inline-block;
+        {
+          letter-spacing : 1px;
+          font-size      : 14px;
+          line-height    : 16px;
+          text-align     : right;
+          margin-right   : 2px;
+          display        : inline-block;
         }
         .link
         {
-          font-size: 32px;
+          font-size : 32px;
 
           a
           {
-            transition: .5s;
+            transition : .5s;
             &:hover
             {
-              text-decoration: underline;
-              color: lighten($color-black-base, 80%);
+              text-decoration : underline;
+              color           : lighten($color-black-base, 80%);
             }
           }
         }

@@ -31,6 +31,7 @@
         </div>
         <?php if ($mode == "create"): ?>
             <div class = "related-songs-rg">
+                <span class="title">Choisissez le morceau correspondant</span>
                 <ul class = "related-songs">
                     <li class = "related-song"
                         ng-repeat = "song in quote.related_songs_rg | limitTo:5"
