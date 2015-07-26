@@ -45,7 +45,7 @@
                         <div class = "gradient-related-song"></div>
                         <div class = "border-related-song box-border-white"></div>
                         <div class = "background-related-song"
-                             style = "background-image: url('{{song.result.header_image_url}}');"></div>
+                             back-img="{{song.result.header_image_url}}"></div>
                     </li>
                 </ul>
             </div>

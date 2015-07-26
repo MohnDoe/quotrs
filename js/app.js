@@ -13,7 +13,14 @@ app.config(function ($httpProvider) {
     };
     $httpProvider.defaults.headers.post['Content-Type'] = '' + 'application/x-www-form-urlencoded; charset=UTF-8';
 });
-
+app.directive('backImg', function(){
+    return function(scope, element, attrs){
+        var url = attrs.backImg;
+        element.css({
+            'background-image': 'url(' + url +')'
+        });
+    };
+});
 app.directive('contenteditable', function () {
     return {
         restrict: 'A', // only activate on element attribute
