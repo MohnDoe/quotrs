@@ -15,10 +15,15 @@ app.config(function ($httpProvider) {
 });
 app.directive('backImg', function(){
     return function(scope, element, attrs){
-        var url = attrs.backImg;
-        element.css({
-            'background-image': 'url(' + url +')'
-        });
+        img  = new Image();
+        img.src = attrs.backImg;
+
+        img.onload = function() {
+            element.css({
+                'background-image': 'url(' + attrs.backImg +')'
+            });
+        };
+
     };
 });
 app.directive('contenteditable', function () {
