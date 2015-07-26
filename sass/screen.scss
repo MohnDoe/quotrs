@@ -264,6 +264,87 @@ form.form-create-quote
     font-weight: normal;
     font-family: "Open Sans", sans-serif;
   }
+  
+  .related-songs-rg
+  {
+    position : relative;
+    margin-top: 5px;
+    
+    .related-songs
+    {
+      
+      li.related-song
+      {
+        transition: .5s;
+        width : 150px;
+        height : 50px;
+        background-color: $color-black-base;
+        display : block;
+        margin: 0 2px;
+        font-family: "Open Sans",sans-serif;
+        font-size: 12px;
+        position : relative;
+        float : left;
+        padding: 10px;
+
+        .title-song, .artist-name
+        {
+          position : relative;
+          float : left;
+          width : 100%;
+          line-height: 1.4em;
+          z-index : 3;
+          font-weight: lighter;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          display: inline-block;
+        }
+        .title-song
+        {
+          font-weight: lighter;
+        }
+
+        .artist-name
+        {
+          font-weight: bold;
+        }
+
+        .background-related-song, .gradient-related-song
+        {
+          position : absolute;
+          top : 0;
+          left : 0;
+          right : 0;
+          bottom : 0;
+          display : block;
+        }
+
+        .background-related-song
+        {
+          opacity : 0.5;
+          z-index : 1;
+          background-size: cover;
+          background-position: center;
+        }
+
+        .gradient-related-song
+        {
+          z-index : 2;
+          opacity : .5;
+          @include background($gradient-base-25);
+        }
+
+        &:hover, &.active
+        {
+          .background-related-song
+          {
+            opacity: .8;
+          }
+        }
+      }
+    }
+  }
 }
 
 .container-quote-create
