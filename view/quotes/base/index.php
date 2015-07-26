@@ -66,10 +66,10 @@
         ?>
         <div class = "background-quote"
             <?php if ($mode != "create"): ?>
-                back-img="<?= $url_background_quote; ?>"
+                style = "background-image: url('<?= $url_background_quote; ?>')"
             <?php endif; ?>
             <?php if ($mode == "create"): ?>
-             back-img="{{quote.url_background}}"
+                style = "background-image: url('{{quote.url_background}}')"
             <?php endif; ?>
             ></div>
     </section>

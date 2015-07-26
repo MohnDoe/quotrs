@@ -123,8 +123,9 @@ app.controller('formQuoteController', function ($scope, $http) {
             return $scope.quote.content;
         },
         function (newVal) {
+            newVal = newVal.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
             var access_token = "uWibAg6C7pcdQpvynsw8zk-fqo7crN5-bckfL0rJ1_SOTRM5BOTKygD4Q-e_ppDz";
-            var request = "https://api.genius.com/search?q=" + newVal;
+            var request = "https://api.genius.com/search?q=" + newVal.replace("<br>", " ");
             request += "&access_token=" + access_token;
 
             $http.get(request).then(
