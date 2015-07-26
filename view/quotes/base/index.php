@@ -28,28 +28,28 @@
                   ng-model = "quote.song.artist.name"><?= $Quote->Artist->name;?></span>
             <div style = "clear: both; display: table;"></div>
             <?php endif;?>
-            <?php if ($mode == "create"): ?>
-                <div class = "related-songs-rg">
-                    <ul class = "related-songs">
-                        <li class = "related-song"
-                            ng-repeat = "song in quote.related_songs_rg | limitTo:5"
-                            data-song = "{{song.result}}"
-                            data-artist = "{{song.result.primary_artist}}">
+        </div>
+        <?php if ($mode == "create"): ?>
+            <div class = "related-songs-rg">
+                <ul class = "related-songs">
+                    <li class = "related-song"
+                        ng-repeat = "song in quote.related_songs_rg | limitTo:5"
+                        data-song = "{{song.result}}"
+                        data-artist = "{{song.result.primary_artist}}">
                             <span class = "title-song">
                             {{song.result.title}}
                             </span>
                             <span class = "artist-name">
                                 {{song.result.primary_artist.name}}
                             </span>
-                            <div class = "gradient-related-song"></div>
-                            <div class = "border-related-song box-border-white"></div>
-                            <div class = "background-related-song"
-                                 style = "background-image: url('{{song.result.header_image_url}}');"></div>
-                        </li>
-                    </ul>
-                </div>
-            <?php endif; ?>
-        </div>
+                        <div class = "gradient-related-song"></div>
+                        <div class = "border-related-song box-border-white"></div>
+                        <div class = "background-related-song"
+                             style = "background-image: url('{{song.result.header_image_url}}');"></div>
+                    </li>
+                </ul>
+            </div>
+        <?php endif; ?>
         <?php if ($mode == "create"): ?>
             <input type = "button" class = "btn btn-primary btn-submit btn-submit-quote"
                    ng-click = "createQuote($event)" value = "Poster la citation" />
