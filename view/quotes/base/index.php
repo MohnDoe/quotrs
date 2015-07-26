@@ -35,8 +35,7 @@
                 <ul class = "related-songs">
                     <li class = "related-song"
                         ng-repeat = "song in quote.related_songs_rg | limitTo:5"
-                        data-song = "{{song.result}}"
-                        data-artist = "{{song.result.primary_artist}}">
+                        ng-click = "onSelectRelatedSong(song.result, $event)">
                             <span class = "title-song">
                             {{song.result.title}}
                             </span>

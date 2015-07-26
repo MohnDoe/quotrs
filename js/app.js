@@ -52,7 +52,7 @@ app.controller('formQuoteController', function ($scope, $http) {
         content: "",
         words: 0,
         url_background: "",
-        related_songs_rg : [],
+        related_songs_rg: [],
         song: {
             title: "",
             id_rg: -1,
@@ -83,6 +83,29 @@ app.controller('formQuoteController', function ($scope, $http) {
             });
     };
 
+    $scope.onSelectRelatedSong = function (song, $event) {
+
+        $('.related-song').removeClass('active');
+        $($event.currentTarget).addClass('active');
+        artist_song = song.primary_artist;
+
+        // on a tout ce qu'il faut, let's go
+        //song info
+        $scope.quote.song.title = song.title;
+        $scope.quote.song.id_rg = song.id;
+        $scope.quote.song.url_rg = song.url;
+        $scope.quote.song.url_img_rg = song.header_image_url;
+
+        //artist info
+        $scope.quote.song.artist.name = artist_song.name;
+        $scope.quote.song.artist.id_rg = artist_song.id;
+        $scope.quote.song.artist.url_rg = artist_song.url;
+        $scope.quote.song.artist.url_img_rg = artist_song.image_url;
+        //backgroud, 4 swag
+        $scope.quote.url_background = song.header_image_url;
+
+    }
+
     $scope.$watch(
         function () {
             return $scope.quote.content;
@@ -105,23 +128,6 @@ app.controller('formQuoteController', function ($scope, $http) {
                         if (hits.length > 0) {
                             // some result, super nice !
                             $scope.quote.related_songs_rg = hits;
-                            first_hit = hits[0].result;
-                            artist_hit = first_hit.primary_artist;
-
-                            // on a tout ce qu'il faut, let's go
-                            //song info
-                            $scope.quote.song.title = first_hit.title;
-                            $scope.quote.song.id_rg = first_hit.id;
-                            $scope.quote.song.url_rg = first_hit.url;
-                            $scope.quote.song.url_img_rg = first_hit.header_image_url;
-
-                            //artist info
-                            $scope.quote.song.artist.name = artist_hit.name;
-                            $scope.quote.song.artist.id_rg = artist_hit.id;
-                            $scope.quote.song.artist.url_rg = artist_hit.url;
-                            $scope.quote.song.artist.url_img_rg = artist_hit.image_url;
-                            //backgroud, 4 swag
-                            //$scope.quote.url_background = first_hit.header_image_url;
                         }
                     }
                 });

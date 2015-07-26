@@ -278,6 +278,7 @@ form.form-create-quote
 
     font-family : "Open Sans", sans-serif;
     font-size   : 12px;
+    z-index     : 4;
     .title
     {
       width       : 100%;
@@ -291,7 +292,7 @@ form.form-create-quote
     {
       li.related-song
       {
-        transition       : .5s;
+        transition       : .25s;
         width            : 150px;
         height           : 50px;
         background-color : $color-black-base;
@@ -355,6 +356,11 @@ form.form-create-quote
           {
             opacity : .8;
           }
+        }
+        &.active
+        {
+          @include box-shadow(0 0 6px 2px $color-yellow-base);
+          //border: 1px solid $color-yellow-base;
         }
       }
     }
@@ -739,7 +745,7 @@ form.form-create-quote
         left                  : -10px;
         bottom                : -25px;
         z-index               : 1;
-        background-position-x : -170px;
+        background-position-x : 0px;
         background-position-y : center;
         background-size       : auto 100%;
         opacity               : 1 !important;
@@ -811,11 +817,12 @@ form.form-create-quote
       right                 : 0;
       top                   : 0;
       bottom                : 0;
-      background-position-x : -170px;
+      background-position-x : 0px;
       background-position-y : center;
       background-size       : auto 100%;
       opacity               : .4;
       z-index               : 1;
+      @include filter(grayscale(100%));
     }
     .gradient-image-artist
     {
@@ -849,7 +856,7 @@ form.form-create-quote
         left                  : -50px;
         bottom                : -50px;
         top                   : -75px;
-        background-position-x : -550px;
+        background-position-x : -50px;
       }
 
     }
@@ -870,7 +877,8 @@ form.form-create-quote
     }
     .image-artist
     {
-      background-position-x : -550px !important;
+      background-position-x : -50px !important;
+      @include filter(grayscale(100%));
     }
   }
 }
