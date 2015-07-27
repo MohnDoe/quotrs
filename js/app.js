@@ -58,7 +58,7 @@ app.directive('contenteditable', function () {
     }
 });
 
-app.controller('formQuoteController', function ($scope, $http) {
+app.controller('formQuoteController', function ($scope, $http, $timeout) {
 
     $scope.quote = {
         content: "",
@@ -118,18 +118,20 @@ app.controller('formQuoteController', function ($scope, $http) {
 
     }
 
-    $scope.$watch(
-        function () {
-            return $scope.quote.content;
-        },
-        function (newVal) {
-            newVal = newVal.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
-            var access_token = "uWibAg6C7pcdQpvynsw8zk-fqo7crN5-bckfL0rJ1_SOTRM5BOTKygD4Q-e_ppDz";
-            var request = "https://api.genius.com/search?q=" + newVal.replace("<br>", " ");
-            request += "&access_token=" + access_token;
-
+    var promiseAPICall = '';
+    $scope.updateRelatedSongs = function(val){
+        val = val.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
+        var access_token = "uWibAg6C7pcdQpvynsw8zk-fqo7crN5-bckfL0rJ1_SOTRM5BOTKygD4Q-e_ppDz";
+        var request = "https://api.genius.com/search?q=" + val.replace("<br>", " ");
+        request += "&access_token=" + access_token;
+        if(promiseAPICall){
+            $timeout.cancel(promiseAPICall);
+        }
+        promiseAPICall = $timeout(function() {
+        //ajax call goes here..
             $http.get(request).then(
                 function (res) {
+                    console.log('Fetching results from Genius..');
                     data = res.data;
                     meta = data.meta;
                     status = meta.status;
@@ -143,8 +145,38 @@ app.controller('formQuoteController', function ($scope, $http) {
                             $scope.quote.related_songs_rg = hits;
                         }
                     }
-                });
-        }, true
-    )
+                }
+            );
+        },350);
+    }
+
+    // $scope.$watch(
+    //     function () {
+    //         return $scope.quote.content;
+    //     },
+    //     function (newVal) {
+    //         newVal = newVal.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g,' ');
+    //         var access_token = "uWibAg6C7pcdQpvynsw8zk-fqo7crN5-bckfL0rJ1_SOTRM5BOTKygD4Q-e_ppDz";
+    //         var request = "https://api.genius.com/search?q=" + newVal.replace("<br>", " ");
+    //         request += "&access_token=" + access_token;
+
+    //         $http.get(request).then(
+    //             function (res) {
+    //                 data = res.data;
+    //                 meta = data.meta;
+    //                 status = meta.status;
+    //                 if (status == 200) {
+    //                     // no error, niiiiiiiiice
+    //                     response = data.response;
+    //                     hits = response.hits;
+
+    //                     if (hits.length > 0) {
+    //                         // some result, super nice !
+    //                         $scope.quote.related_songs_rg = hits;
+    //                     }
+    //                 }
+    //             });
+    //     }, true
+    // )
 });
 //});

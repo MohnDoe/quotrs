@@ -16,7 +16,8 @@
             <span class = "line-quote line-quote-<?= $mode; ?>"
                   contenteditable = "<?= ($mode == "create" ? "true" : "false"); ?>"
                   ng-model = "quote.content"
-                  placeholder = "Rédigez votre citation.."><?php
+                  placeholder = "Rédigez votre citation.."
+                    ng-keyup="updateRelatedSongs(quote.content)" ><?php
                     if ($mode == "quote") {
                         echo str_replace ("\\n", "<br/>", $Quote->content);
                     }
@@ -30,8 +31,8 @@
             <?php endif;?>
         </div>
         <?php if ($mode == "create"): ?>
-            <div class = "related-songs-rg">
-                <span class="title">Choisissez le morceau correspondant</span>
+            <div class = "related-songs-rg" ng-show="quote.related_songs_rg.length">
+                <span class="title">Mmmhhh, peut être dans l'un de ces sons, non ?</span>
                 <ul class = "related-songs">
                     <li class = "related-song"
                         ng-repeat = "song in quote.related_songs_rg | limitTo:5"
@@ -48,6 +49,8 @@
                              back-img="{{song.result.header_image_url}}"></div>
                     </li>
                 </ul>
+                <span class="title">Non ? Chercher le morceau associé</span>
+                <input type="text" ng-model="quote.searchSongsInput" ng-keyup="updateRelatedSongs(quote.searchSongsInput)" placeholder="Titre du morceau"/>
             </div>
         <?php endif; ?>
         <?php if ($mode == "create"): ?>

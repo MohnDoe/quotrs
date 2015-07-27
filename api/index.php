@@ -77,10 +77,6 @@
     });
 
     /*
-     * Va chercher toutes les citations d'un artist
-     */
-
-    /*
      * Post une nouvelle citation
      */
     $app->post('/quotes/create', function() use ($app){
@@ -96,15 +92,21 @@
          */
         if($allParamsPOST['song']['artist']['id_rg'] != -1){
             // add new artist in DB
-            $name_new_artist = htmlspecialchars($allParamsPOST['song']['artist']['name']);
-            $NewArtist = new Artist();
-            $NewArtist->name = $name_new_artist;
-            // TODO : check if artist alrady exist
-            $NewArtist->id = $allParamsPOST['song']['artist']['id_rg'];
-            $NewArtist->url_rg = $allParamsPOST['song']['artist']['url_rg'];
-            $NewArtist->url_image = $allParamsPOST['song']['artist']['url_img_rg'];
-            $NewArtist->addArtist();
-            $idArtistQuote = $NewArtist->id;
+            // check if artist already exists
+            $CheckArtist = new Artist($allParamsPOST['song']['artist']['id_rg']);
+            if($CheckArtist->is_valid){
+                $idArtistQuote = $CheckArtist->id;
+            }else{
+                $name_new_artist = htmlspecialchars($allParamsPOST['song']['artist']['name']);
+                $NewArtist = new Artist();
+                $NewArtist->name = $name_new_artist;
+                // TODO : check if artist alrady exist
+                $NewArtist->id = $allParamsPOST['song']['artist']['id_rg'];
+                $NewArtist->url_rg = $allParamsPOST['song']['artist']['url_rg'];
+                $NewArtist->url_image = $allParamsPOST['song']['artist']['url_img_rg'];
+                $NewArtist->addArtist();
+                $idArtistQuote = $NewArtist->id;
+            }
             //var_dump("New artist created : #".$idArtistQuote." / ".$NewArtist->name);
         }
         else{
@@ -164,24 +166,30 @@
          * QUOTE'S SONG
          */
         if($allParamsPOST['song']['id_rg'] != -1){
-            // ajoutons un nouveau morceau
-            $title_new_song = htmlspecialchars($allParamsPOST['song']['title']);
-            //preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $allParamsPOST['song']['url_youtube'], $parsedYoutubeSongURL);
-            $NewSong = new Song();
-            //var_dump($parsedYoutubeSongURL);
-            $NewSong->title = $title_new_song;
-            //TODO ; check if song already exist
-            $NewSong->id = $allParamsPOST['song']['id_rg'];
-            $NewSong->url_rg = $allParamsPOST['song']['url_rg'];
-            $NewSong->id_artist = $idArtistQuote;
-            //$NewSong->id_album = $idAlbumSongQuote;
-            $NewSong->id_album = -1;
-            //FIXME : check url youtube
-            //$NewSong->urlYoutube = $allParamsPOST['song']['url_youtube'];
-            $idNewSong = $NewSong->addSong();
 
-            $idSongQuote = $idNewSong;
-            $idSongQuote = $NewSong->id;
+            // check if song already exists
+            $CheckSong = new Song($allParamsPOST['song']['id_rg']);
+            if($CheckSong->is_valid){
+                $idSongQuote = $CheckSong->id;
+            }else{
+                // ajoutons un nouveau morceau
+                $title_new_song = htmlspecialchars($allParamsPOST['song']['title']);
+                //preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $allParamsPOST['song']['url_youtube'], $parsedYoutubeSongURL);
+                $NewSong = new Song();
+                //var_dump($parsedYoutubeSongURL);
+                $NewSong->title = $title_new_song;
+                //TODO ; check if song already exist
+                $NewSong->id = $allParamsPOST['song']['id_rg'];
+                $NewSong->url_rg = $allParamsPOST['song']['url_rg'];
+                $NewSong->id_artist = $idArtistQuote;
+                //$NewSong->id_album = $idAlbumSongQuote;
+                $NewSong->id_album = -1;
+                //FIXME : check url youtube
+                //$NewSong->urlYoutube = $allParamsPOST['song']['url_youtube'];
+                $NewSong->addSong();
+                $idSongQuote = $NewSong->id;
+            }
+
             //var_dump("New song created : #".$idSongQuote." / ".$NewSong->title);
 
         }
