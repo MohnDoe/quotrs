@@ -68,7 +68,7 @@ app.controller('formQuoteController', function ($scope, $http, $timeout) {
         song: {
             title: "",
             id_rg: -1,
-            ur_rg: "",
+            url_rg: "",
             url_img_rg: "",
             artist: {
                 name: "",
@@ -88,6 +88,7 @@ app.controller('formQuoteController', function ($scope, $http, $timeout) {
                 // this callback will be called asynchronously
                 // when the response is available
                 console.log(data);
+                document.location.href = data['url_quote'];
             }).
             error(function (data, status, headers, config) {
                 // called asynchronously if an error occurs

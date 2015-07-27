@@ -965,8 +965,9 @@ form.form-create-quote
 
   &:disabled
   {
-    color        : transparentize(white, .5);
-    border-color : transparentize(white, .5);
+    color        : transparentize(white, .5) !important;
+    border-color : transparentize(white, .5) !important;
+    cursor       : auto;
   }
   &.btn-primary
   {

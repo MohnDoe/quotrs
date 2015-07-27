@@ -55,7 +55,7 @@
         <?php endif; ?>
         <?php if ($mode == "create"): ?>
             <input type = "button" class = "btn btn-primary btn-submit btn-submit-quote"
-                   ng-click = "createQuote($event)" value = "Poster la citation" />
+                   ng-click = "createQuote($event)" value = "Poster la citation" ng-disabled="quote.content == '' || quote.song.id_rg == -1"/>
 
         <?php endif; ?>
         <div class = "gradient-background-quote" ng-show = "quote.url_background != ''"></div>
