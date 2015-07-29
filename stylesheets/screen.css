@@ -212,6 +212,7 @@ a:hover {
   font-style: italic;
   float: right;
   background-color: #24221f;
+  margin-right: -15px;
 }
 /* line 167, ../sass/screen.scss */
 .container-quote .the-quote .author-quote:before {
@@ -888,7 +889,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
 
 /* line 908, ../sass/screen.scss */
 #links-top {
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: 10px;
   z-index: 20;

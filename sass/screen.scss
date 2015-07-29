@@ -163,7 +163,7 @@ a
       font-style       : italic;
       float            : right;
       background-color : $color-black-base;
-
+      margin-right     : -15px;
       &:before
       {
         color   : inherit;
@@ -907,7 +907,7 @@ form.form-create-quote
 
 #links-top
 {
-  position : absolute;
+  position : fixed;
   top      : 10px;
   right    : 10px;
   z-index  : 20;
