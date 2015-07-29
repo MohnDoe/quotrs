@@ -28,7 +28,8 @@ $color-twitter-lighten : lighten($color-twitter, 15%);
 $padding-base-quote : 200px;
 $padding-base-quote-extra : 100px;
 
-body, html
+// test5
+body, html 
 {
   font-family      : "Oswald", sans-serif;
   background-color : $color-black-base;
@@ -105,10 +106,36 @@ a
     opacity             : .8;
     z-index             : 1;
   }
+  .container-youtube-player-quote
+  {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 0;
 
+    padding-bottom: 56.25%; /* 16:9 */
+    opacity: .8;
+
+    .youtube-player-quote
+    {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
   .gradient-background-quote
   {
-    z-index  : 2;
+    z-index  : 3;
     position : absolute;
     left     : 0;
     right    : 0;
@@ -215,14 +242,6 @@ form.form-create-quote
   .song-form-quote
   {
     margin-top : 30px;
-
-    .container-player-youtube
-    {
-      width         : 640px;
-      height        : auto;
-      position      : relative;
-      margin-bottom : 10px;
-    }
     .dropdown-menu
     {
       position : relative;
@@ -643,7 +662,7 @@ form.form-create-quote
 
     .container-informations-album
     {
-      display        : flex;
+      @include display-flex;
       position       : absolute;
       left           : 0;
       right          : 0;
@@ -1008,7 +1027,7 @@ form.form-create-quote
 
   .section-links
   {
-    display         : flex;
+    @include display-flex;
     width           : 100%;
     margin-top      : 30px;
     flex-direction  : column;

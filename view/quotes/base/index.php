@@ -52,12 +52,18 @@
                 <span class="title">Non ? Chercher le morceau associé</span>
                 <input type="text" ng-model="quote.searchSongsInput" ng-keyup="updateRelatedSongs(quote.searchSongsInput)" placeholder="Titre du morceau"/>
             </div>
-        <?php endif; ?>
-        <?php if ($mode == "create"): ?>
             <input type = "button" class = "btn btn-primary btn-submit btn-submit-quote"
                    ng-click = "createQuote($event)" value = "Poster la citation" ng-disabled="quote.content == '' || quote.song.id_rg == -1"/>
 
         <?php endif; ?>
+
+        <?php if($mode == "quote" AND $Quote->Song->url_youtube != ''):?>
+            <div class="container-youtube-player-quote">
+                <iframe id="ytplayer" class="youtube-player-quote" type="text/html" width="100%" height="auto"
+      src="http://www.youtube.com/embed/<?= $Quote->Song->url_youtube;?>?autoplay=1&iv_load_policy=3&controls=0&modestbranding=1&rel=0&origin=http://quotrs.com"
+      frameborder="0"></iframe>
+            </div>
+        <?php endif;?>
         <div class = "gradient-background-quote" ng-show = "quote.url_background != ''"></div>
 
         <?php

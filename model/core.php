@@ -60,6 +60,8 @@
     DEFINE('SALT_HASHIDS', "12309UJQODJ09ZA8ESQDJLQSJDAZEU");
 
     DEFINE('AWS_S3_REGION', 'eu-west-1');
+    
+    DEFINE('ACCESS_TOKEN_GENIUS_API', "uWibAg6C7pcdQpvynsw8zk-fqo7crN5-bckfL0rJ1_SOTRM5BOTKygD4Q-e_ppDz");
     /*
      * REQUIRING ALL CLASSES
      */
@@ -75,3 +77,37 @@
     $array_meta_page = array(
         'titlePage' => "Quotrs."
     );
+
+    function CallAPI($method, $url, $data = false)
+    {
+        $curl = curl_init();
+
+        switch ($method)
+        {
+            case "POST":
+                curl_setopt($curl, CURLOPT_POST, 1);
+
+                if ($data)
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                break;
+            case "PUT":
+                curl_setopt($curl, CURLOPT_PUT, 1);
+                break;
+            default:
+                if ($data)
+                    $url = sprintf("%s?%s", $url, http_build_query($data));
+        }
+
+        // Optional Authentication:
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($curl, CURLOPT_USERPWD, "username:password");
+
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+        $result = curl_exec($curl);
+
+        curl_close($curl);
+
+        return $result;
+    }
