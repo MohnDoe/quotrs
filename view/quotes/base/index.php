@@ -57,7 +57,7 @@
 
         <?php endif; ?>
 
-        <?php if($mode == "quote" AND $Quote->Song->url_youtube != ''):?>
+        <?php if($mode == "quote" AND $Quote->Song->url_youtube != '' AND FALSE):?>
             <div class="container-youtube-player-quote">
                 <iframe id="ytplayer" class="youtube-player-quote" type="text/html" width="100%" height="auto"
       src="http://www.youtube.com/embed/<?= $Quote->Song->url_youtube;?>?iv_load_policy=3&controls=0&autoplay=1&modestbranding=1&rel=0&origin=http://quotrs.com"
