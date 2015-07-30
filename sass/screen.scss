@@ -145,7 +145,7 @@ a
     display  : block;
     height   : 100%;
     width    : 100%;
-    @include background($gradient-base);
+    @include background($gradient-base-25);
   }
   .the-quote
   {
@@ -921,7 +921,7 @@ form.form-create-quote
   right    : 0;
   bottom   : 0;
   top      : 0;
-  border   : 1px solid rgba(255, 255, 255, .1);
+  border   : 1px solid rgba(255, 255, 255, .05);
   z-index  : 9;
 }
 
