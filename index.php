@@ -20,16 +20,28 @@
 
     $app->array_meta_page = $array_meta_page;
 
+    //home page
+    $app->get('/', function() use ($app){
+        $app->render(
+            'home/index.php',
+            array(
+                'app' => $app
+                )
+            );
+    })->name('home');
+
+    //page create quote
     $app->get('/quotes/create', function() use ($app){
         $app->render(
             'quotes/base/index.php',
             array(
                 'mode' => 'create',
                 'app' => $app
-            )
-        );
+                )
+            );
     })->name('createQuoteUrl');
 
+    //page quote
     $app->get('/quotes/:hashID', function($hashID) use($app){
         $Quote = new Quote($hashID, array(
             'init_artist' => true,
@@ -48,6 +60,7 @@
         }
     })->name('quoteUrl');
 
+    //page artist
     $app->get('/artists/:idArtist', function($idArtist) use($app){
         $Artist = new Artist($idArtist);
         if($Artist->is_valid){
@@ -58,6 +71,7 @@
         }
     })->name('artistUrl');
 
+    //page album
     $app->get('/albums/:idAlbum', function($idAlbum) use($app){
         $Album = new Album($idAlbum);
         if($Album->is_valid){
