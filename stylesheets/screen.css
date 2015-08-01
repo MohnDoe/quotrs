@@ -222,13 +222,9 @@ a:hover {
 /* line 178, ../sass/screen.scss */
 .container-quote .the-quote .line-quote {
   box-shadow: 15px 0 0 #feb41c, -15px 0 0 #feb41c;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmViNDFjIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmViNDFjIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background: -webkit-gradient(linear, 50% 0%, 50% 65, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(0%, #feb41c), color-stop(100%, #feb41c), color-stop(100%, rgba(0, 0, 0, 0)));
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0px, #feb41c 0px, #feb41c 65px, rgba(0, 0, 0, 0) 65px);
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0px, #feb41c 0px, #feb41c 65px, rgba(0, 0, 0, 0) 65px);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, #feb41c 0px, #feb41c 65px, rgba(0, 0, 0, 0) 65px);
+  background: #feb41c;
 }
-/* line 183, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 .container-quote .the-quote .author-quote {
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
@@ -241,19 +237,19 @@ a:hover {
   background-color: #24221f;
   margin-right: -15px;
 }
-/* line 195, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 .container-quote .the-quote .author-quote:before {
   color: inherit;
   content: "\2014 \00a0";
 }
 
-/* line 206, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 form.form-create-quote {
   width: 100%;
   display: block;
   height: 100%;
 }
-/* line 212, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
 form.form-create-quote .dropdown-menu {
   background-color: #F5F5F5;
   color: #24221f;
@@ -266,36 +262,36 @@ form.form-create-quote .dropdown-menu {
   float: left;
   clear: both;
 }
-/* line 225, ../sass/screen.scss */
+/* line 226, ../sass/screen.scss */
 form.form-create-quote .dropdown-menu li {
   width: 100%;
   line-height: 30px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0 5px;
 }
-/* line 231, ../sass/screen.scss */
+/* line 232, ../sass/screen.scss */
 form.form-create-quote .dropdown-menu li.active {
   background-color: #24221f;
   color: white;
 }
-/* line 236, ../sass/screen.scss */
+/* line 237, ../sass/screen.scss */
 form.form-create-quote .dropdown-menu li:last-child {
   border: none;
 }
-/* line 243, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 form.form-create-quote .song-form-quote {
   margin-top: 30px;
 }
-/* line 246, ../sass/screen.scss */
+/* line 247, ../sass/screen.scss */
 form.form-create-quote .song-form-quote .dropdown-menu {
   position: relative;
   width: 100%;
 }
-/* line 253, ../sass/screen.scss */
+/* line 254, ../sass/screen.scss */
 form.form-create-quote input {
   z-index: 15;
 }
-/* line 258, ../sass/screen.scss */
+/* line 259, ../sass/screen.scss */
 form.form-create-quote input[type="text"] {
   background-color: #322f2b;
   border: 1px solid gray;
@@ -310,16 +306,16 @@ form.form-create-quote input[type="text"] {
   font-family: "Open Sans", sans-serif;
   outline-color: #feb41c;
 }
-/* line 274, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 form.form-create-quote .btn-submit-quote {
   margin-top: 20px;
   z-index: 5;
 }
-/* line 280, ../sass/screen.scss */
+/* line 281, ../sass/screen.scss */
 form.form-create-quote .song-form-quote {
   z-index: 10;
 }
-/* line 284, ../sass/screen.scss */
+/* line 285, ../sass/screen.scss */
 form.form-create-quote .info-text {
   z-index: 5;
   font-size: 10px;
@@ -328,7 +324,7 @@ form.form-create-quote .info-text {
   font-weight: normal;
   font-family: "Open Sans", sans-serif;
 }
-/* line 294, ../sass/screen.scss */
+/* line 295, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg {
   position: relative;
   margin-top: 5px;
@@ -336,7 +332,7 @@ form.form-create-quote .related-songs-rg {
   font-size: 12px;
   z-index: 4;
 }
-/* line 302, ../sass/screen.scss */
+/* line 303, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg .title {
   width: 100%;
   display: block;
@@ -345,7 +341,7 @@ form.form-create-quote .related-songs-rg .title {
   line-height: 2em;
   position: relative;
 }
-/* line 313, ../sass/screen.scss */
+/* line 314, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg .related-songs li.related-song {
   transition: .25s;
   width: 150px;
@@ -357,7 +353,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song {
   float: left;
   padding: 10px;
 }
-/* line 325, ../sass/screen.scss */
+/* line 326, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg .related-songs li.related-song .title-song, form.form-create-quote .related-songs-rg .related-songs li.related-song .artist-name {
   position: relative;
   float: left;
@@ -370,15 +366,15 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song .title-s
   text-overflow: ellipsis;
   display: inline-block;
 }
-/* line 338, ../sass/screen.scss */
+/* line 339, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg .related-songs li.related-song .title-song {
   font-weight: lighter;
 }
-/* line 343, ../sass/screen.scss */
+/* line 344, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg .related-songs li.related-song .artist-name {
   font-weight: bold;
 }
-/* line 348, ../sass/screen.scss */
+/* line 349, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg .related-songs li.related-song .background-related-song, form.form-create-quote .related-songs-rg .related-songs li.related-song .gradient-related-song {
   position: absolute;
   top: 0;
@@ -387,14 +383,14 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song .backgro
   bottom: 0;
   display: block;
 }
-/* line 358, ../sass/screen.scss */
+/* line 359, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg .related-songs li.related-song .background-related-song {
   opacity: 0.5;
   z-index: 1;
   background-size: cover;
   background-position: center;
 }
-/* line 366, ../sass/screen.scss */
+/* line 367, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg .related-songs li.related-song .gradient-related-song {
   z-index: 2;
   opacity: .5;
@@ -404,33 +400,33 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song .gradien
   background: -webkit-linear-gradient(bottom, #24221f, #24221f 25%, rgba(36, 34, 31, 0));
   background: linear-gradient(to top, #24221f, #24221f 25%, rgba(36, 34, 31, 0));
 }
-/* line 375, ../sass/screen.scss */
+/* line 376, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg .related-songs li.related-song:hover .background-related-song, form.form-create-quote .related-songs-rg .related-songs li.related-song.active .background-related-song {
   opacity: .8;
 }
-/* line 380, ../sass/screen.scss */
+/* line 381, ../sass/screen.scss */
 form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   -moz-box-shadow: 0 0 6px 2px #feb41c;
   -webkit-box-shadow: 0 0 6px 2px #feb41c;
   box-shadow: 0 0 6px 2px #feb41c;
 }
 
-/* line 392, ../sass/screen.scss */
+/* line 393, ../sass/screen.scss */
 .container-quote-create [contenteditable=true]:empty:before {
   content: attr(placeholder);
   display: inherit;
   /* For Firefox */
 }
-/* line 401, ../sass/screen.scss */
+/* line 402, ../sass/screen.scss */
 .container-quote-create span.line-quote-create:hover, .container-quote-create span.line-quote-create:active, .container-quote-create span.line-quote-create:focus {
   outline: #fec54f solid medium;
 }
-/* line 408, ../sass/screen.scss */
+/* line 409, ../sass/screen.scss */
 .container-quote-create span.author-quote:hover, .container-quote-create span.author-quote:active, .container-quote-create span.author-quote:focus {
   outline: #3f3c37 solid medium;
 }
 
-/* line 417, ../sass/screen.scss */
+/* line 418, ../sass/screen.scss */
 .container-informations-quote {
   position: relative;
   width: 61.8%;
@@ -438,7 +434,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   margin: -300px auto 0;
   z-index: 2;
 }
-/* line 425, ../sass/screen.scss */
+/* line 426, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left, .container-informations-quote .container-informations-quote-right {
   position: relative;
   float: left;
@@ -446,27 +442,27 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   display: block;
   min-height: 200px;
 }
-/* line 433, ../sass/screen.scss */
+/* line 434, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left {
   width: calc(61.8% - 10px);
   margin-right: 10px;
   position: relative;
   float: left;
 }
-/* line 440, ../sass/screen.scss */
+/* line 441, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote {
   position: absolute;
   left: -60px;
   top: 0;
   display: block;
 }
-/* line 447, ../sass/screen.scss */
+/* line 448, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons {
   width: 50px;
   position: relative;
   display: block;
 }
-/* line 453, ../sass/screen.scss */
+/* line 454, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button {
   display: block;
   position: relative;
@@ -478,38 +474,38 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   margin-bottom: 5px;
   cursor: pointer;
 }
-/* line 465, ../sass/screen.scss */
+/* line 466, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button:after {
   content: "";
   display: table;
   clear: both;
 }
-/* line 471, ../sass/screen.scss */
+/* line 472, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button:hover {
   background-color: #090807;
   border-color: #24221f;
 }
-/* line 476, ../sass/screen.scss */
+/* line 477, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button.share-facebook {
   background-color: #3b5998;
   border-color: #5f7ec1;
 }
-/* line 480, ../sass/screen.scss */
+/* line 481, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button.share-facebook:hover {
   background-color: #263961;
   border-color: #3b5998;
 }
-/* line 487, ../sass/screen.scss */
+/* line 488, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button.share-twitter {
   background-color: #50abf1;
   border-color: #97cdf7;
 }
-/* line 491, ../sass/screen.scss */
+/* line 492, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-share-buttons-quote .share-buttons .share-button.share-twitter:hover {
   background-color: #1288e2;
   border-color: #50abf1;
 }
-/* line 500, ../sass/screen.scss */
+/* line 501, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments {
   display: block;
   position: relative;
@@ -517,7 +513,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
 }
-/* line 508, ../sass/screen.scss */
+/* line 509, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .load-more-comments {
   display: block;
   height: 40px;
@@ -537,19 +533,19 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 525, ../sass/screen.scss */
+/* line 526, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .load-more-comments:hover {
   background-color: #f5f5f5;
   color: #24221f;
 }
-/* line 531, ../sass/screen.scss */
+/* line 532, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment {
   width: 100%;
   margin-bottom: 10px;
   position: relative;
   float: left;
 }
-/* line 538, ../sass/screen.scss */
+/* line 539, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .picture-user-comment {
   background-color: #feb41c;
   width: 60px;
@@ -557,12 +553,12 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   position: relative;
   float: left;
 }
-/* line 546, ../sass/screen.scss */
+/* line 547, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .picture-user-comment img {
   height: 100%;
   width: 100%;
 }
-/* line 552, ../sass/screen.scss */
+/* line 553, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment {
   background-color: #272521;
   width: calc(100% - 60px);
@@ -571,7 +567,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   float: right;
   font-size: 14px;
 }
-/* line 561, ../sass/screen.scss */
+/* line 562, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment .top-comment {
   margin-bottom: 10px;
   position: relative;
@@ -579,19 +575,19 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   height: 20px;
   line-height: 20px;
 }
-/* line 569, ../sass/screen.scss */
+/* line 570, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment .top-comment .author-comment {
   color: #feb41c;
   font-weight: bold;
 }
-/* line 574, ../sass/screen.scss */
+/* line 575, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment .top-comment .date-comment {
   color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
   float: right;
   font-size: 12px;
 }
-/* line 583, ../sass/screen.scss */
+/* line 584, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment .comment {
   font-size: 14px;
   color: #f5f5f5;
@@ -602,36 +598,36 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   float: left;
   height: auto;
 }
-/* line 594, ../sass/screen.scss */
+/* line 595, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-left .container-comments .comment .content-comment .comment:after {
   content: "";
   display: table;
   clear: both;
 }
-/* line 606, ../sass/screen.scss */
+/* line 607, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-right {
   width: 38.2%;
 }
-/* line 610, ../sass/screen.scss */
+/* line 611, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-right .container-album, .container-informations-quote .container-informations-quote-right .container-artist {
   position: relative;
   float: left;
   margin-bottom: 20px;
   width: 100%;
 }
-/* line 616, ../sass/screen.scss */
+/* line 617, ../sass/screen.scss */
 .container-informations-quote .container-informations-quote-right .container-album .container-informations-artist, .container-informations-quote .container-informations-quote-right .container-artist .container-informations-artist {
   height: 200px;
 }
 
-/* line 626, ../sass/screen.scss */
+/* line 627, ../sass/screen.scss */
 .container-album {
   position: relative;
   float: left;
   margin-bottom: 20px;
   width: 100%;
 }
-/* line 633, ../sass/screen.scss */
+/* line 634, ../sass/screen.scss */
 .container-album .container-cover-album {
   width: 100%;
   height: 100px;
@@ -639,7 +635,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   position: relative;
   float: left;
 }
-/* line 641, ../sass/screen.scss */
+/* line 642, ../sass/screen.scss */
 .container-album .container-cover-album .cover-album {
   position: absolute;
   left: 0;
@@ -650,7 +646,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   background-size: cover;
   background-position: center;
 }
-/* line 652, ../sass/screen.scss */
+/* line 653, ../sass/screen.scss */
 .container-album .container-cover-album .gradient-cover-album {
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI0MjIxZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzI0MjIxZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #24221f), color-stop(100%, rgba(36, 34, 31, 0)));
@@ -665,7 +661,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   top: 0;
   z-index: 2;
 }
-/* line 664, ../sass/screen.scss */
+/* line 665, ../sass/screen.scss */
 .container-album .container-cover-album .container-informations-album {
   display: -webkit-flex;
   display: flex;
@@ -680,7 +676,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   flex-wrap: wrap;
   align-items: center;
 }
-/* line 678, ../sass/screen.scss */
+/* line 679, ../sass/screen.scss */
 .container-album .container-cover-album .container-informations-album span {
   display: block;
   width: 100%;
@@ -688,13 +684,13 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   text-transform: uppercase;
   line-height: 1.6em;
 }
-/* line 687, ../sass/screen.scss */
+/* line 688, ../sass/screen.scss */
 .container-album .container-cover-album .container-informations-album .title-album {
   font-size: 24px;
   font-weight: lighter;
   color: #feb41c;
 }
-/* line 692, ../sass/screen.scss */
+/* line 693, ../sass/screen.scss */
 .container-album .container-cover-album .container-informations-album .title-album:after {
   content: " ";
   display: block;
@@ -704,12 +700,12 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   position: relative;
   margin: 5px auto;
 }
-/* line 703, ../sass/screen.scss */
+/* line 704, ../sass/screen.scss */
 .container-album .container-cover-album .container-informations-album .artist-album, .container-album .container-cover-album .container-informations-album .release-album {
   font-weight: lighter;
 }
 
-/* line 712, ../sass/screen.scss */
+/* line 713, ../sass/screen.scss */
 .container-album-small {
   height: 50px;
   position: relative;
@@ -717,30 +713,30 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   width: 200px;
   margin: 0 10px 0 0;
 }
-/* line 720, ../sass/screen.scss */
+/* line 721, ../sass/screen.scss */
 .container-album-small .container-cover-album {
   height: 100%;
 }
-/* line 726, ../sass/screen.scss */
+/* line 727, ../sass/screen.scss */
 .container-album-small .container-cover-album .container-informations-album span {
   font-size: 12px;
 }
-/* line 730, ../sass/screen.scss */
+/* line 731, ../sass/screen.scss */
 .container-album-small .container-cover-album .container-informations-album .title-album {
   font-size: 14px;
 }
-/* line 734, ../sass/screen.scss */
+/* line 735, ../sass/screen.scss */
 .container-album-small .container-cover-album .container-informations-album .title-album:after {
   margin: 3px auto;
 }
 
-/* line 745, ../sass/screen.scss */
+/* line 746, ../sass/screen.scss */
 .container-artist .container-informations-artist {
   position: relative;
   float: left;
   width: 100%;
 }
-/* line 750, ../sass/screen.scss */
+/* line 751, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-image-artist {
   width: 50px;
   height: 150px;
@@ -751,7 +747,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   z-index: 3;
   overflow: hidden;
 }
-/* line 760, ../sass/screen.scss */
+/* line 761, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-image-artist .image-artist {
   position: absolute;
   top: -25px;
@@ -764,7 +760,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   background-size: auto 100%;
   opacity: 1 !important;
 }
-/* line 774, ../sass/screen.scss */
+/* line 775, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations {
   height: 200px;
   margin: 25px 0;
@@ -773,7 +769,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   float: left;
   z-index: 10;
 }
-/* line 783, ../sass/screen.scss */
+/* line 784, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist {
   position: relative;
   float: left;
@@ -783,14 +779,14 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   line-height: 1.5em;
   text-transform: uppercase;
 }
-/* line 793, ../sass/screen.scss */
+/* line 794, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist.name-artist {
   color: #feb41c;
   font-size: 21px;
   font-weight: lighter;
   margin-bottom: 10px;
 }
-/* line 801, ../sass/screen.scss */
+/* line 802, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist.information-artist-part {
   line-height: 1em;
   font-size: 14px;
@@ -801,24 +797,24 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   display: block;
   width: 100%;
 }
-/* line 812, ../sass/screen.scss */
+/* line 813, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist.information-artist-part .information-title, .container-artist .container-informations-artist .container-informations .information-artist.information-artist-part .information-content {
   display: block;
   position: relative;
   float: left;
 }
-/* line 818, ../sass/screen.scss */
+/* line 819, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist.information-artist-part .information-title {
   width: 100%;
   margin-bottom: 3px;
   font-weight: bold;
 }
-/* line 824, ../sass/screen.scss */
+/* line 825, ../sass/screen.scss */
 .container-artist .container-informations-artist .container-informations .information-artist.information-artist-part .information-content {
   font-weight: lighter;
   font-size: 15px;
 }
-/* line 833, ../sass/screen.scss */
+/* line 834, ../sass/screen.scss */
 .container-artist .container-informations-artist .image-artist {
   position: absolute;
   left: 0;
@@ -833,7 +829,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
-/* line 847, ../sass/screen.scss */
+/* line 848, ../sass/screen.scss */
 .container-artist .container-informations-artist .gradient-image-artist {
   position: absolute;
   top: 0;
@@ -844,49 +840,49 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   background: linear-gradient(to right, rgba(36, 34, 31, 0), #24221f 100px, #24221f);
 }
 
-/* line 861, ../sass/screen.scss */
+/* line 862, ../sass/screen.scss */
 .container-artist-big {
   height: 100%;
 }
-/* line 865, ../sass/screen.scss */
+/* line 866, ../sass/screen.scss */
 .container-artist-big .container-informations-artist {
   height: 100%;
 }
-/* line 869, ../sass/screen.scss */
+/* line 870, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .container-image-artist {
   width: 200px;
   height: calc(100% - 125px);
   margin: 75px 50px 50px;
 }
-/* line 874, ../sass/screen.scss */
+/* line 875, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .container-image-artist .image-artist {
   left: -50px;
   bottom: -50px;
   top: -75px;
   background-position-x: -50px;
 }
-/* line 883, ../sass/screen.scss */
+/* line 884, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .container-informations {
   height: auto;
   margin-top: 75px;
   width: calc(100% - 300px);
 }
-/* line 889, ../sass/screen.scss */
+/* line 890, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .container-informations .name-artist {
   font-size: 36px !important;
 }
-/* line 894, ../sass/screen.scss */
+/* line 895, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .gradient-image-artist {
   background: linear-gradient(to right, rgba(36, 34, 31, 0), #24221f 550px, #24221f);
 }
-/* line 898, ../sass/screen.scss */
+/* line 899, ../sass/screen.scss */
 .container-artist-big .container-informations-artist .image-artist {
   background-position-x: -50px !important;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
 
-/* line 906, ../sass/screen.scss */
+/* line 907, ../sass/screen.scss */
 .small-title {
   font-size: 18px;
   text-transform: uppercase;
@@ -897,7 +893,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   float: left;
 }
 
-/* line 917, ../sass/screen.scss */
+/* line 918, ../sass/screen.scss */
 .box-border-white {
   position: absolute;
   left: 0;
@@ -908,14 +904,14 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   z-index: 9;
 }
 
-/* line 928, ../sass/screen.scss */
+/* line 929, ../sass/screen.scss */
 #links-top {
   position: fixed;
   top: 10px;
   right: 10px;
   z-index: 20;
 }
-/* line 934, ../sass/screen.scss */
+/* line 935, ../sass/screen.scss */
 #links-top .link {
   font-family: "Oswald", sans-serif;
   color: rgba(255, 255, 255, 0.95);
@@ -929,20 +925,20 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   margin-left: 30px;
   font-size: 12px;
 }
-/* line 948, ../sass/screen.scss */
+/* line 949, ../sass/screen.scss */
 #links-top .link.link-primary {
   padding: 0 10px;
   border: 1px solid #feb41c;
   color: #feb41c;
   font-weight: bold;
 }
-/* line 955, ../sass/screen.scss */
+/* line 956, ../sass/screen.scss */
 #links-top .link.link-primary:hover {
   background-color: #feb41c;
   color: #24221f;
 }
 
-/* line 964, ../sass/screen.scss */
+/* line 965, ../sass/screen.scss */
 .btn {
   width: auto;
   height: auto;
@@ -959,28 +955,28 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   outline: none;
   transition: .25s;
 }
-/* line 982, ../sass/screen.scss */
+/* line 983, ../sass/screen.scss */
 .btn:active {
   outline: none;
 }
-/* line 987, ../sass/screen.scss */
+/* line 988, ../sass/screen.scss */
 .btn:disabled {
   color: rgba(255, 255, 255, 0.5) !important;
   border-color: rgba(255, 255, 255, 0.5) !important;
   cursor: auto;
 }
-/* line 993, ../sass/screen.scss */
+/* line 994, ../sass/screen.scss */
 .btn.btn-primary {
   border-color: rgba(254, 180, 28, 0.9);
   color: rgba(254, 180, 28, 0.9);
 }
-/* line 1000, ../sass/screen.scss */
+/* line 1001, ../sass/screen.scss */
 .btn.btn-primary:hover {
   border-color: #feb41c;
   color: #feb41c;
 }
 
-/* line 1009, ../sass/screen.scss */
+/* line 1010, ../sass/screen.scss */
 #footer {
   position: relative;
   float: left;
@@ -989,7 +985,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   z-index: 10;
   padding: 50px 0;
 }
-/* line 1018, ../sass/screen.scss */
+/* line 1019, ../sass/screen.scss */
 #footer:before {
   content: " ";
   height: 1px;
@@ -1004,7 +1000,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   position: relative;
   display: block;
 }
-/* line 1030, ../sass/screen.scss */
+/* line 1031, ../sass/screen.scss */
 #footer .section-links {
   display: -webkit-flex;
   display: flex;
@@ -1017,7 +1013,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   text-transform: uppercase;
   align-items: center;
 }
-/* line 1042, ../sass/screen.scss */
+/* line 1043, ../sass/screen.scss */
 #footer .section-links .title-section {
   color: #3f3c37;
   margin-bottom: 20px;
@@ -1026,11 +1022,11 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   font-size: 18px;
   letter-spacing: 2px;
 }
-/* line 1052, ../sass/screen.scss */
+/* line 1053, ../sass/screen.scss */
 #footer .section-links .container-links {
   color: #c0bcb5;
 }
-/* line 1056, ../sass/screen.scss */
+/* line 1057, ../sass/screen.scss */
 #footer .section-links .container-links .container-link {
   margin: 0 10px;
   height: auto;
@@ -1038,7 +1034,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   width: auto;
   float: left;
 }
-/* line 1064, ../sass/screen.scss */
+/* line 1065, ../sass/screen.scss */
 #footer .section-links .container-links .container-link .label-link {
   letter-spacing: 1px;
   font-size: 14px;
@@ -1047,21 +1043,21 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   margin-right: 2px;
   display: inline-block;
 }
-/* line 1073, ../sass/screen.scss */
+/* line 1074, ../sass/screen.scss */
 #footer .section-links .container-links .container-link .link {
   font-size: 32px;
 }
-/* line 1077, ../sass/screen.scss */
+/* line 1078, ../sass/screen.scss */
 #footer .section-links .container-links .container-link .link a {
   transition: .5s;
 }
-/* line 1080, ../sass/screen.scss */
+/* line 1081, ../sass/screen.scss */
 #footer .section-links .container-links .container-link .link a:hover {
   text-decoration: underline;
   color: #efeeec;
 }
 
-/* line 1093, ../sass/screen.scss */
+/* line 1094, ../sass/screen.scss */
 .container-trending-quotes {
   width: 960px;
   display: block;
@@ -1070,7 +1066,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   position: relative;
   z-index: 9;
 }
-/* line 1102, ../sass/screen.scss */
+/* line 1103, ../sass/screen.scss */
 .container-trending-quotes .small-title {
   font-weight: lighter;
   padding-left: 10px;
@@ -1078,7 +1074,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   letter-spacing: 2px;
   margin-bottom: 0px;
 }
-/* line 1111, ../sass/screen.scss */
+/* line 1112, ../sass/screen.scss */
 .container-trending-quotes .container-quote {
   padding: 0;
   height: 210px;
@@ -1092,50 +1088,50 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   transition: .5s ease;
   cursor: pointer;
 }
-/* line 1125, ../sass/screen.scss */
+/* line 1126, ../sass/screen.scss */
 .container-trending-quotes .container-quote .background-quote {
   transition: .75s;
   opacity: .7;
 }
-/* line 1131, ../sass/screen.scss */
+/* line 1132, ../sass/screen.scss */
 .container-trending-quotes .container-quote .box-border-white {
   transition: .25s;
 }
-/* line 1136, ../sass/screen.scss */
+/* line 1137, ../sass/screen.scss */
 .container-trending-quotes .container-quote:hover {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
 }
-/* line 1140, ../sass/screen.scss */
+/* line 1141, ../sass/screen.scss */
 .container-trending-quotes .container-quote:hover .background-quote {
   opacity: .9;
 }
-/* line 1145, ../sass/screen.scss */
+/* line 1146, ../sass/screen.scss */
 .container-trending-quotes .container-quote:hover .box-border-white {
   border-color: rgba(255, 255, 255, 0.15);
 }
-/* line 1151, ../sass/screen.scss */
+/* line 1152, ../sass/screen.scss */
 .container-trending-quotes .container-quote.featured-quote {
   height: 440px;
 }
-/* line 1156, ../sass/screen.scss */
+/* line 1157, ../sass/screen.scss */
 .container-trending-quotes .container-quote .the-quote {
   margin: 0;
   max-width: 400px;
 }
-/* line 1161, ../sass/screen.scss */
+/* line 1162, ../sass/screen.scss */
 .container-trending-quotes .container-quote .the-quote .line-quote, .container-trending-quotes .container-quote .the-quote .author-quote {
   font-size: 18px;
 }
-/* line 1166, ../sass/screen.scss */
+/* line 1167, ../sass/screen.scss */
 .container-trending-quotes .container-quote .the-quote .line-quote {
   box-shadow: 10px 0 0 #feb41c, -10px 0 0 #feb41c;
 }
-/* line 1171, ../sass/screen.scss */
+/* line 1172, ../sass/screen.scss */
 .container-trending-quotes .container-quote .the-quote .author-quote {
   font-size: 12px;
   margin-right: -10px;
 }
-/* line 1178, ../sass/screen.scss */
+/* line 1179, ../sass/screen.scss */
 .container-trending-quotes .container-quote .gradient-background-quote {
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI0MjIxZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzI0MjIxZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
   background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #24221f), color-stop(100%, rgba(36, 34, 31, 0)));
@@ -1144,7 +1140,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   background: linear-gradient(to top, #24221f, rgba(36, 34, 31, 0));
 }
 
-/* line 1185, ../sass/screen.scss */
+/* line 1186, ../sass/screen.scss */
 .container-quote-of-the-day {
   height: 100%;
   width: 100%;
@@ -1154,7 +1150,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   float: left;
   margin-bottom: -450px;
 }
-/* line 1196, ../sass/screen.scss */
+/* line 1197, ../sass/screen.scss */
 .container-quote-of-the-day .title {
   font-size: 18px;
   font-weight: lighter;
@@ -1174,17 +1170,17 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   z-index: 9;
   opacity: .8;
 }
-/* line 1217, ../sass/screen.scss */
+/* line 1218, ../sass/screen.scss */
 .container-quote-of-the-day .container-quote {
   height: 100%;
   max-height: 100%;
   padding: 0;
 }
-/* line 1223, ../sass/screen.scss */
+/* line 1224, ../sass/screen.scss */
 .container-quote-of-the-day .container-quote .tagline {
   margin-top: -450px;
 }
-/* line 1227, ../sass/screen.scss */
+/* line 1228, ../sass/screen.scss */
 .container-quote-of-the-day .container-quote .tagline .line-quote {
   background: none;
   color: white;
@@ -1195,7 +1191,7 @@ form.form-create-quote .related-songs-rg .related-songs li.related-song.active {
   box-shadow: none;
   font-size: 21px;
 }
-/* line 1240, ../sass/screen.scss */
+/* line 1241, ../sass/screen.scss */
 .container-quote-of-the-day .container-quote .gradient-background-quote {
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI0MjIxZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzI0MjIxZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
   background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #24221f), color-stop(100%, rgba(36, 34, 31, 0)));

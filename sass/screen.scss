@@ -178,7 +178,8 @@ a
     .line-quote
     {
       box-shadow : 15px 0 0 $color-yellow-base, -15px 0 0 $color-yellow-base;
-      @include background(linear-gradient(top, rgba(0, 0, 0, 0) 0px, $color-yellow-base 0px, $color-yellow-base 65px, rgba(0, 0, 0, 0) 65px));
+      //@include background(linear-gradient(top, rgba(0, 0, 0, 0) 0px, $color-yellow-base 0px, $color-yellow-base 65px, rgba(0, 0, 0, 0) 65px));
+      background: $color-yellow-base;
     }
     .author-quote
     {
