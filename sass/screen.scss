@@ -933,11 +933,12 @@ form.form-create-quote
   z-index  : 20;
   .link
   {
-    font-family    : "Open Sans", sans-serif;
+    font-family    : "Oswald", sans-serif;
     color          : transparentize(white, .05);
     line-height    : 25px;
     text-transform : uppercase;
-    font-weight    : normal;
+    font-weight    : lighter;
+    letter-spacing: 2px;
     cursor         : pointer;
     position       : relative;
     float          : left;
@@ -946,7 +947,7 @@ form.form-create-quote
 
     &.link-primary
     {
-      padding     : 0 5px;
+      padding     : 0 10px;
       border      : 1px solid $color-yellow-base;
       color       : $color-yellow-base;
       font-weight : bold;
@@ -1103,6 +1104,8 @@ form.form-create-quote
     font-weight: lighter;
     padding-left: 10px;
     font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 0px;
   }
 
   .container-quote
@@ -1116,6 +1119,34 @@ form.form-create-quote
     margin: 10px;
     box-shadow: 0 0 2px 0 transparentize(black, .9);
     background-color: $color-black-base;
+    transition : .5s ease;
+    cursor: pointer;
+
+    .background-quote
+    {
+      transition : .75s;
+      opacity: .7;
+    }
+
+    .box-border-white
+    {
+      transition : .25s;
+    }
+
+    &:hover
+    {
+      box-shadow: 0 0 4px 0 transparentize(black, .8);
+      
+      .background-quote
+      {
+        opacity: .9;
+      }
+
+      .box-border-white
+      {
+        border-color: transparentize(white, .85);
+      }
+    }
 
     &.featured-quote
     {
@@ -1160,7 +1191,7 @@ form.form-create-quote
   margin-bottom: calc(0 - (100% - 500px));
   position: relative;
   float: left;
-  margin-bottom: -350px;
+  margin-bottom: -450px;
 
   .title
   {
@@ -1189,9 +1220,21 @@ form.form-create-quote
     max-height: 100%;
     padding: 0;
 
-    .the-quote
+    .tagline
     {
-      margin-top: -350px;
+      margin-top: -450px;
+
+      .line-quote
+      {
+        background: none;
+        color: white;
+        border: 1px solid white;
+        font-weight: lighter;
+        letter-spacing: 2px;
+        padding: 0 20px;
+        box-shadow: none;
+        font-size: 21px;
+      }
     }
 
     .gradient-background-quote

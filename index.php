@@ -49,6 +49,7 @@
         ));
         if($Quote->is_valid){
             //$app->array_meta_page['titlePage'] .= " - ".$Quote->Artist->name;
+            $Quote->incrementPopularity();
             $app->render(
                 'quotes/base/index.php',
                 array(
