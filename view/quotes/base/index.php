@@ -95,6 +95,17 @@
                     <li class = "share-button share-link"></li>
                 </ul>
             </div>
+            <div class="section-quote-song">
+                <h3 class="small-title">Le morceau</h3>
+                <?php if($Quote->Song->url_youtube != ''):?>
+                <div class="container-quote-song">
+                    <iframe id="ytplayer" class="youtube-player-quote" type="text/html" width="100%" height="auto"
+      src="http://www.youtube.com/embed/<?= $Quote->Song->url_youtube;?>?iv_load_policy=3&controls=1&autoplay=0&modestbranding=1&rel=0&origin=http://quotrs.com"
+      frameborder="0"></iframe>
+                </div>
+                <?php endif;?>
+            </div>  
+            <?php if(false):?>
             <div class = "section-comments">
                 <h3 class = "small-title">12 commentaires</h3>
 
@@ -115,6 +126,7 @@
                     </div>
                 </div>
             </div>
+            <?php endif;?>
         </div>
         <div class = "container-informations-quote-right">
             <?php if ($Quote->Song->is_valid): ?>

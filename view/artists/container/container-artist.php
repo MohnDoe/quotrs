@@ -32,11 +32,14 @@
                 <span class="information-title">Citations</span>
                 <span class="information-content"><?= $Artist->getNbQuotes();?></span>
             </span>
+            <?php if(false):?>
             <span class="information-artist information-artist-part nb-fans">
                 <span class="information-title">Fans</span>
                 <span class="information-content">13,290,304</span>
             </span>
+            <?php endif;?>
             <?php if($mode == 'big'):?>
+                <?php if(false):?>
             <span class="information-artist information-artist-part albums-artist">
                 <span class="information-title">Albums</span>
                 <span class="information-content">
@@ -48,6 +51,26 @@
                                            array(
                                                'Album' => $Album,
                                                'mode' => 'small'
+                                           ));
+                          }
+                        }
+
+                    ?>
+                </span>
+            </span>
+            <?php endif;?>
+            <span class="information-artist information-artist-part quotes-artist">
+                <span class="information-title">Citations célèbres</span>
+                <span class="information-content">
+                    <?php
+                        $QuotesArtist = $Artist->getQuotes();
+                        foreach ($QuotesArtist as $Quote) {
+                          if($Quote->is_valid){
+                              $app->render('quotes/container/container-quote.php',
+                                           array(
+                                               'Quote' => $Quote,
+                                               'mode' => 'quoteinartist',
+                                               'app' => $app
                                            ));
                           }
                         }

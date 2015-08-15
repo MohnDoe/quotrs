@@ -18,6 +18,3 @@
         <!--[if IE]>
         <link href="./stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
         <![endif]-->
-
-    </head>
-    <body>

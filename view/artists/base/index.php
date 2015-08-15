@@ -6,8 +6,6 @@
  * Time: 20:32
  */
 
-?>
-<?php
     if($Artist->is_valid){
         $app->render('artists/container/container-artist.php',
                      array(

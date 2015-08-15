@@ -41,10 +41,20 @@
         DEFINE('AWS_SECRET_ACCESS_KEY', "qScDYbz2N0BRtf7X0R4wLuhe6bJaptu8SGcFIiwL");
 
         // database
-        DEFINE('HOSTNAME', 'localhost');
-        DEFINE('DBNAME', 'db_quotrap');
-        DEFINE('USER_DB', 'root');
-        DEFINE('PASS_DB', '');
+        // DEFINE('HOSTNAME', 'localhost');
+        // DEFINE('DBNAME', 'db_quotrap');
+        // DEFINE('USER_DB', 'root');
+        // DEFINE('PASS_DB', '');
+
+        //try heroku connection on local
+        
+
+        $urlClearDB = parse_url ("mysql://bfbb2438dbe800:2471445f@us-cdbr-iron-east-02.cleardb.net/heroku_3e806d4b32c7bff?reconnect=true");
+        DEFINE('HOSTNAME', $urlClearDB["host"]);
+        DEFINE('DBNAME', substr ($urlClearDB["path"], 1));
+        DEFINE('USER_DB', $urlClearDB["user"]);
+        DEFINE('PASS_DB', $urlClearDB["pass"]);
+
 
         DEFINE('DOCUMENT_ROOT', $_SERVER["DOCUMENT_ROOT"]."/quotrs");
     }

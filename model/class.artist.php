@@ -76,7 +76,7 @@
             $req = DB::$db->query('SELECT * FROM ' . DB::$tableQuotes . ' WHERE id_artist = '.$this->id);
             $result = [];
             while($data = $req->fetch()){
-                $result[] = new Quote($data['id_quote'], ['isHashID'=>false]);
+                $result[] = new Quote($data['id_quote'], ['isHashID'=>false, 'init_artist' => true]);
             }
             return $result;
         }
