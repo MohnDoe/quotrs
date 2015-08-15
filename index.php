@@ -19,7 +19,12 @@
                           ]);
 
     //home page
-    $app->get('/', function() use ($app){
+    $app->get('/', function() use ($app, $ARRAY_META_PAGE){
+        $ARRAY_META_PAGE['title'] .= " - Les meilleurs citations de rap";
+        $ARRAY_META_PAGE['twitter_card']['card'] = "summary_large_image";
+        $ARRAY_META_PAGE['twitter_card']['image'] = "";
+        $app->render('assets/head-html.php', $ARRAY_META_PAGE);
+        $app->render('base/top.php', array('app'=>$app));
         $app->render(
             'home/index.php',
             array(
@@ -89,7 +94,7 @@
     })->name('artistUrl');
 
     //page album
-    $app->get('/albums/:idAlbum', function($idAlbum) use($app){
+    $app->get('/albums/:idAlbum', function($idAlbum) use($app, $ARRAY_META_PAGE){
         $Album = new Album($idAlbum);
         if($Album->is_valid){
             $ARRAY_META_PAGE['title'] .= " - \"".$Album->title."\" de ".$Album->Artist->name;
