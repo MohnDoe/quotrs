@@ -18,8 +18,6 @@
           'templates.path' => './view/'
                           ]);
 
-    $app->array_meta_page = $array_meta_page;
-
     //home page
     $app->get('/', function() use ($app){
         $app->render(
@@ -31,7 +29,14 @@
     })->name('home');
 
     //page create quote
-    $app->get('/quotes/create', function() use ($app){
+    $app->get('/quotes/create', function() use ($app, $ARRAY_META_PAGE){
+
+        $ARRAY_META_PAGE['title'] .= " - Poster une citation";
+        $ARRAY_META_PAGE['twitter_card']['card'] = "summary_large_image";
+        $ARRAY_META_PAGE['twitter_card']['image'] = "";
+        $app->render('assets/head-html.php', $ARRAY_META_PAGE);
+        $app->render('base/top.php', array('app'=>$app));
+        
         $app->render(
             'quotes/base/index.php',
             array(
@@ -42,13 +47,18 @@
     })->name('createQuoteUrl');
 
     //page quote
-    $app->get('/quotes/:hashID', function($hashID) use($app){
+    $app->get('/quotes/:hashID', function($hashID) use($app, $ARRAY_META_PAGE){
         $Quote = new Quote($hashID, array(
             'init_artist' => true,
             'init_song' => true
         ));
         if($Quote->is_valid){
-            //$app->array_meta_page['titlePage'] .= " - ".$Quote->Artist->name;
+            $ARRAY_META_PAGE['title'] .= " - Citation de ".$Quote->Artist->name;
+            $ARRAY_META_PAGE['twitter_card']['card'] = "summary_large_image";
+            $ARRAY_META_PAGE['twitter_card']['image'] = $Quote->url_image;
+            $app->render('assets/head-html.php', $ARRAY_META_PAGE);
+            $app->render('base/top.php', array('app'=>$app));
+
             $Quote->incrementPopularity();
             $app->render(
                 'quotes/base/index.php',
@@ -62,9 +72,15 @@
     })->name('quoteUrl');
 
     //page artist
-    $app->get('/artists/:idArtist', function($idArtist) use($app){
+    $app->get('/artists/:idArtist', function($idArtist) use($app, $ARRAY_META_PAGE){
         $Artist = new Artist($idArtist);
         if($Artist->is_valid){
+            $ARRAY_META_PAGE['title'] .= " - ".$Artist->name;
+            $ARRAY_META_PAGE['twitter_card']['card'] = "summary_large_image";
+            $ARRAY_META_PAGE['twitter_card']['image'] = $Artist->url_image;
+            $app->render('assets/head-html.php', $ARRAY_META_PAGE);
+            $app->render('base/top.php', array('app'=>$app));
+
             $app->render(
                 'artists/base/index.php',
                 array('Artist' => $Artist, 'app' => $app)
@@ -76,6 +92,12 @@
     $app->get('/albums/:idAlbum', function($idAlbum) use($app){
         $Album = new Album($idAlbum);
         if($Album->is_valid){
+            $ARRAY_META_PAGE['title'] .= " - \"".$Album->title."\" de ".$Album->Artist->name;
+            $ARRAY_META_PAGE['twitter_card']['card'] = "summary_large_image";
+            $ARRAY_META_PAGE['twitter_card']['image'] = $Album->url_image;
+            $app->render('assets/head-html.php', $ARRAY_META_PAGE);
+            $app->render('base/top.php', array('app'=>$app));
+
             $app->render(
                 'albums/base/index.php',
                 array('Album' => $Album, 'app' => $app)
@@ -86,8 +108,6 @@
 ?>
 
 <?php
-    $app->render('assets/head-html.php');
-    $app->render('base/top.php', array('app'=>$app));
     $app->run();
     $app->render('assets/footer-html.php');
 

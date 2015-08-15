@@ -72,6 +72,13 @@
     DEFINE('AWS_S3_REGION', 'eu-west-1');
     
     DEFINE('ACCESS_TOKEN_GENIUS_API', "uWibAg6C7pcdQpvynsw8zk-fqo7crN5-bckfL0rJ1_SOTRM5BOTKygD4Q-e_ppDz");
+    
+    $ARRAY_META_PAGE = array(
+        'title' => "Quotrs.",
+        'description' => "Quotrs. c'est cool.",
+        "twitter_card" => null
+    );
+
     /*
      * REQUIRING ALL CLASSES
      */
@@ -83,10 +90,6 @@
     require_once 'class.song.php';
     require_once 'class.user.php';
 
-
-    $array_meta_page = array(
-        'titlePage' => "Quotrs."
-    );
 
     function CallAPI($method, $url, $data = false)
     {
