@@ -2,8 +2,10 @@
 	<div class="container-quote <?= $mode;?>">
 		<div class="the-quote">
 			<span class="line-quote"><?= str_replace ("\\n", "<br/>", $Quote->content);?></span>
+	        <?php if($mode != 'quoteinartist'):?>
 	        <div style = "clear: both; display: table;"></div>
 			<span class="author-quote"><?= $Quote->Artist->name;?></span>
+			<?php endif;?>
 		</div>
 		<div class="background-quote" back-img="<?= $Quote->url_image;?>"></div>
 		<div class="gradient-background-quote"></div>

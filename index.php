@@ -59,7 +59,7 @@
         ));
         if($Quote->is_valid){
             $ARRAY_META_PAGE['title'] .= " — Citation de ".$Quote->Artist->name;
-            $ARRAY_META_PAGE['description'] = "«".str_replace ("\\n", "<br/>", $Quote->content)."» \n — ".$Quote->Artist->name;
+            $ARRAY_META_PAGE['description'] = "« ".str_replace ("\\n", "<br/>", $Quote->content)." » \n — ".$Quote->Artist->name;
             $ARRAY_META_PAGE['twitter_card']['card'] = "summary_large_image";
             $ARRAY_META_PAGE['twitter_card']['image'] = $Quote->url_image;
             $app->render('assets/head-html.php', $ARRAY_META_PAGE);
